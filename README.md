@@ -8,7 +8,9 @@
 ## Project Architecture
 <img src="Design_Documents/Architecture.png" alt="Architecture" width="1000"/>
 ## Machine Learning 
+
 ### FrontEnd
+
 FrontEnd Consists of the `HTML/CSS/Javascript stack`. Javscript retrieves the data from the APIs hosted by Flask based on user's selection 
 
 
