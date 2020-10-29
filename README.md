@@ -11,13 +11,14 @@
 ## Machine Learning 
 
 ### Problem 1: Predicting fair rental price based on rental features
-* Goal
+* Goal: To be able to show users both the actual price of a rental and the fair rental price predicted by our model based on the features of the appartment such as the number of rooms, the crime rate in the neighbourhood etc. 
 * Algorithm: Linear Regression 
+* Methedology: Train a Linear Regression Model on existing data and get a moderately high accuracy. Apply this model to existing and new incoming rentals.
 ### Problem 2: Clustering rentals to discover interesting patterns 
-* Goal
+* Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
 * Algorithm: K-means Clustering
-### Problem 3: Using NLP to recomend rentals based on users description of their dream living space  
-* Goal
+### Problem 3: Using NLP to recomend rentals based on user's description of their dream living space  
+* Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Nural Networks
 ### FrontEnd
 
