@@ -7,7 +7,8 @@
 * Income & Age Data - [Canada Revenue Agency](https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/income-statistics-gst-hst-statistics/individual-tax-statistics-fsa/individual-tax-statistics-fsa-2017-edition-2015-tax-year.html#toc9) & [Stats Canada](https://www.statcan.gc.ca/)- Through static files
 ## Project Architecture
 <img src="Design_Documents/Architecture.png" alt="Architecture" width="1000"/>
-## Machine Learning 
+
+### Machine Learning 
 
 ### FrontEnd
 
