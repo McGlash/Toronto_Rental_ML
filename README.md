@@ -8,8 +8,17 @@
 ## Project Architecture
 <img src="Design_Documents/Architecture.png" alt="Architecture" width="1000"/>
 
-### Machine Learning 
+## Machine Learning 
 
+### Problem 1: Predicting fair rental price based on rental features
+* Goal
+* Algorithm: Linear Regression 
+### Problem 2: Clustering rentals to discover interesting patterns 
+* Goal
+* Algorithm: K-means Clustering
+### Problem 3: Using NLP to recomend rentals based on users description of their dream living space  
+* Goal
+* Algorithm: 
 ### FrontEnd
 
 FrontEnd Consists of the `HTML/CSS/Javascript stack`. Javscript retrieves the data from the APIs hosted by Flask based on user's selection 
