@@ -7,13 +7,13 @@ By building on the Toronto_Rental_Insight project, the current project will achi
 *	Create a webpage with an interactive dashboard enabling users to benchmark rental costs, crime rates, and community service availability. 
 *	Further develop app functionality by incorporating machine learning. 
 ## Approach
-Optimize map function
-o	The code will be revisited to improve the performance of the map.  Solutions include reducing the number of times each dataset must be read. 
+###Optimize map function
+* The code will be revisited to improve the performance of the map.  Solutions include reducing the number of times each dataset must be read. 
 Tools: JavaScript, Python
 ### Create dedicate insight webpage
-o	In the prior iteration of the app, neighbourhood insights were embedded in the map function. In the current iteration, the insights will be located on a dedicated dashboard. 
-o	The dashboard will include rental cost trends, crime stats and community services information. 
-o	Users will be able choose which areas they would like to compare
+* In the prior iteration of the app, neighbourhood insights were embedded in the map function. In the current iteration, the insights will be located on a dedicated dashboard. 
+* The dashboard will include rental cost trends, crime stats and community services information. 
+* Users will be able choose which areas they would like to compare.
 Tools: JavaScript, Python, d3. 
 ### Machine learning 
 
