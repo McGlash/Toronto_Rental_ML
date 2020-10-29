@@ -18,7 +18,7 @@
 * Algorithm: K-means Clustering
 ### Problem 3: Using NLP to recomend rentals based on users description of their dream living space  
 * Goal
-* Algorithm: 
+* Algorithm: Nural Networks
 ### FrontEnd
 
 FrontEnd Consists of the `HTML/CSS/Javascript stack`. Javscript retrieves the data from the APIs hosted by Flask based on user's selection 
@@ -31,6 +31,8 @@ We created wireframes of the final product we had in mind. The wireframes below 
 <img src="Images/Wireframe_collage.png" alt="Headline" width="1000"/>
 
 ### Technologies
+* Machine Learning
+  * Scikit-Learn
 * Python
   * Extraction
     * BeautifulSoap
