@@ -17,6 +17,7 @@
 ### Problem 2: Clustering rentals to discover interesting patterns 
 * Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
 * Algorithm: K-means Clustering
+* Methedology
 ### Problem 3: Using NLP to recomend rentals based on user's description of their dream living space  
 * Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Nural Networks
