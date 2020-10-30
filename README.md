@@ -9,7 +9,7 @@ By building on the Toronto_Rental_Insight project, the current project will achi
 
 ## Project Architecture
 
-<img src="Images/architecture.png" alt="Architecture" width="1000"/>
+<img src="Images/architecture2.png" alt="Architecture" width="1000"/>
 
 ## Approach
 ### Optimize map function
