@@ -6,6 +6,11 @@ By building on the Toronto_Rental_Insight project, the current project will achi
 *	Optimize the map function to improve usability.
 *	Create a webpage with an interactive dashboard enabling users to benchmark rental costs, crime rates, and community service availability. 
 *	Further develop app functionality by incorporating machine learning. 
+
+## Project Architecture
+
+<img src="Images/architectureDiagram.png" alt="Architecture" width="1000"/>
+
 ## Approach
 ### Optimize map function
 * The code will be revisited to improve the performance of the map.  Solutions include reducing the number of times each dataset must be read. 
