@@ -628,3 +628,14 @@ function createChoroplethMap(type='choropleth-income'){
     return choroplethageMap;
   }
 }
+
+// Function calls
+crimeMap = createHeatmap();
+communityMap = createCommunitymap();
+choroplethincomeMap = createChoroplethMap(type="choropleth-income");
+choroplethageMap = createChoroplethMap(type="choropleth-age");
+TorontoMap = createBaseMap();
+d3.json(rentalPath, function(data){
+  rentalMarkerClusterGroup = addRentalLayer(data);
+  createDropDown(data);
+});
