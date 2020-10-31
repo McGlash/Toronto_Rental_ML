@@ -215,3 +215,56 @@ function addRentalLayer(data){
 
   return rentalMarkerClusterGroup;
 }
+
+function createHeatmap(){
+
+  // Function to map opacity based on MCI
+  function findOpacity(MCI){
+
+    switch(MCI) {
+      case "Assault":
+        return 0.7;
+      case "Auto Theft":
+          return 0.1;
+      case "Homicide":
+        return 0.9;
+      case "Break and Enter":
+        return 0.4;
+      case "Robbery":
+        return 0.4;
+      case "Theft Over":
+        return 0.1;
+    }
+
+
+  }
+
+  crimeMap = L.map("crime-heatmap", {
+    center: [43.728754, -79.388561],
+    zoom: 11,
+    minZoom: 9,
+    maxZoom: mainMapMinZoom
+  });
+  
+  L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    tileSize: 512,
+    minZoom: 9,
+    maxZoom: 25,
+    zoomOffset: -1,
+    id: "mapbox/streets-v11",
+    accessToken: API_KEY
+  }).addTo(crimeMap);
+
+  //var url = "http://127.0.0.1:5000/CrimeLastMonth";
+  d3.json(url+"CrimeLastMonth", function(fullcrime){
+    var heatArray = fullcrime.map(d=>[d.lat, d.long, findOpacity(d.MCI)]);
+    var heat = L.heatLayer(heatArray, {
+      radius: 20,
+      blur: 35
+    }).addTo(crimeMap);
+
+  });
+  return crimeMap;
+}
+
