@@ -79,3 +79,139 @@ function createBaseMap(){
   return TorontoMap;
 }
 
+// Function to update the rental Layer
+function addRentalLayer(data){
+
+
+  rentalData = data;
+
+  //create rental posting layer
+  var rentalMarkers = [];
+
+  //function to determine text on rental icons
+  function rentalText (text){
+    return (text > 0)?parseInt(text):"?"
+  };
+
+  rentalDetails=[];
+  rentalData.forEach(function(feature) {
+  
+    rental = L.ExtraMarkers.icon({
+      markerColor: "green-light",
+      svg: true,
+      number: rentalText(feature.bedrooms),
+      shape: 'circle',
+      iconColor: "white",
+      icon: 'fa-number', 
+      image: feature.image,        
+      furnished: feature.furnished, 
+      pet_friendly: feature.pet_friendly, 
+      title: feature.title, 
+      price: feature.price, 
+      rental_type: feature.rental_type, 
+      url: feature.url, 
+      postal_code: feature.postal_code, 
+      post_published_date: feature.post_published_date, 
+      description: feature.description,
+      source: feature.source       
+    });
+
+    rentalMarkers.push(L.marker([feature.lat, feature.long], {
+      icon: rental
+    }).bindPopup(feature.title));
+    rentalDetails.push(feature);
+  });
+  var rentalMarkerGroup = L.layerGroup(rentalMarkers);
+
+  //Open sidebar when marker is clicked
+  rentalMarkerGroup.getLayers().forEach(function(obj, i) { 
+    obj.on('click', function(e){
+      // marker clicked is e.target
+      sidebar.open('rentalListing');
+      displayRentalListing(e);
+      // Heatmap marker
+      if(heatmapMarker){
+        curr_zoom = crimeMap.getZoom();
+        crimeMap.removeLayer(heatmapMarker);
+      }
+      heatmapMarker = L.marker(e.target.getLatLng(), {
+        icon: L.ExtraMarkers.icon({
+          markerColor: "green-light",
+          svg: true,
+          number: e.target.options.icon.options.number,
+          shape: 'circle',
+          iconColor: "white",
+          icon: 'fa-number',      
+        })
+      }).bindPopup(e.target.options.icon.options.title);
+      heatmapMarker.addTo(crimeMap);
+      crimeMap.setView(e.target.getLatLng(), curr_zoom);
+
+      // Community Map marker
+      if(communityMapMarker){
+        curr_zoom_comm = communityMap.getZoom();
+        communityMap.removeLayer(communityMapMarker);
+      }
+      communityMapMarker = L.marker(e.target.getLatLng(), {
+        icon: L.ExtraMarkers.icon({
+          markerColor: "green-light",
+          svg: true,
+          number: e.target.options.icon.options.number,
+          shape: 'circle',
+          iconColor: "white",
+          icon: 'fa-number',      
+        })
+      }).bindPopup(e.target.options.icon.options.title);
+      communityMapMarker.addTo(communityMap);
+      communityMap.setView(e.target.getLatLng(), curr_zoom_comm);
+
+
+      // Income Map marker
+      if(choroplethIncomeMapMarker){
+        curr_zoom_income = choroplethincomeMap.getZoom();
+        choroplethincomeMap.removeLayer(choroplethIncomeMapMarker);
+      }
+      choroplethIncomeMapMarker = L.marker(e.target.getLatLng(), {
+        icon: L.ExtraMarkers.icon({
+          markerColor: "green-light",
+          svg: true,
+          number: e.target.options.icon.options.number,
+          shape: 'circle',
+          iconColor: "white",
+          icon: 'fa-number',      
+        })
+      }).bindPopup(e.target.options.icon.options.title);
+      choroplethIncomeMapMarker.addTo(choroplethincomeMap);
+      choroplethincomeMap.setView(e.target.getLatLng(), curr_zoom_income);
+
+
+      // Age Map marker
+      if(choroplethAgeMapMarker){
+        curr_zoom_age = choroplethageMap.getZoom();
+        choroplethageMap.removeLayer(choroplethAgeMapMarker);
+      }
+      choroplethAgeMapMarker = L.marker(e.target.getLatLng(), {
+        icon: L.ExtraMarkers.icon({
+          markerColor: "green-light",
+          svg: true,
+          number: e.target.options.icon.options.number,
+          shape: 'circle',
+          iconColor: "white",
+          icon: 'fa-number',      
+        })
+      }).bindPopup(e.target.options.icon.options.title);
+      choroplethAgeMapMarker.addTo(choroplethageMap);
+      choroplethageMap.setView(e.target.getLatLng(), curr_zoom_age);
+
+    });
+  });
+
+  if(rentalMarkerClusterGroup){
+    TorontoMap.removeLayer(rentalMarkerClusterGroup);
+  }
+  rentalMarkerClusterGroup = L.markerClusterGroup();
+  rentalMarkerClusterGroup.addLayer(rentalMarkerGroup);
+  rentalMarkerClusterGroup.addTo(TorontoMap);
+
+  return rentalMarkerClusterGroup;
+}
