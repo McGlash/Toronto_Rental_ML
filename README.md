@@ -12,9 +12,15 @@ By building on the Toronto_Rental_Insight project, the current project will achi
 <img src="Images/architecture2.png" alt="Architecture" width="1000"/>
 
 ## Approach
+
 ### Optimize map function
-* The code will be revisited to improve the performance of the map.  Solutions include reducing the number of times each dataset must be read. 
-Tools: JavaScript, Python
+* The code will be revisited to improve the performance of the map.  Solutions include reducing the number of times each dataset must be read.
+ - Code refactoring is done. Performance is improved significantly.
+ - Leaflet extensions are used to store relevant data in markers to use them for various purposes.
+ - Single Map is replotted to numerous maps to avoid clutter and to enhance the user experience.
+ - New maps are added to produce complete insights to users.
+ - **Tools: JavaScript, Python**
+ 
 ### Create dedicate insight webpage
 * In the prior iteration of the app, neighbourhood insights were embedded in the map function. In the current iteration, the insights will be located on a dedicated dashboard. 
 * The dashboard will include rental cost trends, crime stats and community services information. 
