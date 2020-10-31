@@ -438,3 +438,193 @@ function createCommunitymap(){
   });
   return communityMap;
 };
+
+function createChoroplethMap(type='choropleth-income'){
+
+  function getColor(d) {
+    if (type=='choropleth-income'){
+      return d > 400000 ? '#800026' :
+           d > 300000  ? '#BD0026' :
+           d > 200000  ? '#E31A1C' :
+           d > 100000  ? '#FC4E2A' :
+           d > 50000   ? '#FD8D3C' :
+           d > 20000   ? '#FEB24C' :
+                          '#FFEDA0';
+    }
+    else{
+      return d > 50 ? '#54632C' :
+           d > 45  ? '#97B150' :
+           d > 40  ? '#A2C93A' :
+           d > 35  ? '#D4ED91' :
+           d > 30   ? '#DFFFA5' :
+                      '#F7F99C';
+    };
+    
+  };
+
+  //function for styling FSA polygons
+  function FSAStyle (feature) {
+    if (type=='choropleth-income'){
+        return {
+          fillColor: getColor(feature.properties.avg_income),
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.7
+      };
+    }
+    else{
+        return {
+          fillColor: getColor(feature.properties.Avg_Age),
+          weight: 2,
+          opacity: 1,
+          color: 'white',
+          dashArray: '3',
+          fillOpacity: 0.7
+      };
+
+    };
+    
+  };
+
+  function highlight(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 3,
+        color: '#ffd32a',
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+    var update;
+    if (type=='choropleth-income'){
+      update = `FSA: ${layer.feature.properties.CFSAUID} <br> Avg. Income: ${layer.feature.properties.avg_income.toFixed(0)}`;
+    }
+    else{
+      update = `FSA: ${layer.feature.properties.CFSAUID} <br> Avg. Age: ${layer.feature.properties.Avg_Age.toFixed(2)}`;
+    }
+    displayInfo.update(update);
+  }
+
+  // FSA Layer
+  var FSA = new L.LayerGroup();
+  d3.json(FSA_income_age_geojson, function(data){
+
+    var gs = L.geoJSON(data, {
+      style: FSAStyle,
+      onEachFeature: function(feature, layer) {
+        var update;
+        if (type=='choropleth-income'){
+          update = `FSA: ${feature.properties.CFSAUID} <br> Avg. Income: ${feature.properties.avg_income.toFixed(0)}`;
+        }
+        else{
+          update = `FSA: ${feature.properties.CFSAUID} <br> Avg. Age: ${feature.properties.Avg_Age.toFixed(2)}`;
+        };
+        layer.bindTooltip(update),
+        layer.on({
+          mouseover: highlight,
+          mouseout: function () {
+            gs.resetStyle(this);
+            displayInfo.update();
+          }
+      });
+      }
+    }).addTo(FSA);
+  });
+
+  // On hover control that displays information about hovered upon country
+  var displayInfo = L.control();
+
+  displayInfo.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+      this.update();
+      return this._div;
+  };
+
+  // create tile layer
+  var streetview = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    tileSize: 512,
+    maxZoom: 13,
+    minZoom: 11,
+    zoomOffset: -1,      
+    id: 'light-v9',
+    accessToken: API_KEY
+  });
+
+  // Create the map object with layers
+  if (type=='choropleth-income'){
+    choroplethincomeMap = L.map(type, {
+      center: [43.72, -79.35],
+      zoom: 11,
+      layers : [FSA, streetview]
+    });
+
+    //set limits on zoom
+    choroplethincomeMap.options.maxZoom = 13;
+    choroplethincomeMap.options.minZoom = 11;
+  }
+  else{
+    choroplethageMap = L.map(type, {
+      center: [43.72, -79.35],
+      zoom: 11,
+      layers : [FSA, streetview]
+    });
+
+    //set limits on zoom
+    choroplethageMap.options.maxZoom = 13;
+    choroplethageMap.options.minZoom = 11;
+  }
+
+  var legend = L.control({position: 'bottomright'});
+
+  legend.onAdd = function (map) {
+
+      var div;
+
+      if (type=='choropleth-income'){
+        div = L.DomUtil.create('div', 'info legend-choropleth'),
+          grades = [0, 20000, 50000, 100000, 200000, 300000, 400000];
+      }
+      else{
+        div = L.DomUtil.create('div', 'info legend-choropleth'),
+          grades = [0, 30, 35, 40, 45, 50];
+      }
+
+      // loop through our  intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+
+      return div;
+  };
+
+  
+
+  displayInfo.update = function (props) {
+
+    if (type=='choropleth-income'){
+      this._div.innerHTML = props ? '<h2>Avg Income per FSA</h2>' +  props: '<h2>Avg Income per FSA</h2>' ;
+    }
+    else{
+      this._div.innerHTML = props ? '<h2>Avg Age per FSA</h2>' +  props: '<h2>Avg Age per FSA</h2>' ;
+    }
+  };
+
+  
+  if (type=='choropleth-income'){
+    legend.addTo(choroplethincomeMap);
+    displayInfo.addTo(choroplethincomeMap);
+    return choroplethincomeMap;
+  }
+  else{
+    legend.addTo(choroplethageMap);
+    displayInfo.addTo(choroplethageMap);
+    return choroplethageMap;
+  }
+}
