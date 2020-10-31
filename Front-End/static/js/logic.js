@@ -268,3 +268,173 @@ function createHeatmap(){
   return crimeMap;
 }
 
+function createCommunitymap(){
+  var colorDict = {"Community Services":"yellow", 
+  "Education & Employment":"red",
+  "Financial Services": "orange",
+  "Food & Housing": "green",
+  "Health Services": "purple",
+  "Law & Government": "blue",
+  "Transportation": "#0079A4"
+  };
+  var assetArray;
+
+  function markerAllocation(array, row){
+    var lat = parseFloat(row.latitude);
+    var long = parseFloat(row.longitude);
+    
+    // For each station, create a marker and bind a popup with the station's name
+    var marker= new customCircleMarker([lat, long], {
+      color: colorDict[row.category],
+      fillColor: colorDict[row.category],
+      fillOpacity: 0.4,
+      radius: 7,
+      agency_name:row.agency_name,        
+      address: row.address, 
+      category: row.category, 
+      office_phone: row.office_phone, 
+      crisis_phone: row.crisis_phone, 
+      toll_free_phone: row.toll_free, 
+      e_mail: row.e_mail, 
+      fees: row.fees, 
+      service_name: row.service_name, 
+      website: row.website, 
+      url:row.url, 
+      hours:row.hours, 
+      service_description:row.service_description, 
+      eligibility:row.eligibility 
+    });
+    
+  
+    marker.bindPopup(row.agency_name)
+    .on('click', function(e){
+      //select div tags and bind data
+      displayCommunityListing(e);
+    });
+    
+    // Add the marker to array
+    array.addLayer(marker);
+  
+    return array
+  };
+
+
+  d3.json(communityAssetpath, function(data){
+    var servicesAsset = new L.LayerGroup();
+    var healthAsset = new L.LayerGroup();
+    var foodAsset = new L.LayerGroup();
+    var transportAsset = new L.LayerGroup();
+    var lawAsset = new L.LayerGroup();
+    var educationAsset = new L.LayerGroup();
+    var financialAsset = new L.LayerGroup();
+    data.forEach(row=> {
+      
+      switch(row.category) {
+        case "Community Services":
+          servicesAsset = markerAllocation(servicesAsset, row)
+          break;
+        case "Education & Employment":
+          educationAsset = markerAllocation(educationAsset, row)
+          break;
+        case "Financial Services":
+          financialAsset = markerAllocation(financialAsset, row)
+          break;
+        case "Food & Housing":
+          foodAsset = markerAllocation(foodAsset, row)
+          break;
+        case "Health Services":
+          healthAsset = markerAllocation(healthAsset, row)
+          break;
+        case "Law & Government":
+          lawAsset = markerAllocation(lawAsset, row)
+          break;
+        case "Transportation":
+          transportAsset = markerAllocation(transportAsset, row)
+          break;
+      }
+      
+    });
+    assetArray = [servicesAsset, educationAsset, 
+      financialAsset, foodAsset, 
+     lawAsset, transportAsset];
+    
+
+    // create tile layer
+    var streetview = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+      tileSize: 512,
+      maxZoom: mainMapMaxZoom,
+      minZoom: mainMapMinZoom,
+      zoomOffset: -1,      
+      id: "streets-v11",
+      accessToken: API_KEY
+    });
+
+    //create overlay object
+    var overLayers = [{
+      collapsed: true,
+      group: "Other Community Services", 
+      layers:[{
+        name: '<p class="CS"> Community Services </p>',
+        layer: assetArray[0]
+      },
+      {
+        name: '<p class="EE"> Education & Employment </p>',
+        layer: assetArray[1]
+      },
+      {
+        name: '<p class="FS"> Financial Services </p>',
+        layer: assetArray[2]
+      },
+      {
+        name: '<p class="FH"> Food & Housing </p>',
+        layer: assetArray[3]
+      },
+      // {
+      //   name: '<p class="HS"> Health Services </p>',
+      //   layer: assetArray[4]
+      // },
+      {
+        name: '<p class="LG"> Law & Government </p>',
+        layer: assetArray[4]
+      },
+      {
+        name: '<p class="TR"> Transportation </p>',
+        layer: assetArray[5]
+      }],
+      
+    }];
+
+    // Define a baseMaps object to hold our base layers
+    var baseLayers = [
+      // {
+      //   name:  "Street View",
+      //   layer: streetview
+      // },
+
+      {
+        name: "Health Services",
+        layer: healthAsset
+      }
+    ];
+
+    // Create the map object with layers
+    communityMap = L.map("comm-map", {
+      center: [43.72, -79.35],
+      zoom: mainMapMinZoom,
+      layers : [streetview, healthAsset]
+    });
+
+    
+
+    //set limits on zoom
+    communityMap.options.maxZoom = 20;
+  
+    communityMap.options.minZoom = 12;
+  
+    // Pass map layers into layer control and add the layer control to the map
+    communityMap.addControl( new L.Control.PanelLayers(baseLayers, overLayers, {collapsed:true}));
+    // collapsibleGroups: true, 
+  });
+  return communityMap;
+};
