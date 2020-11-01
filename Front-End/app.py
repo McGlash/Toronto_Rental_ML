@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, render_template
 from pymongo import MongoClient
 from urls_list import  db_connection_string
+import pandas as pd
 import re
 
 
@@ -22,9 +23,43 @@ def fullData(collection):
         response = list(client.ETLInsights[collection].find({}, {'_id':0}))
         client.close()
     except:
-        client.close()
+        try:
+            client.close()
+        except:
+            pass
         return jsonify([]),  404
     return jsonify(response)
+
+def getAggData(type):
+    type_collection = {'availableRental':'CurrentRental', 'rentalTrend':'HistoricRental', 'communityAssets':'CommunityAssets', 'crime':'CrimeAggregate'}
+    try:
+        collection = type_collection[type]
+        client = MongoClient(db_connection_string)
+        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        df = pd.DataFrame(response)
+        if type in ['availableRental', 'rentalTrend']:
+            df["price"] = df["price"].astype("float")
+            #find mean by no. of bedrooms and FSA
+            df_aggregate = df.groupby(["FSA", "post_published_date", "bedrooms"])["price"].mean()
+            df_updated = df_aggregate.reset_index()
+            df_updated.rename(columns={"price" : "average_price"}, inplace=True)
+            return df_updated.to_json()
+        elif type == 'communityAssets':
+            #find mean by no. of bedrooms and FSA
+            df_aggregate = df.groupby(["fsa", "category"])["agency_name"].count()
+            df_updated = df_aggregate.reset_index()
+            df_updated.rename(columns={"agency_name" : "no_assets"}, inplace=True)
+            return df_updated.to_json()
+        elif type == 'crime':
+            return jsonify(response)
+        else:
+            return jsonify([]),  404
+    except:
+        try:
+            client.close()
+        except:
+            pass
+        return jsonify([]),  404
 
 def getCrimeData(collection, attr):
     query = dict()
@@ -36,7 +71,10 @@ def getCrimeData(collection, attr):
         response = list(client.ETLInsights[collection].find(query, {'_id':0}))
         client.close()
     except:
-        client.close()
+        try:
+            client.close()
+        except:
+            pass
         return jsonify([]),  404
     return jsonify(response)
 
@@ -71,7 +109,10 @@ def RentalData(collection, args):
         response = list(client.ETLInsights[collection].find(query, {'_id':0}))
         client.close()
     except:
-        client.close()
+        try:
+            client.close()
+        except:
+            pass
         return jsonify([]),  404
     return jsonify(response)
 
@@ -99,7 +140,10 @@ def commAssets(collection, args):
         response = list(client.ETLInsights[collection].find(query, {'_id':0}))
         client.close()
     except:
-        client.close()
+        try:
+            client.close()
+        except:
+            pass
         return jsonify([]),  404
     return jsonify(response)
 
@@ -116,7 +160,10 @@ def incomeData(collection, args):
         response = list(client.ETLInsights[collection].find(query, {'_id':0}))
         client.close()
     except:
-        client.close()
+        try:
+            client.close()
+        except:
+            pass
         return jsonify([]),  404
     return jsonify(response)
 
@@ -177,6 +224,13 @@ def getFSAIncomeAge():
     args = request.args.to_dict()
     return incomeData("FSAIncomeAge", args)
     # http://127.0.0.1:5000/fsaIncomeAge?FSA=M4E
+@app.route('/agg/<type>')
+def getAggregate(type):
+    return getAggData(type)
+    # http://127.0.0.1:5000/agg/availableRental
+    # http://127.0.0.1:5000/agg/rentalTrend
+    # http://127.0.0.1:5000/agg/communityAssets
+    # http://127.0.0.1:5000/agg/crime    
         
 
 if __name__ == "__main__":
