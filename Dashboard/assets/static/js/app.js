@@ -2,6 +2,17 @@
 
 //all rental
 
+var FSAList = ["All",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N','M1P','M1R','M1S','M1T','M1V','M1W','M1X',
+'M2H','M2J','M2K','M2L','M2M','M2N','M2P','M2R',
+'M3A','M3B','M3C','M3H','M3J','M3K','M3L','M3M','M3N',
+'M4A','M4B','M4C','M4E','M4G','M4H','M4J','M4K','M4L','M4M','M4N','M4P','M4R','M4S','M4T','M4V','M4W','M4X','M4Y',
+'M5A','M5B','M5C','M5E','M5G','M5H','M5J','M5M','M5N','M5P','M5R','M5S','M5T','M5V',
+'M6A','M6B','M6C','M6E','M6G','M6H','M6J','M6K','M6L','M6M','M6N','M6P','M6R','M6S',
+'M8V','M8W','M8X','M8Y','M8Z',
+'M9A','M9B','M9C','M9L','M9M','M9N','M9P','M9R','M9V','M9W'];
+
+var year =["2019", "2018", "2017"]
+
 var FSA = [];
 var publishDate =[];
 var bedroomNumber = [];
@@ -104,14 +115,12 @@ function crimeinit(){
       }
       else{};
     };
+
   };
   });
-  for(var i = 0; i < newParamArr.length; i++)
-{
 
-    obj[newParamArr[i]] = paramVal[i];
 
-  crimeTrendChart(autoTheftDate, assaulttDate, BreakandEntertDate, robberyDate, autoTheft, assault, BreakandEnter, robbery)
+  crimeTrendChart(autoTheft, assault, BreakandEnter, robbery);
 
 });
 
@@ -162,16 +171,16 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         type: 'scatter'
       };
     //formatting
-    var layout = {
+    var layout = {     
       margin: {
-        t: 20,
-        r: 20,
-      },
+      t: 15,
+      r: 20,
+    },
         plot_bgcolor: 'rgba(245,246,249,1)',
         paper_bgcolor: 'rgba(245,246,249,1)',
         font: {
           family: 'Arial',
-          size: 15,
+          size: 13,
           color: '#7f7f7f'
         },
         xaxis: {
@@ -185,12 +194,10 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
           standoff: 15},
           showline: false,
           "gridcolor": "white"
-        },legend: {
-          x: 0.25,
-          y: 1.1,
-          "orientation": "h"
-
-          }
+        },
+        legend: {"orientation": "h",
+        x: 0,
+        y: 1.2,}
         };
 
       var data = [trace1, trace2, trace3];
@@ -198,14 +205,17 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
       Plotly.newPlot('RentalChart', data, layout);
 };
 
-//crfimechart
-function crimeTrendChart(x1, x2, x3, x4, y1, y2, y3, y4){
+//crimechart
+function crimeTrendChart(y1, y2, y3, y4){
+
+  var labels =["Jan", "Feb", "Mar", "Apr",
+               "May", "Jun", "Jul", "Aug", 
+               "Sept", "Oct", "Nov", "Dec"]
 
   //datasets
   var trace1 = {
-      x: x1,
+      x: labels,
       y: y1,
-      //mode: 'markers',
       name: 'Autotheft',
       marker: {
         color: 'rgb(168, 9, 168)',
@@ -215,58 +225,62 @@ function crimeTrendChart(x1, x2, x3, x4, y1, y2, y3, y4){
           width: 0.5
         }
       },
-      type: 'scatter'
+      type: 'Scatter',
+      mode: "lines"
     };
     
     var trace2 = {
-      x: x2,
+      x: labels,
       y: y2,
       name: 'Assault',
       marker: {
         color: 'rgb(13, 117, 214)',
         size: 12
       },
-      type: 'scatter'
+      type: 'Scatter',
+      mode: "lines"
     };
     
     var trace3 = {
-      x: x3,
+      x: labels,
       y: y3,
-      name: 'Break and Enter',
+      name: 'B & E',
       marker: {
         color: 'rgb(7, 161, 7)',
         size: 12
       },
-      type: 'scatter'
+      type: 'Scatter',
+      mode: "lines"
     };
 
     var trace4 = {
-      x: x4,
+      x: labels,
       y: y4,
       name: 'Robbery',
       marker: {
         color: 'rgb(7, 161, 7)',
-        size: 12
+        size: 11
       },
-      type: 'scatter'
+      type: 'Scatter',
+      mode: "lines"
     };
 
   //formatting
   var layout = {
     margin: {
-      t: 20,
-      r: 20,
+      t: 15,
+      r: 40,
     },
       plot_bgcolor: 'rgba(245,246,249,1)',
       paper_bgcolor: 'rgba(245,246,249,1)',
       font: {
         family: 'Arial',
-        size: 15,
+        size: 13,
         color: '#7f7f7f'
       },
       xaxis: {
         title: {text:'Month', 
-        standoff: 20,},
+        standoff: 15},
         showgrid: false,
         zeroline: false,
       },
@@ -275,13 +289,13 @@ function crimeTrendChart(x1, x2, x3, x4, y1, y2, y3, y4){
         standoff: 15},
         showline: false,
         "gridcolor": "white"
-      },legend: {
-        x: 0.25,
-        y: 1.1,
-        "orientation": "h"
-
-        }
+      },
+      legend: {"orientation": "h",
+      x: 0,
+      y: 1.2,}
       };
+        
+
 
     var data = [trace1, trace2, trace3, trace4];
     
@@ -289,6 +303,25 @@ function crimeTrendChart(x1, x2, x3, x4, y1, y2, y3, y4){
 };
 function init(){
 
+  //FSA dropdown menu
+
+  var dropdownMenu = document.getElementById("selDatasetRental");
+        for(var i = 0; i < FSAList.length; i++) {
+            var newOption = document.createElement("option");
+            newOption.setAttribute("id","listFSA")
+            var text = document.createTextNode(FSAList[i]);
+            newOption.appendChild(text);
+            dropdownMenu.appendChild(newOption);
+        };
+
+        var dropdownMenu = document.getElementById("selDatasetCrime");
+        for(var i = 0; i < year.length; i++) {
+            var newOption = document.createElement("option");
+            newOption.setAttribute("id","listCrime")
+            var text = document.createTextNode(year[i]);
+            newOption.appendChild(text);
+            dropdownMenu.appendChild(newOption);
+        };
   rentalinit();
 
   crimeinit();
