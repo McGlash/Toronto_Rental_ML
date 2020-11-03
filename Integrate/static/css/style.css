@@ -1,0 +1,255 @@
+
+.legend {
+  line-height: 30px;
+  color: #555;
+  background-color: white;
+  padding: 10px;
+}
+
+.legend .circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+
+}
+.legend i {
+  width: 40px;
+  height: 20px;
+  float: left;
+  margin-right: 8px;
+}
+
+.legend-choropleth {
+  line-height: 30px;
+  color: #555;
+  padding: 10px;
+  background-color: white;
+}
+.legend-choropleth i {
+  width: 40px;
+  height: 20px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+p{
+  font-size: 1em;
+  LINE-HEIGHT:25px;
+
+}
+h2{
+  font-size: 1.5em;
+  LINE-HEIGHT:25px;
+}
+label{
+  font-size: 1.5em;
+  LINE-HEIGHT:25px;
+}
+option{
+  font-size: 2em;
+  LINE-HEIGHT:25px;
+}
+#form-group p, input{
+  font-size: 1.5em;
+  LINE-HEIGHT:25px;
+}
+
+#map
+{
+  height: 100vh;
+}
+
+#comm-map-container comm-map-container.card-header{
+  height: 1000px;
+  width: 100vw;
+}
+
+#crime-heatmap
+{
+  height: 1000px;
+  width: 100vw;
+  border: double black 5px;
+  margin: 20px;
+}
+#comm-map
+{
+  height: 1000px;
+  width: 70vw;
+  border: double black 5px;
+  margin: 20px;
+}
+#choropleth-income
+{
+  height: 800px;
+  width: 100vw;
+  border: double black 5px;
+  margin: 20px;
+}
+
+#choropleth-age
+{
+  height: 800px;
+  width: 100vw;
+  border: double black 5px;
+  margin: 20px;
+}
+
+#communityListing
+{
+  height: 1000px;
+  width: 19vw;
+  border: double black 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.leaflet-control-layers{
+  font-size: 15px;
+  color: #555;
+}
+
+.leaflet-popup-content{
+  font-size: 15px;
+  width: 100px;
+}
+
+.leaflet-popup-content-wrapper{
+  background-color: rgb(223, 219, 219);
+  color: #555;
+  line-height: 30px;
+}
+
+.leaflet-control{
+  font-size: 20px;
+}
+
+.scroll {
+  max-height: 1000px;
+  overflow-y: auto;
+}
+
+#rentalListing{
+  height: 100%;
+  width:100%;
+  padding: 0;
+  margin: 0;
+}
+
+#rentalListingImg, #communitylListingImg {
+  height: 75vh;
+  width:100vw;
+  padding: 0px;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  
+}
+#bar_rentAvgIncome, #line_rentTime {
+  height: 75vh;
+  width:100vw;
+  padding: 0;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.CS, .EE, .FS, .FH, .HS, .LG, .TR{
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.CS{
+  color: rgb(235, 201, 8);
+}
+
+.EE{
+  color:rgb(214, 13, 13);
+}
+
+.FS{
+  color: orange;
+}
+
+.FH{
+  color:rgb(7, 161, 7);
+}
+
+.HS{
+  color: rgb(168, 9, 168);
+}
+
+.LG{
+  color: rgb(15, 59, 100);
+}
+
+.TR{
+  color: rgb(14, 248, 236);
+}
+
+.legend {
+  line-height: 30px;
+  color: #555;
+  background-color: white;
+  padding: 10px;
+}
+
+.legend .circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+
+}
+.legend i {
+  width: 40px;
+  height: 20px;
+  float: left;
+  margin-right: 8px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.leaflet-control-layers{
+  font-size: 20px;
+  color: #555;
+}
+
+.leaflet-popup-content{
+  font-size: 20px;
+  width: 100px;
+}
+
+.leaflet-popup-content-wrapper{
+  background-color: rgb(223, 219, 219);
+  color: #555;
+  line-height: 30px;
+}
+
+.leaflet-control{
+  font-size: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #rentalListingImg, #communitylListingImg{
+    width: 305px; } }
+@media (min-width: 992px) and (max-width: 1199px) {
+  #rentalListingImg, #communitylListingImg, #bar_rentAvgIncome, #line_rentTime {
+    width: 390px; } }
+@media (min-width: 1200px) {
+  #rentalListingImg, #communitylListingImg, #bar_rentAvgIncome, #line_rentTime {
+    width: 460px; } }
