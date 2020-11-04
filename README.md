@@ -30,10 +30,22 @@ Tools: JavaScript, Python, d3.
 * Goal: To be able to show users both the actual price of a rental and the fair rental price predicted by our model based on the features of the apartment such as the number of rooms, the crime rate in the neighbourhood etc. 
 * Algorithm: Linear Regression 
 * Methodology: Train a Linear Regression Model on existing data and get a moderately high accuracy. Apply this model to existing and new incoming rentals.
+
+#### Transformations
+- Convert nonstandard nulls (white spaces, None, etc. ) to NaNs to be able to treat them equally
+- FSA and rental_type are taken as mandatory entries as the missing value imputation doesn't make much sense (or would mislead) here
+- furnished is decoded into 3 categories - 'YES', 'NO', 'NOT_MENTIONED'
+- Typecasting (price -> int, post_published_date -> date)
+- Derived features
+  - 'image' -> Atleast one image is in post or not ? Boolean
+  - 'posted_week_of_month' -> Derived from post_published_date
+- One hot encoding of all categorical variables
+
+
 ### Problem 2: Clustering rentals to discover interesting patterns 
 * Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
 * Algorithm: K-means Clustering
 * Methodology
-### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
+### Problem 3 (future scope): Using NLP to recommend rentals based on user's description of their dream living space  
 * Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Neural Networks
