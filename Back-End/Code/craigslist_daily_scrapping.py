@@ -3,15 +3,18 @@
 from craigslist import CraigslistHousing
 from pymongo import MongoClient
 
-
 import requests
 from selenium import webdriver
 import time
 import pandas as pd
+import numpy as np
 import re
 from datetime import datetime, timedelta, timezone
 import os
+import pickle
 from webdriver_manager.chrome import ChromeDriverManager
+import warnings
+warnings.filterwarnings("ignore")
 
 from urls_list import * #where all urls and paths are saved
 from config import * #keys are saved
@@ -315,6 +318,78 @@ def clean_rental_for_merge(df):
     print("Finished clean_rental_for_merg")  
     return DF
 
+def feasibilityCheck(row):
+    #Check if prediction is feasible or not
+    if (not row["FSA"]) or (not row["rental_type"]) or (not re.search('^M', row["FSA"])):
+        return False
+    if row["sqft"]:
+        if (row["sqft"]>3000) or (row["sqft"]<200):
+            return False
+    return True
+
+def preprocess(DF):
+    #preprocess for the prediction
+    feasibility = DF.apply(lambda x: feasibilityCheck(x), axis=1)
+    DF = DF[feasibility]
+    #Replace all white spaces or nothing at all to NaN
+    DF.replace(r'^\s*$', np.nan, regex=True, inplace=True)
+    #Replace None with NaN
+    DF = DF.fillna(value=np.nan)
+    #Typecast
+    DF['price'] = DF['price'].astype('int') #Not required
+    #Missing value handling
+    DF['furnished'] = DF['furnished'].fillna(value="NOT_MENTIONED")
+    DF['furnished'] = DF['furnished'].replace(to_replace=True, value='YES')
+    DF['furnished'] = DF['furnished'].replace(to_replace=False, value='NO')
+    #New features 
+    DF['post_published_date'] = DF['post_published_date'].map(lambda x: datetime.strptime(x, '%Y-%m-%d'))
+    DF['posted_week_of_month'] = DF['post_published_date'].map(lambda x: x.day//7 +1)
+    ##Convert image url to image or not? (New feature)
+    DF['image'] = DF['image'].notna()
+    #Basic transformation
+    DF.reset_index(drop=True, inplace=True)
+    #OHE
+    num_columns = ['sqft', 'bedrooms', 'bathrooms', 'posted_week_of_month']
+    cat_columns = ['image', 'FSA', 'rental_type', 'furnished', 'pet_friendly']
+    try:
+        enc = pickle.load(open('OHE.pickle', 'rb'))
+    except:
+        enc = pickle.load(open('Code/OHE.pickle', 'rb'))
+    ##OHE Transform
+    ohe_output = enc.transform(DF[cat_columns]).toarray()
+    ohe_dict = {f'x{index}':col for index,col in enumerate(cat_columns)}
+    ohe_labels = [ohe_dict[feature.split('_')[0]]+'_'+feature.split('_')[1] for feature in enc.get_feature_names()]
+    DF = pd.concat([DF, pd.DataFrame(ohe_output, columns=ohe_labels)], axis=1)
+    DF.drop(cat_columns, axis=1, inplace=True)
+    selected_columns = ['sqft', 'bedrooms', 'bathrooms', 'image_False', 'FSA_M1B', 'FSA_M1M',
+       'FSA_M1P', 'FSA_M1V', 'FSA_M1W', 'FSA_M2M', 'FSA_M3C', 'FSA_M3K',
+       'FSA_M4E', 'FSA_M4V', 'FSA_M4W', 'FSA_M5G', 'FSA_M5J', 'FSA_M5R',
+       'FSA_M5S', 'FSA_M5V', 'FSA_M6B', 'FSA_M6E', 'FSA_M6G', 'FSA_M6J',
+       'FSA_M6K', 'FSA_M6M', 'FSA_M6P', 'rental_type_apartment',
+       'rental_type_condo', 'rental_type_house', 'rental_type_loft',
+       'rental_type_townhouse', 'furnished_NOT', 'furnished_YES',
+       'pet_friendly_False']
+    DF = DF[['id']+selected_columns]
+    return DF, selected_columns
+
+def predict(DF, selected_columns):
+    #Prediction: Returns ID vs predicted price
+    try:
+        xgb_model = pickle.load(open('xgb_model.pickle', 'rb'))
+    except:
+        xgb_model = pickle.load(open('Code/xgb_model.pickle', 'rb'))
+    y_pred = xgb_model.predict(DF[selected_columns])
+    DF['pred'] = y_pred
+    prediction_mapping = DF[['id', 'pred']].set_index('id').T.to_dict()
+    return prediction_mapping
+
+def predictPrice(DF):
+    #Appends the predicted price at the end of the dataframe
+    New_DF, selected_columns = preprocess(DF)
+    prediction_mapping = predict(New_DF,selected_columns)
+    DF['pred'] = DF['id'].map(lambda x: prediction_mapping[x]['pred'] if x in prediction_mapping else 'Not Feasible to predict')
+    return DF
+
 def updateDB():
     # This is the main function scheduler calls to undate the database
 
@@ -334,9 +409,13 @@ def updateDB():
     DF[['sf', 'BR', 'Ba','cats_allowed', 'dogs_allowed', 'Type', 'furnished']] = pd.DataFrame(DF['text'].map(lambda x : extract(x)).to_list(), index=DF.index)
     # Step3: Filllatlong
     DF = fill_Lat_Long(DF)
-    # Step4: Transformation required to be merged with Kijiji
+    
+    
     if not DF.empty:
+        # Step4: Transformation required to be merged with Kijiji
         DF = clean_rental_for_merge(DF)
+        # Step5: Incorporate the prediction part
+        DF = predictPrice(DF)
         
         #Load the increment
         client = MongoClient(db_connection_string)
