@@ -268,6 +268,7 @@ function createHeatmap(){
   return crimeMap;
 }
 
+
 function createCommunitymap(){
   var colorDict = {"Community Services":"yellow", 
   "Education & Employment":"red",
