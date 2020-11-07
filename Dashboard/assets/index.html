@@ -11,36 +11,66 @@
 </head>
 
 <body>
- 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
+  <div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col-lg-1 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-bottom: 20px">Trends over Time</h5>
+        <h6 style = "color:rgb(172, 168, 168); margin: 10px">Select Region</h6>
+        <span style = "color: white; margin: 10px">
+          <select id="selDatasetRental" style="float: Left; margin: 10px" onchange="optionChanged(this.value)">FSA</select>
+        </span>
+       </div>
+     
+
+      <div class="col-lg-4 border-left">
         <nav class="navbar">
-          <a class="navbar-brand" href="#">Cost to Rent in Toronto over Time</a>
-          <span style = "color: white;">
-            <h6>Region</h6>  
-            <select id="selDatasetRental" style="float: right;" onchange="optionChanged(this.value)">FSA</select>
-          </span>
-            
+          <a class="navbar-brand" style="color: white">Cost to Rent in Toronto</a>
         </nav>
 
-        <div id="RentalChart"></div>
+        <div id="RentalChart" style="width: 100%;"></div>
+
       </div>
 
-      <div class="col-md-6">
+      <div class="col-lg-4 border-left">
         <nav class="navbar">
-          <a class="navbar-brand" href="#">Crime Incidents Over Time</a>
-          <span style = "color: white;">
-            <h6>Year</h6>  
-            <select id="selDatasetCrime" style="float: right;" onchange="optionChanged(this.value)">Year</select>
-          </span>
-            
+          <a class="navbar-brand" style="color: white">Crime Incidents</a>
         </nav>
 
-        <div id="CrimeChart"></div>
+        <div id="CrimeChart" style="width: 100%;"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col-lg-1 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-bottom: 20px">Drivers of Cost</h5>
+       </div>
+     
+
+      <div class="col-lg-4 border-left">
+        <nav class="navbar">
+          <a class="navbar-brand" style="color: white">Square-Footage</a>
+
+        </nav>
+
+        <div id="priceSqftChart" style="width: 100%;"></div>
+
       </div>
 
+      <div class="col-lg-4 border-left">
+        <nav class="navbar">
+          <a class="navbar-brand" style="color: white">No. of Bathrooms</a>
+        </nav>
 
+        <div id="priceBathroomsChart" style="width: 100%;"></div>
+
+      </div>
+    </div>
+  </div>
+      
+            
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/js/app.js"></script>
@@ -48,3 +78,8 @@
 </body>
 
 </html>
+
+<!-- <span style = "color: white;">
+  <h6>Year</h6>  
+  <select id="selDatasetCrime" style="float: right;" onchange="optionChanged(this.value)">Year</select>
+</span> -->

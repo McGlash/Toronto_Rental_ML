@@ -1,7 +1,5 @@
 //setup global variables
 
-//all rental
-
 var FSAList = ["All",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N','M1P','M1R','M1S','M1T','M1V','M1W','M1X',
 'M2H','M2J','M2K','M2L','M2M','M2N','M2P','M2R',
 'M3A','M3B','M3C','M3H','M3J','M3K','M3L','M3M','M3N',
@@ -12,6 +10,8 @@ var FSAList = ["All",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N'
 'M9A','M9B','M9C','M9L','M9M','M9N','M9P','M9R','M9V','M9W'];
 
 var year =["2019", "2018", "2017"]
+
+//all rental
 
 var FSA = [];
 var publishDate =[];
@@ -28,6 +28,11 @@ var twobed_overallAveragePrice = [];
 
 var threeplusbed_overallPublishDate = [];
 var threeplusbed_overallAveragePrice = [];
+
+var sqft = [];
+var price = [];
+var bathrooms = [];
+var bedrooms =[];
 
 
 //create function to initialize rental trending
@@ -70,6 +75,24 @@ function rentalinit(){
 
     priceTrendChart(onebed_overallPublishDate, twobed_overallPublishDate, threeplusbed_overallPublishDate,
         onebed_overallAveragePrice, twobed_overallAveragePrice, threeplusbed_overallAveragePrice);
+
+    d3.json("static/data/rentalTrend.json").then(data => {
+      data.forEach(item =>{
+        if((item.price <10000) & (item.price >200)){
+          if(item.sqft <3000 & (item.sqft>200)){
+            sqft.push(item.sqft)
+            price.push(item.price)
+            bathrooms.push(item.bathrooms)
+            bedrooms.push(item.bedrooms)
+          };
+        };
+      });
+
+    priceVsChart(price, sqft, 'rgb(168, 9, 168)', "priceSqftChart", "Square-Footage")
+
+    priceVsChart(price, bedrooms, 'rgb(168, 9, 168)', "priceBathroomsChart", "No. Bedrooms")
+
+    });
    
 });
 
@@ -136,7 +159,7 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         x: x1,
         y: y1,
         //mode: 'markers',
-        name: 'One Bedroom',
+        name: '1 Bedroom',
         marker: {
           color: 'rgb(168, 9, 168)',
           size: 12,
@@ -151,7 +174,7 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
       var trace2 = {
         x: x2,
         y: y2,
-        name: 'Two Bedroom',
+        name: '2 Bedrooms',
         marker: {
           color: 'rgb(13, 117, 214)',
           size: 12
@@ -163,7 +186,7 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         x: x3,
         y: y3,
         //mode: 'markers',
-        name: 'Three or More Bedrooms',
+        name: '3 or More Bedrooms',
         marker: {
           color: 'rgb(7, 161, 7)',
           size: 12
@@ -185,7 +208,7 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         },
         xaxis: {
           title: {text:'Posting Date', 
-          standoff: 20,},
+          standoff: 15},
           showgrid: false,
           zeroline: false,
         },
@@ -196,13 +219,15 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
           "gridcolor": "white"
         },
         legend: {"orientation": "h",
-        x: 0,
+        x: 0.1,
         y: 1.2,}
         };
+      
+      var config = {responsive: true}
 
       var data = [trace1, trace2, trace3];
       
-      Plotly.newPlot('RentalChart', data, layout);
+      Plotly.newPlot('RentalChart', data, layout, config);
 };
 
 //crimechart
@@ -258,7 +283,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       y: y4,
       name: 'Robbery',
       marker: {
-        color: 'rgb(7, 161, 7)',
+        color: '#FFCB25',
         size: 11
       },
       type: 'Scatter',
@@ -280,7 +305,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       },
       xaxis: {
         title: {text:'Month', 
-        standoff: 15},
+        standoff: 35},
         showgrid: false,
         zeroline: false,
       },
@@ -291,37 +316,91 @@ function crimeTrendChart(y1, y2, y3, y4){
         "gridcolor": "white"
       },
       legend: {"orientation": "h",
-      x: 0,
+      x: 0.1,
       y: 1.2,}
       };
         
-
+    var config = {responsive: true}
 
     var data = [trace1, trace2, trace3, trace4];
     
-    Plotly.newPlot('CrimeChart', data, layout);
+    Plotly.newPlot('CrimeChart', data, layout, config);
 };
+
+//price vs sqrt chart
+function priceVsChart(price, y, color, chartID, ylabel){
+
+  console.log(price)
+
+  //datasets
+  var trace1 = {
+      x: price,
+      y: y,
+      marker: {
+        color: color,
+        size: 12,
+        line: {
+          color: 'white',
+          width: 0.5
+        }
+      },
+      type: 'Scatter',
+      mode: 'markers'
+    };
+
+  //formatting
+  var layout = {
+    margin: {
+      t: 15,
+      r: 40,
+    },
+      plot_bgcolor: 'rgba(245,246,249,1)',
+      paper_bgcolor: 'rgba(245,246,249,1)',
+      font: {
+        family: 'Arial',
+        size: 13,
+        color: '#7f7f7f'
+      },
+      xaxis: {
+        title: {text:'Price', 
+        standoff: 35},
+        showgrid: false,
+        zeroline: false,
+      },
+      yaxis: {
+        title: {text: ylabel,
+        standoff: 15},
+        showline: false,
+        "gridcolor": "white"
+      }
+      };
+        
+    var config = {responsive: true}
+    
+    Plotly.newPlot(chartID, [trace1], layout, config);
+};
+
 function init(){
 
   //FSA dropdown menu
 
-  var dropdownMenu = document.getElementById("selDatasetRental");
+  var dropdownMenuFSA = document.getElementById("selDatasetRental");
         for(var i = 0; i < FSAList.length; i++) {
             var newOption = document.createElement("option");
-            newOption.setAttribute("id","listFSA")
+            // newOption.setAttribute("id","listFSA")
             var text = document.createTextNode(FSAList[i]);
             newOption.appendChild(text);
-            dropdownMenu.appendChild(newOption);
+            dropdownMenuFSA.appendChild(newOption);
         };
 
-        var dropdownMenu = document.getElementById("selDatasetCrime");
-        for(var i = 0; i < year.length; i++) {
-            var newOption = document.createElement("option");
-            newOption.setAttribute("id","listCrime")
-            var text = document.createTextNode(year[i]);
-            newOption.appendChild(text);
-            dropdownMenu.appendChild(newOption);
-        };
+        // var dropdownMenu = document.getElementById("selDatasetCrime");
+        // for(var i = 0; i < year.length; i++) {
+        //     var newOption = document.createElement("option");
+        //     newOption.setAttribute("id","listCrime")
+        //     var text = document.createTextNode(year[i]);
+        //     newOption.appendChild(text);
+        //     dropdownMenu.appendChild(newOption);
+        // };
   rentalinit();
 
   crimeinit();
