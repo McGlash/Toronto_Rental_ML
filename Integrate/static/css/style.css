@@ -62,7 +62,7 @@ option{
 
 #map
 {
-  height: 100vh;
+  height: 95vh;
 }
 
 #comm-map-container comm-map-container.card-header{
@@ -73,7 +73,7 @@ option{
 #crime-heatmap
 {
   height: 1000px;
-  width: 100vw;
+  width: 95vw;
   border: double black 5px;
   margin: 20px;
 }
@@ -87,7 +87,7 @@ option{
 #choropleth-income
 {
   height: 800px;
-  width: 100vw;
+  width: 95vw;
   border: double black 5px;
   margin: 20px;
 }
@@ -95,7 +95,7 @@ option{
 #choropleth-age
 {
   height: 800px;
-  width: 100vw;
+  width: 95vw;
   border: double black 5px;
   margin: 20px;
 }
