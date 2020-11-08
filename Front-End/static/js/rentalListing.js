@@ -13,10 +13,36 @@ function displayRentalListing(element){
     if(element.target.options.icon.options.pet_friendly){
         petFriendly="Yes"
     }
+    // Check the price
+    var statement;
+    var pred_val = parseFloat(element.target.options.icon.options.pred);
+    var actual_price = parseFloat(element.target.options.icon.options.price);
+    if(! isNaN(pred_val)){
+        var lb = Number.parseFloat(element.target.options.icon.options.pred) - 453.58;
+        var ub = Number.parseFloat(element.target.options.icon.options.pred) + 453.58;
+        if(! isNaN(actual_price)){
+            if((actual_price>=lb) && (actual_price<=ub)){
+                statement = `<span style="color:blue">Price is within limits of our estimated Price range : ${pred_val.toFixed(0)} \u00B1 453</span>` ;
+            }
+            else if(actual_price<lb){
+                statement = `<span style="color:green">It is a great deal!! Price is lower than our estimated Price range : ${pred_val.toFixed(0)} \u00B1 453</span>` ;
+            }
+            else{
+                statement = `<span style="color:red">It is overpriced!! Price is higher than our estimated Price range : ${pred_val.toFixed(0)} \u00B1 453</span>` ;
+            }
+        }else{
+            statement = `<span style="color:blue">Rental post doesn't have listed price. Our estimated Price for this rental is ${pred_val.toFixed(0)} \u00B1 453</span>` ;
+        }
+    }else{
+        statement = `<span style="color:black">The given information in the rental post is not enough to estimate the price</span>`;
+    }
+    
+     
     d3.selectAll("#rentalInfo").html("");
     d3.selectAll("#rentalInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
     d3.selectAll("#rentalInfo").append("p").text(" ").classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
+    d3.selectAll("#rentalInfo").append("p").html(statement).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Furnished: ${furnished}`).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Pet Friendly: ${petFriendly}`).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Rental Type: ${element.target.options.icon.options.rental_type}`).classed('card-text', true);
