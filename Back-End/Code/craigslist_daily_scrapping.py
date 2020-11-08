@@ -12,7 +12,7 @@ import re
 from datetime import datetime, timedelta, timezone
 import os
 import pickle
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -63,7 +63,7 @@ def instatiate_driver():
     #Returns the handle object
     #########################################################################################
     # executable_path = os.environ.get('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')#
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    # driver = webdriver.Chrome(ChromeDriverManager().install())
     executable_path = os.environ.get('CHROMEDRIVER_PATH', '/Users/bincynarath/.wdm/drivers/chromedriver/mac64/86.0.4240.22/chromedriver')
     chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', '/Users/bincynarath/.wdm/drivers/chromedriver/mac64/86.0.4240.22/chromedriver')#
     options = webdriver.ChromeOptions()#
