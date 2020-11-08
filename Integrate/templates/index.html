@@ -56,8 +56,18 @@ header {
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <a href="#about" class="w3-bar-item w3-button">About</a>
-      <a href="../static/html/map2.html" class="w3-bar-item w3-button">Map</a>
-      <a href="../static/html/insights.html" class="w3-bar-item w3-button">Insights</a>
+      <a href="../static/html/map.html" class="w3-bar-item w3-button w3-hide-small">Rentals</a>
+      <a href="../static/html/pricePredict.html" class="w3-bar-item w3-button w3-hide-small">Fair Price</a>
+      <a href="../static/html/insights.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
+      <a href="../static/html/team.html" class="w3-bar-item w3-button w3-hide-small">Team</a>
+    </div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+    
+    <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="../static/html/map.html" class="w3-bar-item w3-button">Rentals</a>
+      <a href="../static/html/map.html" class="w3-bar-item w3-button">Fair Price</a>
+      <a href="../static/html/insights.html" class="w3-bar-item w3-button">Trends</a>
       <a href="../static/html/team.html" class="w3-bar-item w3-button">Team</a>
     </div>
   </div>
@@ -81,7 +91,7 @@ header {
   <div class="w3-container w3-panel w3-text-deep-orange w3-sand" id="about" >
     <h3 class="w3-lobster w3-center section-heading " >About</h3>
     <p class="section-paragraph">This Application aims to provide users with a one stop solution for all of their rental information needs. There are over somenumber of new people moving into Toronto every year. Most of them move for work and are new immigrants. Our application not only provides the latest available rentals but also the safety of the neighborhood and its accessibility to services such as schools and hospitals. 
-      This information can be critical for anyone who needs to make a quick decisions.
+      This information can be critical for anyone who needs to make a quick decisions. We have also incorporated Machine Learning to Analyze the latest rental trends and give you the most up to date fair market rental price.  
 
     </p>
     
@@ -102,7 +112,7 @@ header {
         <div class="w3-card-4 w3-sand">
           <!--<img src="https://www.w3schools.com/w3images/house3.jpg" alt="Alps">-->
           <div class="w3-container w3-center">
-            <p>Crimes variation based on selected location</p>
+            <p>Rental Trends Analysis and up to date fair market rental price</p>
           </div>
         </div>
       </div>
@@ -110,7 +120,7 @@ header {
         <div class="w3-card-4 w3-sand">
           <!--<img src="https://www.w3schools.com/w3images/house3.jpg" alt="Alps">-->
           <div class="w3-container w3-center">
-            <p>Availability of Community Services</p>
+            <p>Availability of Community Services as compared to Crime rate in the area.</p>
           </div>
         </div>
       </div>
@@ -129,7 +139,7 @@ header {
         <div class="w3-card-4 w3-sand">
           <!--<img src="https://www.w3schools.com/w3images/house3.jpg" alt="Alps">-->
           <div class="w3-container w3-center">
-            <p>The fair market price for a selected rental</p>
+            <p>Higher acuracy for prediction of fair market rental price</p>
           </div>
         </div>
       </div>
@@ -170,6 +180,16 @@ header {
 <footer class="w3-center w3-black w3-padding-16">
   
 </footer>
+<script>
+  function myFunction() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  </script>
 
 </body>
 </html>
