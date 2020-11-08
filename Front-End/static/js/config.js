@@ -15,4 +15,4 @@ var incomeAgePath = `${url}fsaIncomeAge`;
 var communityAssetpath = `${url}communityAssets`; //Used
 var FSApath = "https://sogramemon.github.io/plotly-javascript-challenge/data/Toronto2.geojson"; //Used
 var coming_soon = "../static/img/coming-soon-2461832_1280.jpeg";
-var FSA_income_age_geojson = "static/js/fsa_income_age.geojson"
+var FSA_income_age_geojson = "../static/js/fsa_income_age.geojson"

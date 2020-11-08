@@ -47,7 +47,7 @@ def differencer(DF):
     # Also clears the CurrentRental collection and updates it with the current rental
     all_postings_ids = DF['id'].map(lambda x: 'c_'+str(x))
     client = MongoClient(db_connection_string)
-    db = client.ETLInsights #DB
+    db = client.ETLInsight #DB
     retrieved_postings = list(db.HistoricRental.find({'id': {'$in': list(all_postings_ids)}}))
     to_be_scraped_ids = set(all_postings_ids).difference(map(lambda x: x['id'], retrieved_postings))
     #Truncate and update the CurrentRental collection
@@ -419,8 +419,8 @@ def updateDB():
         
         #Load the increment
         client = MongoClient(db_connection_string)
-        client.ETLInsights.HistoricRental.insert_many(DF.T.to_dict().values())
-        client.ETLInsights.CurrentRental.insert_many(DF.T.to_dict().values())
+        client.ETLInsight.HistoricRental.insert_many(DF.T.to_dict().values())
+        client.ETLInsight.CurrentRental.insert_many(DF.T.to_dict().values())
         client.close()
         print("Finished updateDB")
 

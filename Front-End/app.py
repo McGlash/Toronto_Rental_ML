@@ -21,7 +21,7 @@ def getAggDataOld(type):
     try:
         collection = type_collection[type]
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        response = list(client.ETLInsight[collection].find({}, {'_id':0}))
         df = pd.DataFrame(response)
         if type in ['availableRental', 'rentalTrend']:
             df["price"] = df["price"].astype("float")
@@ -52,7 +52,7 @@ def getAggData(type):
     try:
         collection = type_collection[type]
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        response = list(client.ETLInsight[collection].find({}, {'_id':0}))
         df = pd.DataFrame(response)
         if type == 'communityAssets':
             #find mean by no. of bedrooms and FSA
@@ -74,7 +74,7 @@ def getAggData(type):
 def fullData(collection):
     try:
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        response = list(client.ETLInsight[collection].find({}, {'_id':0}))
         client.close()
     except:
         try:
@@ -91,7 +91,7 @@ def getCrimeData(collection, attr):
     # print(query)
     try:
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find(query, {'_id':0}))
+        response = list(client.ETLInsight[collection].find(query, {'_id':0}))
         client.close()
     except:
         try:
@@ -129,7 +129,7 @@ def RentalData(collection, args):
             # print(query)
     
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find(query, {'_id':0}))
+        response = list(client.ETLInsight[collection].find(query, {'_id':0}))
         client.close()
     except:
         try:
@@ -160,7 +160,7 @@ def commAssets(collection, args):
                     query["fsa"]=fsa
             # print(query)
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find(query, {'_id':0}))
+        response = list(client.ETLInsight[collection].find(query, {'_id':0}))
         client.close()
     except:
         try:
@@ -180,7 +180,7 @@ def incomeData(collection, args):
                 query["FSA"]=FSA
             # print(query)
         client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find(query, {'_id':0}))
+        response = list(client.ETLInsight[collection].find(query, {'_id':0}))
         client.close()
     except:
         try:
