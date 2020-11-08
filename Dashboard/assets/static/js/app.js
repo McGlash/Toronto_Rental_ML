@@ -73,9 +73,7 @@ function rental(filter){
         }
         else{}; 
     };
-    console.log(threeplusbed_PublishDate)
 
-    console.log(threeplusbed_AveragePrice)
     priceTrendChart(onebed_PublishDate, twobed_PublishDate, threeplusbed_PublishDate,
         onebed_AveragePrice, twobed_AveragePrice, threeplusbed_AveragePrice)
    
@@ -314,7 +312,7 @@ function crime(filter, year){
   var robbery = []; 
   var robberyDate = []; 
 
-  d3.json("static/data/crimeUpdated.json").then(data => {
+  d3.json("static/data/crimeVerify.json").then(data => {
         
   // // create arrays
   data.forEach(item=> {
@@ -357,6 +355,9 @@ function crime(filter, year){
 
 //rental chart
 function priceTrendChart(x1, x2, x3, y1, y2, y3){
+
+  console.log(x1)
+  console.log(y1)
 
     //datasets
     var trace1 = {
@@ -602,7 +603,7 @@ function barchart(x1, y1, name1, chart, ylabel){
     name: name1,
     type: 'bar',   
     marker: {
-      color: 'rgb(7, 161, 7)'
+      color: 'rgb(0, 176, 80)'
     },
     text: y1.map(String),
     textposition: 'auto',
@@ -717,7 +718,7 @@ function optionChanged(){
   var dropdownMenu = d3.select("#selDataset");
   var selected = dropdownMenu.property("value")
 
-  Plotly.purge('RentalChart');
+ // Plotly.purge('RentalChart');
 
   // var element = document.getElementById("RentalChart");
   // element.classList.remove("js-plotly-plot");
