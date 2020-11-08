@@ -1,6 +1,6 @@
 //setup global variables
 
-var FSAList = ["All",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N','M1P','M1R','M1S','M1T','M1V','M1W','M1X',
+var FSAList = ["Overall",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N','M1P','M1R','M1S','M1T','M1V','M1W','M1X',
 'M2H','M2J','M2K','M2L','M2M','M2N','M2P','M2R',
 'M3A','M3B','M3C','M3H','M3J','M3K','M3L','M3M','M3N',
 'M4A','M4B','M4C','M4E','M4G','M4H','M4J','M4K','M4L','M4M','M4N','M4P','M4R','M4S','M4T','M4V','M4W','M4X','M4Y',
@@ -9,7 +9,7 @@ var FSAList = ["All",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','M1N'
 'M8V','M8W','M8X','M8Y','M8Z',
 'M9A','M9B','M9C','M9L','M9M','M9N','M9P','M9R','M9V','M9W'];
 
-var year =["2019", "2018", "2017"]
+//var year =["2019", "2018", "2017"]
 
 //all rental
 
@@ -18,28 +18,37 @@ var publishDate =[];
 var bedroomNumber = [];
 var averagePrice = [];
 
-//overall
-
-var onebed_overallPublishDate = [];
-var onebed_overallAveragePrice = [];
-
-var twobed_overallPublishDate = [];
-var twobed_overallAveragePrice = [];
-
-var threeplusbed_overallPublishDate = [];
-var threeplusbed_overallAveragePrice = [];
-
 //create function to initialize rental trending
 
 function rental(filter){
-    //read json file into js
-    d3.json("static/data/rentalPrice.json").then(data => {
-          
+
+        //read json file into js; //http://127.0.0.1:5000/agg/rentalPriceAggregate
+    d3.json("static/data/rentalPriceAggregateVerify.json").then(data => { 
+
     // create arrays
-    Object.values(data.FSA).forEach(value => FSA.push(value));
-    Object.values(data.post_published_date).forEach(value => publishDate.push(value));
-    Object.values(data.bedrooms).forEach(value => bedroomNumber.push(value));
-    Object.values(data.average_price).forEach(value => averagePrice.push(value));
+
+    var array =[];
+
+    data.forEach(row => {
+      FSA.push(row.FSA);
+      publishDate.push(row.post_published_date)
+      bedroomNumber.push(row.bedrooms);
+      averagePrice.push(row.average_price);
+    });
+
+      var onebed_PublishDate = [];
+      var onebed_AveragePrice = [];
+
+      var twobed_PublishDate = [];
+      var twobed_AveragePrice = [];
+
+      var threeplusbed_PublishDate = [];
+      var threeplusbed_AveragePrice = [];
+
+    // Object.values(data.FSA).forEach(value => FSA.push(value));
+    // Object.values(data.post_published_date).forEach(value => publishDate.push(value));
+    // Object.values(data.bedrooms).forEach(value => bedroomNumber.push(value));
+    // Object.values(data.average_price).forEach(value => averagePrice.push(value));
 
     //create arrays for toronto overall
     for (var i = 0; i < FSA.length; i++){
@@ -48,25 +57,27 @@ function rental(filter){
 
             if(bedroomNumber[i] == 1){
                 
-                onebed_overallPublishDate.push(publishDate[i])
-                onebed_overallAveragePrice.push(Math.round(averagePrice[i]))
+                onebed_PublishDate.push(new Date(publishDate[i]))
+                onebed_AveragePrice.push(Math.round(averagePrice[i]))
             }
             else if(bedroomNumber[i] == 2){
                 
-                twobed_overallPublishDate.push(publishDate[i])
-                twobed_overallAveragePrice.push(Math.round(averagePrice[i]))
+                twobed_PublishDate.push(new Date(publishDate[i]))
+                twobed_AveragePrice.push(Math.round(averagePrice[i]))
             }
             else if (bedroomNumber[i] == "3 or More"){
-                threeplusbed_overallPublishDate.push(publishDate[i])
-                threeplusbed_overallAveragePrice.push(Math.round(averagePrice[i]))
+                threeplusbed_PublishDate.push(new Date(publishDate[i]))
+                threeplusbed_AveragePrice.push(Math.round(averagePrice[i]))
             }
             else{};
         }
         else{}; 
     };
+    console.log(threeplusbed_PublishDate)
 
-    priceTrendChart(onebed_overallPublishDate, twobed_overallPublishDate, threeplusbed_overallPublishDate,
-        onebed_overallAveragePrice, twobed_overallAveragePrice, threeplusbed_overallAveragePrice)
+    console.log(threeplusbed_AveragePrice)
+    priceTrendChart(onebed_PublishDate, twobed_PublishDate, threeplusbed_PublishDate,
+        onebed_AveragePrice, twobed_AveragePrice, threeplusbed_AveragePrice)
    
   });
 };
@@ -145,6 +156,7 @@ var furnAvgPriceOV = [];
 
 
 function drivers(){
+  //http://127.0.0.1:5000/rentalTrend
     d3.json("static/data/rentalTrend.json").then(data => {
      
       data.forEach(item =>{
@@ -160,9 +172,9 @@ function drivers(){
 
     });
 
+    //http://127.0.0.1:5000/agg/clusterPriceAggregate
     d3.json("static/data/clusterAgg.json").then(data => {
 
-      console.log(data)
       Object.values(data.Measure).forEach(value => Measure.push(value));
       Object.values(data.cluster).forEach(value => cluster.push(value));
       Object.values(data.measure_value).forEach(value => measureValue.push(value));
@@ -288,24 +300,28 @@ function drivers(){
     });
 };
 
-var autoTheft = [];
-var autoTheftDate =[];
-var assault = [];
-var assaulttDate =[];
-var BreakandEnter = []; 
-var BreakandEntertDate =[];
-var robbery = []; 
-var robberyDate = []; 
 
 function crime(filter, year){
   //read json file into js
-  d3.json("static/data/crime.json").then(data => {
+  //http://127.0.0.1:5000/agg/crime
+
+  var autoTheft = [];
+  var autoTheftDate =[];
+  var assault = [];
+  var assaulttDate =[];
+  var BreakandEnter = []; 
+  var BreakandEntertDate =[];
+  var robbery = []; 
+  var robberyDate = []; 
+
+  d3.json("static/data/crimeUpdated.json").then(data => {
         
   // // create arrays
   data.forEach(item=> {
     
     if(item.reportedyear == year){
     if(item.FSA == filter){
+    
      if(item.MCI == 'Auto Theft'){
       
         autoTheft.push(item["Count of MCI"])
@@ -346,17 +362,17 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
     var trace1 = {
         x: x1,
         y: y1,
-        //mode: 'markers',
         name: '1 Bedroom',
         marker: {
           color: 'rgb(168, 9, 168)',
-          size: 12,
+          size: 7,
           line: {
             color: 'white',
             width: 0.5
           }
         },
-        type: 'scatter'
+        type: 'scatter',
+        mode: 'lines+markers'
       };
       
       var trace2 = {
@@ -365,22 +381,25 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         name: '2 Bedrooms',
         marker: {
           color: 'rgb(13, 117, 214)',
-          size: 12
+          size: 7
         },
-        type: 'scatter'
+        type: 'scatter',
+        mode: 'lines+markers'
+
       };
       
       var trace3 = {
         x: x3,
         y: y3,
-        //mode: 'markers',
         name: '3 or More Bedrooms',
         marker: {
           color: 'rgb(7, 161, 7)',
-          size: 12
+          size: 7
         },
-        type: 'scatter'
+        type: 'scatter',
+        mode: 'lines+markers'
       };
+
     //formatting
     var layout = {     
       margin: {
@@ -411,11 +430,13 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         y: 1.2,}
         };
       
-      var config = {responsive: true}
+    var config = {responsive: true}
 
-      var data = [trace1, trace2, trace3];
-      
-      Plotly.newPlot('RentalChart', data, layout, config);
+    var data = [trace1, trace2, trace3];
+        
+    Plotly.newPlot('RentalChart', data, layout, config);
+
+
 };
 
 //crimechart
@@ -448,7 +469,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       name: 'Assault',
       marker: {
         color: 'rgb(13, 117, 214)',
-        size: 12
+        size: 10
       },
       type: 'Scatter',
       mode: "lines"
@@ -460,7 +481,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       name: 'B & E',
       marker: {
         color: 'rgb(7, 161, 7)',
-        size: 12
+        size: 10
       },
       type: 'Scatter',
       mode: "lines"
@@ -472,7 +493,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       name: 'Robbery',
       marker: {
         color: 'rgb(197, 90, 17)',
-        size: 11
+        size: 10
       },
       type: 'Scatter',
       mode: "lines"
@@ -678,30 +699,28 @@ function init(){
             dropdownMenuFSA.appendChild(newOption);
         };
 
-        // var dropdownMenu = document.getElementById("selDatasetCrime");
-        // for(var i = 0; i < year.length; i++) {
-        //     var newOption = document.createElement("option");
-        //     newOption.setAttribute("id","listCrime")
-        //     var text = document.createTextNode(year[i]);
-        //     newOption.appendChild(text);
-        //     dropdownMenu.appendChild(newOption);
-        // };
   rental("Overall");
 
-  crime("M6R", "2019");
+  crime("Overall", "2019");
 
   drivers();
 };
 
 init();
 
-function optionChanged(){
 
-  console.log("yup")
+//onChang function
+
+function optionChanged(){
 
   //get the FSA selected
   var dropdownMenu = d3.select("#selDataset");
   var selected = dropdownMenu.property("value")
+
+  Plotly.purge('RentalChart');
+
+  // var element = document.getElementById("RentalChart");
+  // element.classList.remove("js-plotly-plot");
 
   rental(selected);
   crime(selected, "2019");

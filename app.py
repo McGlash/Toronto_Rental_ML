@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from pymongo import MongoClient
 from urls_list import  db_connection_string
 import pandas as pd
 import re
+
 
 #Configure Flask App
 app = Flask(__name__)
@@ -15,21 +16,7 @@ def createQuery(query, arr, attribute):
     else:
         query[attribute] = {"$lte":arr[1], "$gte":arr[0]}
     return query
-
-def fullData(collection):
-    try:
-        client = MongoClient(db_connection_string)
-        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
-        client.close()
-    except:
-        try:
-            client.close()
-        except:
-            pass
-        return jsonify([]),  404
-    return jsonify(response)
-
-def getAggData(type):
+def getAggDataOld(type):
     type_collection = {'availableRental':'CurrentRental', 'rentalTrend':'HistoricRental', 'communityAssets':'CommunityAssets', 'crime':'CrimeAggregate'}
     try:
         collection = type_collection[type]
@@ -59,6 +46,43 @@ def getAggData(type):
         except:
             pass
         return jsonify([]),  404
+
+def getAggData(type):
+    type_collection = {'rentalPriceAggregate':'rentalPriceAggregate', 'clusterPriceAggregate':'clusterPriceAggregate', 'communityAssets':'CommunityAssets', 'crime':'CrimeAggregate'}
+    try:
+        collection = type_collection[type]
+        client = MongoClient(db_connection_string)
+        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        df = pd.DataFrame(response)
+        if type == 'communityAssets':
+            #find mean by no. of bedrooms and FSA
+            df_aggregate = df.groupby(["fsa", "category"])["agency_name"].count()
+            df_updated = df_aggregate.reset_index()
+            df_updated.rename(columns={"agency_name" : "no_assets"}, inplace=True)
+            return df_updated.to_json()
+        elif type in ['rentalPriceAggregate', 'clusterPriceAggregate', 'crime']:
+            return jsonify(response)
+        else:
+            return jsonify([]),  404
+    except:
+        try:
+            client.close()
+        except:
+            pass
+        return jsonify([]),  404
+
+def fullData(collection):
+    try:
+        client = MongoClient(db_connection_string)
+        response = list(client.ETLInsights[collection].find({}, {'_id':0}))
+        client.close()
+    except:
+        try:
+            client.close()
+        except:
+            pass
+        return jsonify([]),  404
+    return jsonify(response)
 
 def getCrimeData(collection, attr):
     query = dict()
@@ -166,7 +190,9 @@ def incomeData(collection, args):
         return jsonify([]),  404
     return jsonify(response)
 
-
+@app.route('/')
+def home_page():
+    return render_template('index.html', name='home_page')
 @app.route('/availableRental')
 def getcurrentRental():
     args = request.args.to_dict()
@@ -188,12 +214,26 @@ def getcrimeDynamic():
     # ['Assault', 'Auto Theft', 'Break and Enter', 'Homicide', 'Robbery', 'Theft Over']
     # http://127.0.0.1:5000/crimeLastYear?MCI=Break%20and%20Enter
 @app.route('/crimeLastSixMonths')
-def getcrimeShort():
+def getcrimeShortSixMonths():
     attr = request.args.get("MCI")
     return getCrimeData("CrimeLastSixMonths", attr)
     # Options
     # ['Assault', 'Auto Theft', 'Break and Enter', 'Homicide', 'Robbery', 'Theft Over']
     # http://127.0.0.1:5000/crimeLastSixMonths?MCI=Break%20and%20Enter
+@app.route('/CrimeLastThreeMonths')
+def getcrimeShortThreeMonths():
+    attr = request.args.get("MCI")
+    return getCrimeData("CrimeLastThreeMonths", attr)
+    # Options
+    # ['Assault', 'Auto Theft', 'Break and Enter', 'Homicide', 'Robbery', 'Theft Over']
+    # http://127.0.0.1:5000/CrimeLastThreeMonths?MCI=Break%20and%20Enter
+@app.route('/CrimeLastMonth')
+def getcrimeShortLastMonth():
+    attr = request.args.get("MCI")
+    return getCrimeData("CrimeLastMonth", attr)
+    # Options
+    # ['Assault', 'Auto Theft', 'Break and Enter', 'Homicide', 'Robbery', 'Theft Over']
+    # http://127.0.0.1:5000/CrimeLastMonth?MCI=Break%20and%20Enter
 @app.route('/communityAssets')
 def getcommAssets():
     args = request.args.to_dict()
@@ -202,17 +242,17 @@ def getcommAssets():
     # ['Community Services','Education & Employment','Financial Services','Food & Housing','Health Services','Law & Government','Transportation']
     # http://127.0.0.1:5000/communityAssets?category=Food%20%26%20Housing&fsa=M1P#
 
-@app.route('/fsaIncome')
-def getFSAIncome():
+@app.route('/fsaIncomeAge')
+def getFSAIncomeAge():
     args = request.args.to_dict()
-    return incomeData("FSAIncome", args)
-    # http://127.0.0.1:5000/fsaIncome?FSA=M4E
-
+    return incomeData("FSAIncomeAge", args)
+    # http://127.0.0.1:5000/fsaIncomeAge?FSA=M4E
+        
 @app.route('/agg/<type>')
 def getAggregate(type):
     return getAggData(type)
-    # http://127.0.0.1:5000/agg/availableRental
-    # http://127.0.0.1:5000/agg/rentalTrend
+    # http://127.0.0.1:5000/agg/rentalPriceAggregate
+    # http://127.0.0.1:5000/agg/clusterPriceAggregate
     # http://127.0.0.1:5000/agg/communityAssets
     # http://127.0.0.1:5000/agg/crime    
 
