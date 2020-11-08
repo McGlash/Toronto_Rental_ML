@@ -13,16 +13,15 @@
 <body>
   <div class="container-fluid">
     <div class="row no-gutters">
-      <div class="col-lg-1 border-bottom" style="background-color:rgb(75, 70, 77);">
-        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-bottom: 20px">Trends over Time</h5>
+      <div class="col-lg-2 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-right: 10px; margin-bottom: 20px">Trends over Time</h5>
         <h6 style = "color:rgb(172, 168, 168); margin: 10px">Select Region</h6>
         <span style = "color: white; margin: 10px">
-          <select id="selDatasetRental" style="float: Left; margin: 10px" onchange="optionChanged(this.value)">FSA</select>
+          <select id="selDataset" style="float: Left; margin: 10px" onchange="optionChanged(this.value)"></select>
         </span>
        </div>
      
-
-      <div class="col-lg-4 border-left">
+      <div class="col-lg-5 border-left">
         <nav class="navbar">
           <a class="navbar-brand" style="color: white">Cost to Rent in Toronto</a>
         </nav>
@@ -31,9 +30,9 @@
 
       </div>
 
-      <div class="col-lg-4 border-left">
+      <div class="col-lg-5 border-left">
         <nav class="navbar">
-          <a class="navbar-brand" style="color: white">Crime Incidents</a>
+          <a class="navbar-brand" style="color: white">Crime Incidents (2019)</a>
         </nav>
 
         <div id="CrimeChart" style="width: 100%;"></div>
@@ -44,32 +43,41 @@
 
   <div class="container-fluid">
     <div class="row no-gutters">
-      <div class="col-lg-1 border-bottom" style="background-color:rgb(75, 70, 77);">
-        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-bottom: 20px">Drivers of Cost</h5>
+      <div class="col-lg-2 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-right: 10px; margin-bottom: 20px">Drivers of Cost</h5>
        </div>
-     
-
-      <div class="col-lg-4 border-left">
-        <nav class="navbar">
-          <a class="navbar-brand" style="color: white">Square-Footage</a>
-
-        </nav>
-
-        <div id="priceSqftChart" style="width: 100%;"></div>
-
-      </div>
-
-      <div class="col-lg-4 border-left">
-        <nav class="navbar">
-          <a class="navbar-brand" style="color: white">No. of Bathrooms</a>
-        </nav>
-
-        <div id="priceBathroomsChart" style="width: 100%;"></div>
-
-      </div>
+       <div class="col-lg-10">
+        <div class="row no-gutters">
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">Square-Footage</a>
+            </nav>
+            <div id="priceSqftChart" style="width: 100%;"></div>
+          </div>
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">No. of Bedrooms</a>
+            </nav>
+            <div id="bedroomChart" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">Rental Type</a>
+            </nav>
+            <div id="typeChart" style="width: 100%;"></div>
+          </div>
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">No. of Bathrooms</a>
+            </nav>
+            <div id="bathroomChart" style="width: 100%;"></div>
+          </div>
+        </div>
     </div>
   </div>
-      
+</div>      
             
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>

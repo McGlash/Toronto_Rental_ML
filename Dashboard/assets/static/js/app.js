@@ -29,15 +29,9 @@ var twobed_overallAveragePrice = [];
 var threeplusbed_overallPublishDate = [];
 var threeplusbed_overallAveragePrice = [];
 
-var sqft = [];
-var price = [];
-var bathrooms = [];
-var bedrooms =[];
-
-
 //create function to initialize rental trending
 
-function rentalinit(){
+function rental(filter){
     //read json file into js
     d3.json("static/data/rentalPrice.json").then(data => {
           
@@ -50,7 +44,7 @@ function rentalinit(){
     //create arrays for toronto overall
     for (var i = 0; i < FSA.length; i++){
         
-        if(FSA[i] == "Overall"){
+        if(FSA[i] == filter){
 
             if(bedroomNumber[i] == 1){
                 
@@ -68,35 +62,230 @@ function rentalinit(){
             }
             else{};
         }
-        else{};
-    
-    
+        else{}; 
     };
 
     priceTrendChart(onebed_overallPublishDate, twobed_overallPublishDate, threeplusbed_overallPublishDate,
-        onebed_overallAveragePrice, twobed_overallAveragePrice, threeplusbed_overallAveragePrice);
+        onebed_overallAveragePrice, twobed_overallAveragePrice, threeplusbed_overallAveragePrice)
+   
+  });
+};
 
+//global variables for drivers
+
+  //arrays
+var Measure = [];
+var cluster = [];
+var measureValue = [];
+var avgPrice = [];
+
+  //driver variables
+var sqft = [];
+var price = [];
+
+var bedroomsOV =[];
+var bedAvgPriceOV = [];
+
+// var bedroomsCL1 =[];
+// var bedAvgPriceCL1 = [];
+
+// var bedroomsCL2 =[];
+// var bedAvgPriceCL2 = [];
+
+// var bedroomsCL3 =[];
+// var bedAvgPriceCL3 = [];
+
+var bathroomsOV = [];
+var bathAvgPriceOV = [];
+
+// var bathroomsCL1 = [];
+// var bathAvgPriceCL1 = [];
+
+// var bathroomsCL2 = [];
+// var bathAvgPriceCL2 = [];
+
+// var bathroomsCL3 = [];
+// var bathAvgPriceCL3 = [];
+
+var petsOV = [];
+var petsAvgPriceOV = [];
+
+// var petsCL1 = [];
+// var petsAvgPriceCL1 = [];
+
+// var petsCL2 = [];
+// var petsAvgPriceCL2 = [];
+
+// var petsCL3 = [];
+// var petsAvgPriceCL3 = [];
+
+var typeOV = [];
+var typeAvgPriceOV = [];
+
+// var typeCL1 = [];
+// var typeAvgPriceCL1 = [];
+
+// var typeCL2 = [];
+// var typeAvgPriceCL2 = [];
+
+// var typeCL3 = [];
+// var typeAvgPriceCL3 = [];
+
+var furnOV = [];
+var furnAvgPriceOV = [];
+
+// var furnCL1 = [];
+// var furnAvgPriceCL1 = [];
+
+// var furnCL2 = [];
+// var furnAvgPriceCL2 = [];
+
+// var furnCL3 = [];
+// var furnAvgPriceCL3 = [];
+
+
+function drivers(){
     d3.json("static/data/rentalTrend.json").then(data => {
+     
       data.forEach(item =>{
         if((item.price <10000) & (item.price >200)){
           if(item.sqft <3000 & (item.sqft>200)){
             sqft.push(item.sqft)
             price.push(item.price)
-            bathrooms.push(item.bathrooms)
-            bedrooms.push(item.bedrooms)
           };
         };
       });
 
     priceVsChart(price, sqft, 'rgb(168, 9, 168)', "priceSqftChart", "Square-Footage")
 
-    priceVsChart(price, bedrooms, 'rgb(168, 9, 168)', "priceBathroomsChart", "No. Bedrooms")
-
     });
-   
-});
 
+    d3.json("static/data/clusterAgg.json").then(data => {
 
+      console.log(data)
+      Object.values(data.Measure).forEach(value => Measure.push(value));
+      Object.values(data.cluster).forEach(value => cluster.push(value));
+      Object.values(data.measure_value).forEach(value => measureValue.push(value));
+      Object.values(data.price).forEach(value => avgPrice.push(value));
+
+      for (var i = 0; i < Measure.length; i++){
+
+        if(Measure[i] == "No_Bedrooms"){
+          if((cluster[i]== "overall")&(measureValue[i]<6)){
+            bedroomsOV.push(measureValue[i])
+            bedAvgPriceOV.push(avgPrice[i].toFixed(0))
+          }
+          // else if ((cluster[i]== 0)&(measureValue[i]<6)){
+          //   bedroomsCL1.push(measureValue[i])
+          //   bedAvgPriceCL1.push(avgPrice[i].toFixed(0))
+          // }
+          // else if((cluster[i] == 1)&(measureValue[i]<6)){
+          //   bedroomsCL2.push(measureValue[i])
+          //   bedAvgPriceCL2.push(avgPrice[i].toFixed(0))
+          // }
+          // else if((cluster[i] == 2)&(measureValue[i]<6)){
+          //   bedroomsCL3.push(measureValue[i])
+          //   bedAvgPriceCL3.push(avgPrice[i].toFixed(0))
+          // }
+          else{};
+        }
+        else if(Measure[i] == "No_Bathrooms"){
+          if((cluster[i]== "overall")&(measureValue[i]<3.5)&(measureValue[i]>0)){
+            bathroomsOV.push(measureValue[i])
+            bathAvgPriceOV.push(avgPrice[i].toFixed(0))
+          }
+          // else if ((cluster[i]== 0)&(measureValue[i]<3.5)&(measureValue[i]>0)){
+          //   bathroomsCL1.push(measureValue[i])
+          //   bathAvgPriceCL1.push(avgPrice[i].toFixed(0))
+          // }
+          // else if ((cluster[i] == 1)&(measureValue[i]<3.5)&(measureValue[i]>0)){
+          //   bathroomsCL2.push(measureValue[i])
+          //   bathAvgPriceCL2.push(avgPrice[i].toFixed(0))
+          // }
+          // else if((cluster[i] == 2)&(measureValue[i]<3.5)&(measureValue[i]>0)){
+          //   bathroomsCL3.push(measureValue[i])
+          //   bathAvgPriceCL3.push(avgPrice[i].toFixed(0))
+          // }
+          else{};
+        }
+          // else if (Measure[i] == "pets"){
+          //   if(cluster[i]== "overall"){
+          //     petsOV.push(measureValue[i])
+          //     petsAvgPriceOV.push(avgPrice[i].toFixed(0))
+          //   }
+          //   else if (cluster[i]== 0){
+          //     petsCL1.push(measureValue[i])
+          //     petsAvgPriceCL1.push(avgPrice[i].toFixed(0))
+          //   }
+          //   else if(cluster[i] == 1){
+          //     petsCL2.push(measureValue[i])
+          //     petsAvgPriceCL2.push(avgPrice[i].toFixed(0))
+          //   }
+          //   else if(cluster[i] == 2){
+          //     petsCL3.push(measureValue[i])
+          //     petsAvgPriceCL3.push(avgPrice[i].toFixed(0))
+          //   }
+          //   else{};
+          // }
+            else if (Measure[i] == "rental_type"){
+              if(cluster[i]== "overall"){
+                typeOV.push(measureValue[i])
+                typeAvgPriceOV.push(avgPrice[i].toFixed(0))
+              }
+          //     else if (cluster[i]== 0){
+          //       typeCL1.push(measureValue[i])
+          //       typeAvgPriceCL1.push(avgPrice[i].toFixed(0))
+          //     }
+          //     else if(cluster[i] == 1){
+          //       typeCL2.push(measureValue[i])
+          //       typeAvgPriceCL2.push(avgPrice[i].toFixed(0))
+          //     }
+          //     else if(cluster[i] == 2){
+          //       typeCL3.push(measureValue[i])
+          //       typeAvgPriceCL3.push(avgPrice[i].toFixed(0))
+          //     }
+              else{};
+          }
+          // else if (Measure[i] == "Furnished"){
+          //   if(cluster[i]== "overall"){
+          //     furnOV.push(measureValue[i])
+          //     furnAvgPriceOV.push(avgPrice[i].toFixed(0))
+          //   }
+            // else if (cluster[i]== 0){
+            //   furnCL1.push(measureValue[i])
+            //   furnAvgPriceCL1.push(avgPrice[i].toFixed(0))
+            // }
+            // else if(cluster[i] == 1){
+            //   furnCL2.push(measureValue[i])
+            //   furnAvgPriceCL2.push(avgPrice[i].toFixed(0))
+            // }
+            // else if(cluster[i] == 2){
+            //   furnCL3.push(measureValue[i])
+            //   furnAvgPriceCL3.push(avgPrice[i].toFixed(0))
+            // }
+        //     else{};
+        // }
+          else{};
+        };
+    
+
+     // };
+
+      barchart(bedroomsOV, bedAvgPriceOV, "Overall", bedroomChart, "No. of Bedrooms"); 
+      // bedroomsCL1, bedAvgPriceCL1, "Cluster 1", bedroomsCL2, bedAvgPriceCL2, "Cluster 2", bedroomsCL3, bedAvgPriceCL3, "Cluster 3", bedroomChart, "No. of Bedrooms");
+
+      barchart(bathroomsOV, bathAvgPriceOV, "Overall", bathroomChart, "No. of Bathrooms");
+      //bathroomsCL1, bathAvgPriceCL1, "Cluster 1", bathroomsCL2, bathAvgPriceCL2, "Cluster 2", bathroomsCL3, bathAvgPriceCL3, "Cluster 3", bathroomChart, "No. of Bathrooms");
+
+      //  barchart(petsOV, petsAvgPriceOV, "Overall", petsCL1, petsAvgPriceCL1, "Cluster 1",
+      //  petsCL2, petsAvgPriceCL2, "Cluster 2", petsCL3, petsAvgPriceCL3, "Cluster 3", petChart, "Allow Pets");
+
+       barchart(typeOV, typeAvgPriceOV, "Overall", typeChart, "Rental Type");
+      // typeCL1, typeAvgPriceCL1, "Cluster 1", typeCL2, typeAvgPriceCL2, "Cluster 2", typeCL3, typeAvgPriceCL3, "Cluster 3", typeChart, "Rental Type");
+
+      //  barchart(furnOV, furnAvgPriceOV, "Overall", furnCL1, furnAvgPriceCL1, "Cluster 1",
+      //  furnCL2, furnAvgPriceCL2, "Cluster 2", furnCL3, furnAvgPriceCL3, "Cluster 3", furnChart, "Furnishing provided");
+    });
 };
 
 var autoTheft = [];
@@ -108,15 +297,15 @@ var BreakandEntertDate =[];
 var robbery = []; 
 var robberyDate = []; 
 
-function crimeinit(){
+function crime(filter, year){
   //read json file into js
   d3.json("static/data/crime.json").then(data => {
         
   // // create arrays
   data.forEach(item=> {
     
-    if(item.reportedyear == '2019'){
-    if(item.FSA == 'M6S'){
+    if(item.reportedyear == year){
+    if(item.FSA == filter){
      if(item.MCI == 'Auto Theft'){
       
         autoTheft.push(item["Count of MCI"])
@@ -141,7 +330,6 @@ function crimeinit(){
 
   };
   });
-
 
   crimeTrendChart(autoTheft, assault, BreakandEnter, robbery);
 
@@ -283,7 +471,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       y: y4,
       name: 'Robbery',
       marker: {
-        color: '#FFCB25',
+        color: 'rgb(197, 90, 17)',
         size: 11
       },
       type: 'Scatter',
@@ -293,7 +481,7 @@ function crimeTrendChart(y1, y2, y3, y4){
   //formatting
   var layout = {
     margin: {
-      t: 15,
+      t: 20,
       r: 40,
     },
       plot_bgcolor: 'rgba(245,246,249,1)',
@@ -321,7 +509,7 @@ function crimeTrendChart(y1, y2, y3, y4){
       };
         
     var config = {responsive: true}
-
+   
     var data = [trace1, trace2, trace3, trace4];
     
     Plotly.newPlot('CrimeChart', data, layout, config);
@@ -329,8 +517,6 @@ function crimeTrendChart(y1, y2, y3, y4){
 
 //price vs sqrt chart
 function priceVsChart(price, y, color, chartID, ylabel){
-
-  console.log(price)
 
   //datasets
   var trace1 = {
@@ -345,13 +531,18 @@ function priceVsChart(price, y, color, chartID, ylabel){
         }
       },
       type: 'Scatter',
-      mode: 'markers'
+      mode: 'markers',
+      transforms: [{
+        type: 'sort',
+        target: 'y',
+        order: 'descending'
+      }]
     };
 
   //formatting
   var layout = {
     margin: {
-      t: 15,
+      t: 40,
       r: 40,
     },
       plot_bgcolor: 'rgba(245,246,249,1)',
@@ -380,14 +571,108 @@ function priceVsChart(price, y, color, chartID, ylabel){
     Plotly.newPlot(chartID, [trace1], layout, config);
 };
 
+//x2, y2, name2, x3, y3, name3, x4, y4, name4,
+
+function barchart(x1, y1, name1, chart, ylabel){
+
+  var trace1 = {
+    x: x1,
+    y: y1,
+    name: name1,
+    type: 'bar',   
+    marker: {
+      color: 'rgb(7, 161, 7)'
+    },
+    text: y1.map(String),
+    textposition: 'auto',
+    hoverinfo: 'none'
+
+  };
+  
+  // var trace2 = {
+  //   x: x2,
+  //   y: y2,
+  //   name: name2,
+  //   type: 'bar',
+  //   marker: {
+  //     color: 'rgb(13, 117, 214)'
+  //   },
+  //   text: y2.map(String),
+  //   textposition: 'auto',
+  //   hoverinfo: 'none'
+  // };
+
+  // var trace3 = {
+  //   x: x3,
+  //   y: y3,
+  //   name: name3,
+  //   type: 'bar',
+  //   marker: {
+  //     color: 'rgb(168, 9, 168)'
+  //   },
+  //   text: y3.map(String),
+  //   textposition: 'auto',
+  //   hoverinfo: 'none'
+  // };
+  
+  // var trace4 = {
+  //   x: x4,
+  //   y: y4,
+  //   name: name4,
+  //   type: 'bar',
+  //   marker: {
+  //     color: 'rgb(197, 90, 17)'
+  //   },
+  //   text: y4.map(String),
+  //   textposition: 'auto',
+  //   hoverinfo: 'none'
+  // };
+
+  var data =[trace1]
+  
+  //var data = [trace1, trace2, trace3, trace4];
+  
+  var layout = {barmode: 'group'};
+
+  var layout = {
+    margin: {
+      t: 40,
+      r: 40,
+    },
+      plot_bgcolor: 'rgba(245,246,249,1)',
+      paper_bgcolor: 'rgba(245,246,249,1)',
+      font: {
+        family: 'Arial',
+        size: 13,
+        color: '#7f7f7f'
+      },
+      xaxis: {
+        title: {text: ylabel, 
+        standoff: 35},
+        showgrid: false,
+        zeroline: false,
+      },
+      yaxis: {
+        title: {text: 'Average Price (CAD)',
+        standoff: 15},
+        showline: false,
+        "gridcolor": "white"
+      }
+      };
+
+      var config = {responsive: true}
+  
+  Plotly.newPlot(chart, data, layout, config);
+};
+
 function init(){
 
   //FSA dropdown menu
 
-  var dropdownMenuFSA = document.getElementById("selDatasetRental");
+  var dropdownMenuFSA = document.getElementById("selDataset");
         for(var i = 0; i < FSAList.length; i++) {
             var newOption = document.createElement("option");
-            // newOption.setAttribute("id","listFSA")
+            newOption.setAttribute("id","listFSA")
             var text = document.createTextNode(FSAList[i]);
             newOption.appendChild(text);
             dropdownMenuFSA.appendChild(newOption);
@@ -401,10 +686,25 @@ function init(){
         //     newOption.appendChild(text);
         //     dropdownMenu.appendChild(newOption);
         // };
-  rentalinit();
+  rental("Overall");
 
-  crimeinit();
-}
+  crime("M6R", "2019");
+
+  drivers();
+};
 
 init();
+
+function optionChanged(){
+
+  console.log("yup")
+
+  //get the FSA selected
+  var dropdownMenu = d3.select("#selDataset");
+  var selected = dropdownMenu.property("value")
+
+  rental(selected);
+  crime(selected, "2019");
+
+};
 

@@ -1,68 +1,63 @@
 ,cluster,measure_value,price,Measure
-0,overall,0.0,1190.0764705882352,No_Bathrooms
-1,overall,1.0,2049.2388494678157,No_Bathrooms
-2,overall,1.5,2289.078787878788,No_Bathrooms
-3,overall,2.0,2854.6470588235293,No_Bathrooms
-4,overall,2.5,3964.3939393939395,No_Bathrooms
-5,overall,3.0,9881.004347826087,No_Bathrooms
-6,overall,3.5,7223.5,No_Bathrooms
-7,overall,4.0,6086.787878787879,No_Bathrooms
-8,overall,5.0,7478.2307692307695,No_Bathrooms
+0,overall,0.0,1197.1183431952663,No_Bathrooms
+1,overall,1.0,1914.633956981036,No_Bathrooms
+2,overall,1.5,2296.036474164134,No_Bathrooms
+3,overall,2.0,2843.902746510581,No_Bathrooms
+4,overall,2.5,3619.6875,No_Bathrooms
+5,overall,3.0,3480.495535714286,No_Bathrooms
+6,overall,3.5,4904.375,No_Bathrooms
+7,overall,4.0,4931.096774193548,No_Bathrooms
+8,overall,5.0,6293.363636363636,No_Bathrooms
 9,overall,6.0,4825.0,No_Bathrooms
-10,overall,7.0,11500.0,No_Bathrooms
-11,overall,8.5,6500.0,No_Bathrooms
-12,overall,,1684.5223880597016,No_Bathrooms
-13,0.0,0.0,1066.48,No_Bathrooms
-14,0.0,1.0,1885.6598557692307,No_Bathrooms
-15,0.0,1.5,2442.5904761904762,No_Bathrooms
-16,0.0,2.0,2813.220211161388,No_Bathrooms
-17,0.0,2.5,3029.464285714286,No_Bathrooms
-18,0.0,3.0,3648.075,No_Bathrooms
-19,0.0,3.5,5765.0,No_Bathrooms
-20,0.0,4.0,4208.0,No_Bathrooms
-21,0.0,5.0,4613.5,No_Bathrooms
-22,0.0,,1696.030303030303,No_Bathrooms
-23,1.0,0.0,1433.3333333333333,No_Bathrooms
-24,1.0,1.0,2029.5352887259396,No_Bathrooms
-25,1.0,1.5,2223.2909090909093,No_Bathrooms
-26,1.0,2.0,2761.7480988593156,No_Bathrooms
-27,1.0,2.5,5202.142857142857,No_Bathrooms
-28,1.0,3.0,4619.090909090909,No_Bathrooms
-29,1.0,,2015.0,No_Bathrooms
-30,2.0,0.0,1589.5526315789473,No_Bathrooms
-31,2.0,1.0,1860.7766192733018,No_Bathrooms
-32,2.0,1.5,2237.1858407079644,No_Bathrooms
-33,2.0,2.0,3070.503968253968,No_Bathrooms
-34,2.0,2.5,3508.1481481481483,No_Bathrooms
-35,2.0,3.0,3195.1879194630874,No_Bathrooms
-36,2.0,3.5,4388.0,No_Bathrooms
-37,2.0,4.0,4659.238095238095,No_Bathrooms
-38,2.0,5.0,6666.666666666667,No_Bathrooms
-39,2.0,6.0,6000.0,No_Bathrooms
-40,2.0,8.5,6500.0,No_Bathrooms
-41,2.0,,1679.0466321243523,No_Bathrooms
-42,Not Feasible to predict,0.0,0.0,No_Bathrooms
-43,Not Feasible to predict,1.0,23432.285714285714,No_Bathrooms
-44,Not Feasible to predict,1.5,780.0,No_Bathrooms
-45,Not Feasible to predict,2.0,4905.125,No_Bathrooms
-46,Not Feasible to predict,2.5,11422.5,No_Bathrooms
-47,Not Feasible to predict,3.0,187274.375,No_Bathrooms
-48,Not Feasible to predict,3.5,16500.0,No_Bathrooms
-49,Not Feasible to predict,4.0,11711.42857142857,No_Bathrooms
-50,Not Feasible to predict,5.0,13995.0,No_Bathrooms
-51,Not Feasible to predict,6.0,3650.0,No_Bathrooms
-52,Not Feasible to predict,7.0,11500.0,No_Bathrooms
-53,Not Feasible to predict,,128.85714285714286,No_Bathrooms
-0,overall,0.0,1559.1167701863353,No_Bedrooms
-1,overall,1.0,2025.3061036326756,No_Bedrooms
-2,overall,2.0,2470.353260869565,No_Bedrooms
-3,overall,3.0,3077.0623084780386,No_Bedrooms
-4,overall,4.0,11250.724867724868,No_Bedrooms
-5,overall,5.0,4505.114285714286,No_Bedrooms
+10,overall,8.5,6500.0,No_Bathrooms
+11,overall,,1729.3103448275863,No_Bathrooms
+12,0.0,0.0,1066.48,No_Bathrooms
+13,0.0,1.0,1885.6598557692307,No_Bathrooms
+14,0.0,1.5,2442.5904761904762,No_Bathrooms
+15,0.0,2.0,2813.220211161388,No_Bathrooms
+16,0.0,2.5,3029.464285714286,No_Bathrooms
+17,0.0,3.0,3648.075,No_Bathrooms
+18,0.0,3.5,5765.0,No_Bathrooms
+19,0.0,4.0,4208.0,No_Bathrooms
+20,0.0,5.0,4613.5,No_Bathrooms
+21,0.0,,1696.030303030303,No_Bathrooms
+22,1.0,0.0,1433.3333333333333,No_Bathrooms
+23,1.0,1.0,2029.5352887259396,No_Bathrooms
+24,1.0,1.5,2223.2909090909093,No_Bathrooms
+25,1.0,2.0,2761.7480988593156,No_Bathrooms
+26,1.0,2.5,5202.142857142857,No_Bathrooms
+27,1.0,3.0,4450.9375,No_Bathrooms
+28,1.0,,2015.0,No_Bathrooms
+29,2.0,0.0,1589.5526315789473,No_Bathrooms
+30,2.0,1.0,1861.3331226295827,No_Bathrooms
+31,2.0,1.5,2237.1858407079644,No_Bathrooms
+32,2.0,2.0,3056.727634194831,No_Bathrooms
+33,2.0,2.5,3508.1481481481483,No_Bathrooms
+34,2.0,3.0,3195.1879194630874,No_Bathrooms
+35,2.0,3.5,4388.0,No_Bathrooms
+36,2.0,4.0,4659.238095238095,No_Bathrooms
+37,2.0,5.0,6666.666666666667,No_Bathrooms
+38,2.0,6.0,6000.0,No_Bathrooms
+39,2.0,8.5,6500.0,No_Bathrooms
+40,2.0,,1687.2708333333333,No_Bathrooms
+41,Not Feasible to predict,1.0,1264.5333333333333,No_Bathrooms
+42,Not Feasible to predict,1.5,1560.0,No_Bathrooms
+43,Not Feasible to predict,2.0,2750.0,No_Bathrooms
+44,Not Feasible to predict,2.5,7850.0,No_Bathrooms
+45,Not Feasible to predict,3.0,5065.0,No_Bathrooms
+46,Not Feasible to predict,4.0,6796.0,No_Bathrooms
+47,Not Feasible to predict,6.0,3650.0,No_Bathrooms
+48,Not Feasible to predict,,900.0,No_Bathrooms
+0,overall,0.0,1572.7894736842106,No_Bedrooms
+1,overall,1.0,1824.125694187338,No_Bedrooms
+2,overall,2.0,2457.577011494253,No_Bedrooms
+3,overall,3.0,3026.153134635149,No_Bedrooms
+4,overall,4.0,3582.7258064516127,No_Bedrooms
+5,overall,5.0,3736.4307692307693,No_Bedrooms
 6,overall,6.0,3899.1666666666665,No_Bedrooms
 7,overall,7.0,3750.0,No_Bedrooms
 8,overall,8.0,6500.0,No_Bedrooms
-9,overall,,1863.6886446886447,No_Bedrooms
+9,overall,,1912.3496240601503,No_Bedrooms
 10,0.0,0.0,1518.3350515463917,No_Bedrooms
 11,0.0,1.0,1755.794498381877,No_Bedrooms
 12,0.0,2.0,2424.2181818181816,No_Bedrooms
@@ -73,37 +68,36 @@
 17,0.0,,1763.1935483870968,No_Bedrooms
 18,1.0,0.0,1648.6024096385543,No_Bedrooms
 19,1.0,1.0,2026.645811240721,No_Bedrooms
-20,1.0,2.0,2741.4539190353144,No_Bedrooms
+20,1.0,2.0,2735.196551724138,No_Bedrooms
 21,1.0,3.0,3831.9891304347825,No_Bedrooms
 22,1.0,4.0,3995.0,No_Bedrooms
 23,1.0,,2061.527777777778,No_Bedrooms
 24,2.0,0.0,1555.5085714285715,No_Bedrooms
-25,2.0,1.0,1671.903927492447,No_Bedrooms
+25,2.0,1.0,1672.854292623942,No_Bedrooms
 26,2.0,2.0,2234.407553107789,No_Bedrooms
 27,2.0,3.0,2932.3989547038327,No_Bedrooms
-28,2.0,4.0,3482.0420168067226,No_Bedrooms
+28,2.0,4.0,3426.8050847457625,No_Bedrooms
 29,2.0,5.0,3662.4150943396226,No_Bedrooms
 30,2.0,6.0,2025.0,No_Bedrooms
 31,2.0,7.0,3750.0,No_Bedrooms
 32,2.0,8.0,6500.0,No_Bedrooms
-33,2.0,,1899.555,No_Bedrooms
-34,Not Feasible to predict,0.0,466.8333333333333,No_Bedrooms
-35,Not Feasible to predict,1.0,40669.17857142857,No_Bedrooms
-36,Not Feasible to predict,2.0,4225.631578947368,No_Bedrooms
-37,Not Feasible to predict,3.0,8810.222222222223,No_Bedrooms
-38,Not Feasible to predict,4.0,186579.375,No_Bedrooms
-39,Not Feasible to predict,5.0,11470.0,No_Bedrooms
+33,2.0,,1908.5979899497488,No_Bedrooms
+34,Not Feasible to predict,0.0,1119.8,No_Bedrooms
+35,Not Feasible to predict,1.0,1191.125,No_Bedrooms
+36,Not Feasible to predict,2.0,1575.0,No_Bedrooms
+37,Not Feasible to predict,3.0,3765.0,No_Bedrooms
+38,Not Feasible to predict,4.0,7105.833333333333,No_Bedrooms
+39,Not Feasible to predict,5.0,3900.0,No_Bedrooms
 40,Not Feasible to predict,6.0,5015.0,No_Bedrooms
-41,Not Feasible to predict,,0.3333333333333333,No_Bedrooms
-0,overall,apartment,1821.3067253299812,rental_type
-1,overall,condo,2459.4688269073013,rental_type
+0,overall,apartment,1833.3407149636191,rental_type
+1,overall,condo,2216.3351184346034,rental_type
 2,overall,cottage,2149.8,rental_type
 3,overall,duplex,2561.0841584158416,rental_type
-4,overall,flat,2070.757281553398,rental_type
-5,overall,house,3254.22299248989,rental_type
+4,overall,flat,2091.049019607843,rental_type
+5,overall,house,2364.6332945285217,rental_type
 6,overall,land,2460.0,rental_type
 7,overall,loft,2636.0271186440677,rental_type
-8,overall,suite,2048.7650897226754,rental_type
+8,overall,suite,2057.6826446280993,rental_type
 9,overall,townhouse,2876.559829059829,rental_type
 10,0.0,apartment,1852.13390010627,rental_type
 11,0.0,condo,2117.6236351958896,rental_type
@@ -114,48 +108,47 @@
 16,0.0,loft,2253.6725663716816,rental_type
 17,0.0,suite,1907.2844827586207,rental_type
 18,0.0,townhouse,2990.759493670886,rental_type
-19,1.0,condo,2265.42662219527,rental_type
+19,1.0,condo,2263.08067940552,rental_type
 20,1.0,duplex,2725.0,rental_type
 21,1.0,flat,2170.0,rental_type
 22,1.0,house,3231.0,rental_type
 23,1.0,loft,2640.3684210526317,rental_type
 24,1.0,suite,2050.3636363636365,rental_type
 25,1.0,townhouse,4539.08,rental_type
-26,2.0,apartment,1824.9497510185604,rental_type
+26,2.0,apartment,1826.5129134571816,rental_type
 27,2.0,cottage,1749.0,rental_type
 28,2.0,duplex,2514.6111111111113,rental_type
 29,2.0,flat,2055.55,rental_type
-30,2.0,house,2375.716059602649,rental_type
+30,2.0,house,2369.3993371996685,rental_type
 31,2.0,land,2460.0,rental_type
 32,2.0,loft,2979.696,rental_type
 33,2.0,suite,2161.131805157593,rental_type
 34,2.0,townhouse,2478.4341085271317,rental_type
-35,Not Feasible to predict,apartment,663.3125,rental_type
-36,Not Feasible to predict,condo,58278.71428571428,rental_type
+35,Not Feasible to predict,apartment,1632.1538461538462,rental_type
+36,Not Feasible to predict,condo,1790.0,rental_type
 37,Not Feasible to predict,duplex,2500.0,rental_type
-38,Not Feasible to predict,flat,1.0,rental_type
-39,Not Feasible to predict,house,65064.0,rental_type
-40,Not Feasible to predict,suite,1406.0,rental_type
-41,Not Feasible to predict,townhouse,3650.0,rental_type
-0,overall,NO,2188.6110599078343,furnished
-1,overall,NOT_MENTIONED,2458.7041714504403,furnished
-2,overall,YES,2252.2100043122036,furnished
+38,Not Feasible to predict,house,5075.384615384615,rental_type
+39,Not Feasible to predict,suite,1532.5,rental_type
+40,Not Feasible to predict,townhouse,3650.0,rental_type
+0,overall,NO,2183.4182825484763,furnished
+1,overall,NOT_MENTIONED,2136.48218862122,furnished
+2,overall,YES,2191.0362287210824,furnished
 3,0.0,NO,2065.718309859155,furnished
 4,0.0,NOT_MENTIONED,2112.5838247683237,furnished
 5,0.0,YES,2006.7821011673152,furnished
-6,1.0,NO,2337.0551558752995,furnished
+6,1.0,NO,2318.6346153846152,furnished
 7,1.0,NOT_MENTIONED,2205.228078358209,furnished
 8,1.0,YES,2481.222222222222,furnished
 9,2.0,NO,2133.4253246753246,furnished
-10,2.0,NOT_MENTIONED,2109.518654434251,furnished
-11,2.0,YES,1978.4243827160494,furnished
-12,Not Feasible to predict,NO,1933.2,furnished
-13,Not Feasible to predict,NOT_MENTIONED,51615.1568627451,furnished
-14,Not Feasible to predict,YES,6940.305555555556,furnished
-0,overall,False,2522.8948458948457,pets
-1,overall,True,2098.695257029253,pets
+10,2.0,NOT_MENTIONED,2107.719094247246,furnished
+11,2.0,YES,1981.3276661514683,furnished
+12,Not Feasible to predict,NO,2416.25,furnished
+13,Not Feasible to predict,NOT_MENTIONED,2322.1111111111113,furnished
+14,Not Feasible to predict,YES,5193.333333333333,furnished
+0,overall,False,2180.490029975238,pets
+1,overall,True,2090.3032810271043,pets
 2,0.0,True,2084.5237142857145,pets
-3,1.0,False,2290.901313868613,pets
-4,2.0,False,2091.159488878372,pets
-5,Not Feasible to predict,False,39411.50704225352,pets
-6,Not Feasible to predict,True,4460.619047619048,pets
+3,1.0,False,2288.6498247663553,pets
+4,2.0,False,2090.229694529955,pets
+5,Not Feasible to predict,False,2597.0384615384614,pets
+6,Not Feasible to predict,True,6136.0,pets

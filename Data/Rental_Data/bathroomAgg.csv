@@ -1,0 +1,50 @@
+,cluster,measure_value,price,Measure
+0,overall,0.0,1197.1183431952663,No_Bathrooms
+1,overall,1.0,1914.633956981036,No_Bathrooms
+2,overall,1.5,2296.036474164134,No_Bathrooms
+3,overall,2.0,2843.902746510581,No_Bathrooms
+4,overall,2.5,3619.6875,No_Bathrooms
+5,overall,3.0,3480.495535714286,No_Bathrooms
+6,overall,3.5,4904.375,No_Bathrooms
+7,overall,4.0,4931.096774193548,No_Bathrooms
+8,overall,5.0,6293.363636363636,No_Bathrooms
+9,overall,6.0,4825.0,No_Bathrooms
+10,overall,8.5,6500.0,No_Bathrooms
+11,overall,,1729.3103448275863,No_Bathrooms
+12,0.0,0.0,1066.48,No_Bathrooms
+13,0.0,1.0,1885.6598557692307,No_Bathrooms
+14,0.0,1.5,2442.5904761904762,No_Bathrooms
+15,0.0,2.0,2813.220211161388,No_Bathrooms
+16,0.0,2.5,3029.464285714286,No_Bathrooms
+17,0.0,3.0,3648.075,No_Bathrooms
+18,0.0,3.5,5765.0,No_Bathrooms
+19,0.0,4.0,4208.0,No_Bathrooms
+20,0.0,5.0,4613.5,No_Bathrooms
+21,0.0,,1696.030303030303,No_Bathrooms
+22,1.0,0.0,1433.3333333333333,No_Bathrooms
+23,1.0,1.0,2029.5352887259396,No_Bathrooms
+24,1.0,1.5,2223.2909090909093,No_Bathrooms
+25,1.0,2.0,2761.7480988593156,No_Bathrooms
+26,1.0,2.5,5202.142857142857,No_Bathrooms
+27,1.0,3.0,4450.9375,No_Bathrooms
+28,1.0,,2015.0,No_Bathrooms
+29,2.0,0.0,1589.5526315789473,No_Bathrooms
+30,2.0,1.0,1861.3331226295827,No_Bathrooms
+31,2.0,1.5,2237.1858407079644,No_Bathrooms
+32,2.0,2.0,3056.727634194831,No_Bathrooms
+33,2.0,2.5,3508.1481481481483,No_Bathrooms
+34,2.0,3.0,3195.1879194630874,No_Bathrooms
+35,2.0,3.5,4388.0,No_Bathrooms
+36,2.0,4.0,4659.238095238095,No_Bathrooms
+37,2.0,5.0,6666.666666666667,No_Bathrooms
+38,2.0,6.0,6000.0,No_Bathrooms
+39,2.0,8.5,6500.0,No_Bathrooms
+40,2.0,,1687.2708333333333,No_Bathrooms
+41,Not Feasible to predict,1.0,1264.5333333333333,No_Bathrooms
+42,Not Feasible to predict,1.5,1560.0,No_Bathrooms
+43,Not Feasible to predict,2.0,2750.0,No_Bathrooms
+44,Not Feasible to predict,2.5,7850.0,No_Bathrooms
+45,Not Feasible to predict,3.0,5065.0,No_Bathrooms
+46,Not Feasible to predict,4.0,6796.0,No_Bathrooms
+47,Not Feasible to predict,6.0,3650.0,No_Bathrooms
+48,Not Feasible to predict,,900.0,No_Bathrooms
