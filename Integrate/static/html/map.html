@@ -99,7 +99,11 @@
             z-index: 0
         }
         .city{
-            height: 620px;
+            margin-top: 100px;
+        }
+        .map-margin{
+            margin: 0px 50px 25px 50px; 
+            height: 500px; width: 90%;
         }
     </style>
 </head>
@@ -108,158 +112,167 @@
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-        <a href="../../" class="w3-bar-item w3-button"><b>Team Awesome</b></a>
-        <!-- Float links to the right. Hide them on small screens -->
-        <div class="w3-right w3-hide-small">
-            <a href="../../" class="w3-bar-item w3-button">About</a>
-            <a href="#map" class="w3-bar-item w3-button">Map</a>
-            <a href="insights.html" class="w3-bar-item w3-button">Insights</a>
-            <a href="team.html" class="w3-bar-item w3-button">Team</a>
-        </div>
+            <a href="../../" class="w3-bar-item w3-button"><b>Team Awesome</b></a>
+            <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="../../#about" class="w3-bar-item w3-button">About</a>
+                <a href="map.html" class="w3-bar-item w3-button w3-hide-small">Rentals</a>
+                <a href="pricePredict.html" class="w3-bar-item w3-button w3-hide-small">Fair Price</a>
+                <a href="insights.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
+                <a href="team.html" class="w3-bar-item w3-button w3-hide-small">Team</a>
+            </div>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+            
+            <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+                <a href="../../#about" class="w3-bar-item w3-button">About</a>
+                <a href="map.html" class="w3-bar-item w3-button">Rentals</a>
+                <a href="pricePredict.html" class="w3-bar-item w3-button">Fair Price</a>
+                <a href="insights.html" class="w3-bar-item w3-button">Trends</a>
+                <a href="team.html" class="w3-bar-item w3-button">Team</a>
+            </div>
         </div>
         <!--Tabs for each map-->
-        <div class="w3-container" >
-            <div id="content" style="overflow:scroll; height:400px;">
+        <div class="w3-sand w3-row-padding" >
+            <div id="content">
                 <h2>Active Tabs</h2>
                 <p>To highlight the current tab/page the user is on, add a color class, and use JavaScript to update the active link.</p>
             
-                <div class="w3-bar w3-black" >
+                <div class="w3-bar w3-black w3-row-padding" >
                     <a href="#availableRentals" class="w3-bar-item w3-button">Available Rentals</a>
                     <a href="#crimeTab" class="w3-bar-item w3-button">Crime Rate</a>
                     <a href="#communityServicesTab" class="w3-bar-item w3-button">Community Services</a>
                     <a href="#incomeTab" class="w3-bar-item w3-button">Income Distribution</a>
                     <a href="#ageTab" class="w3-bar-item w3-button">Age Distribution</a>
-                <!--<button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'availableRentals')">Available Rentals</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'crimeTab')">Crime Rate</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'communityServicesTab')">Community Services</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'incomeTab')">Income Distribution</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'ageTab')">Age Distribution</button>-->
+                
                 </div>
 
             </div>
+        </div>
     </div>
 
     
     
     
     <!-- Page content -->
-    <!--<div class="w3-content w3-padding map" style="max-width:1564px; margin: 50px 250px 5px 20px;">-->
+    
         
             
-            <div class="w3-content w3-padding map" style="max-width:1564px; margin: 190px 250px 5px 20px;">
-                <div id="availableRentals" class="w3-container w3-border city" >
-                    <h2>Available Rentals</h2>
-                    <p>These are all the rentals available in the Greater Toronto Area</p>
-                      <!--Sidebar-->
-                      <div id="sidebar" class="sidebar collapsed" style="margin: 75px 0px 5px 45px; height: 520px;">
-                          <!-- Nav tabs -->
-                          <div class="sidebar-tabs">
-                              <ul role="tablist">
-                                  <li><a href="#filter" role="tab" ><i class="fa fa-filter map-sidbar-tabs" ></i>Filter</a></li>
-                                  <li><a href="#rental" role="tab" ><i class="fa fa-building map-sidbar-tabs"  alt="Rental Trends"></i></a>Rental Trends</li>
-                              </ul>
-      
-                              <ul role="tablist">
-                                  <li><a href="https://github.com/bnarath/Toronto_Rental_Insight/tree/master" role="tab" target="_blank"><i class="fa fa-github map-sidbar-tabs"></i></a></li>
-                              </ul>
-                          </div>
-      
-                          <!-- Tab panes -->
-                          <div class="sidebar-content">
-                              <div class="sidebar-pane" id="rental">
-                              </div>
-      
-                              <div class="sidebar-pane" id="filter">
-                                  <h1 class="sidebar-header">Filter<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                                  <div class="container mt-5">
-                                      <div class="row">
-                                          <div class="col">
-      
-                                              <form>
-                                                  <div class="form-group">
-                                                      <label> Select price range:</label>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      
-                                                      <label for="priceMin">Min:</label>
-                                                      <select name="priceMin" id="priceMin"></select>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label for="priceMax">Max:</label>
-                                                      <select name="priceMax" id="priceMax"></select>
-                                                      </select>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label>Select Number of Bedrooms (range)</label>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label for="bedroomsMin">Min:</label>
-                                                      <select name="bedroomsMin" id="bedroomsMin">
-                                                      </select>
-                                                      <label for="bedroomsMin">Max:</label>
-                                                      <select name="bedroomsMax" id="bedroomsMax">
-                                                      </select>
-                                                  </div>
-                                                  
-                                              
-                                                  <!-- <label for="bathrooms"> No of Bathrooms:</label>
-                                                  <select name="bathrooms" id="bathrooms"></select>
-                                                  </select> -->
-                                                  <div class="form-group">
-                                                      <label for="fsa_filter"> Select FSA:</label>
-                                                      <select name="fsa_filter" id="fsa_filter"></select>
-                                                      </select>
-                                                  </div>
-                                                  
-                                                  <input type="button" id="submitFilter" value="Apply Filter" style="background-color: rgba(0, 102, 255, 0.74); color: cornsilk; ">
-                                                  
-                                                  
-                                                      
-                                              </form>
-                                                  
-                                              
-                                          </div>
-                                          
-                                      </div>
-                                  </div>
-                                  
-                              </div>
-                              <div class="sidebar-pane" id="rentalListing">
-                                  <h1 class="sidebar-header">Rental Listing Information<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                                  <div class="card mb-3" style="margin-right: 5px;">
-                                      <img class="card-img-top" id="rentalListingImg" src="../img/coming-soon-2461832_1280.jpeg" alt="rental" >
-                                      <div class="card-body">
-                                          <div id="rentalInfo"></div>
-                                      </div>
-                                      
-      
-                                  </div>  
-                              </div>
-                          </div>
-                      </div>
-                      <div id="map" style="margin: 0px 0px 5px 5px; height: 520px;"></div>
+            <div class="w3-display-container w3-content w3-wide page-content map w3-row-padding" style="max-width: 100%; margin-top: 190px; ">
+                <div id="availableRentals" class="w3-container w3-border" >
+                    <div class="border-0">
+                        <h2>Available Rentals</h2>
+                        <p>These are all the rentals available in the Greater Toronto Area</p>
+                        <!--Sidebar-->
+                        <div id="sidebar" class="sidebar collapsed" style="margin: 75px 0px 5px 45px; height: 500px; ">
+                            <!-- Nav tabs -->
+                            <div class="sidebar-tabs">
+                                <ul role="tablist">
+                                    <li><a href="#filter" role="tab" ><i class="fa fa-filter map-sidbar-tabs" ></i>Filter</a></li>
+                                    <li><a href="#rental" role="tab" ><i class="fa fa-building map-sidbar-tabs"  alt="Rental Trends"></i></a>Rental Trends</li>
+                                </ul>
+        
+                                <ul role="tablist">
+                                    <li><a href="https://github.com/bnarath/Toronto_Rental_Insight/tree/master" role="tab" target="_blank"><i class="fa fa-github map-sidbar-tabs"></i></a></li>
+                                </ul>
+                            </div>
+        
+                            <!-- Tab panes -->
+                            <div class="sidebar-content">
+                                <div class="sidebar-pane" id="rental">
+                                </div>
+        
+                                <div class="sidebar-pane" id="filter">
+                                    <h1 class="sidebar-header">Filter<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                                    <div class="container mt-5">
+                                        <div class="row">
+                                            <div class="col">
+        
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label> Select price range:</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        
+                                                        <label for="priceMin">Min:</label>
+                                                        <select name="priceMin" id="priceMin"></select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="priceMax">Max:</label>
+                                                        <select name="priceMax" id="priceMax"></select>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Select Number of Bedrooms (range)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="bedroomsMin">Min:</label>
+                                                        <select name="bedroomsMin" id="bedroomsMin">
+                                                        </select>
+                                                        <label for="bedroomsMin">Max:</label>
+                                                        <select name="bedroomsMax" id="bedroomsMax">
+                                                        </select>
+                                                    </div>
+                                                    
+                                                
+                                                    <!-- <label for="bathrooms"> No of Bathrooms:</label>
+                                                    <select name="bathrooms" id="bathrooms"></select>
+                                                    </select> -->
+                                                    <div class="form-group">
+                                                        <label for="fsa_filter"> Select FSA:</label>
+                                                        <select name="fsa_filter" id="fsa_filter"></select>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <input type="button" id="submitFilter" value="Apply Filter" style="background-color: rgba(0, 102, 255, 0.74); color: cornsilk; ">
+                                                    
+                                                    
+                                                        
+                                                </form>
+                                                    
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="sidebar-pane" id="rentalListing">
+                                    <h1 class="sidebar-header">Rental Listing Information<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                                    <div class="card mb-3" style="margin-right: 5px;">
+                                        <img class="card-img-top" id="rentalListingImg" src="../img/coming-soon-2461832_1280.jpeg" alt="rental" >
+                                        <div class="card-body">
+                                            <div id="rentalInfo"></div>
+                                        </div>
+                                        
+        
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div id="map"  style="margin: 0px 50px 25px 50px; height: 500px; width: 90%;"></div>
+                    </div>            
                 </div>
             
                 <div id="crimeTab" class="w3-container w3-border">
                     <h2>Crime Rate in Toronto</h2>
                     <p>This is a crime heat map of Toronto</p> 
-                    <div id="crime-heatmap"></div>
+                    <div id="crime-heatmap" class="map-margin" style="margin: 0px 50px 25px 50px; height: 500px; width: 90%;"></div>
                 </div>
                 
                 <div id="communityServicesTab" class="w3-container w3-border">
                     <h2>Community Services</h2>
                     <p>This map shows all the Community Services Available in Toronto</p>
-                    <div class="container-fluid">
-                      <div id="comm-map-container" class="card flex-row flex-wrap">
-                          <div class="card-header border-0">
-                              <div id="comm-map"></div>
+                    <div>
+                      <div id="comm-map-container" class="w3-row" style="height: 500px;">
+                          <div class="card-header border-0 w3-container w3-twothird">
+                              <div id="comm-map"  style="height: 500px; width: 100%;"></div>
                           </div>
-                          <div class="card-header border-0">
+                          <div class="card-header border-0 w3-container w3-third">
                               <!-- <h4 class="card-title">Title</h4>
                               <p class="card-text">Description</p>
                               <a href="#" class="btn btn-primary">BUTTON</a> -->
                               <div id="communityListing" class="scroll">
-                                  <div id="communityInfo">
+                                  <div id="communityInfo" style="height: 500px; width: 100%;">
                                       <p>Please click a community asset to know the details!</p>
                                   </div> 
                               </div>
@@ -271,20 +284,20 @@
                 <div id="incomeTab" class="w3-container w3-border">
                       <h2>Income Distribution</h2>
                       <p>This map shows the income Distribution in Toronto</p>
-                      <div id="choropleth-income"></div>
+                      <div id="choropleth-income" class="map-margin" style="margin: 0px 50px 25px 50px; height: 500px; width: 90%;"></div>
                 </div>
                 <div id="ageTab" class="w3-container w3-border">
                       <h2>Age Distribution</h2>
                       <p>This map shows the age Distribution in Toronto</p>
-                      <div id="choropleth-age"></div>
+                      <div id="choropleth-age" class="map-margin" style="margin: 0px 50px 25px 50px; height: 500px; width: 90%;"></div>
                 </div>
             </div>
             
             
             
-        </div>
+    
 
-        <!-- The div that holds our map -->
+        
         
         
         
@@ -341,21 +354,7 @@
     <script type="text/javascript" src="../js/logic.js"></script>
     <script type="text/javascript" src="../js/rentalListing.js"></script>
     <script type="text/javascript" src="../js/filter.js"></script>
-    <script>
-        function openCity(evt, cityName) {
-          var i, x, tablinks;
-          x = document.getElementsByClassName("city");
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablink");
-          for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-          }
-          document.getElementById(cityName).style.display = "block";
-          evt.currentTarget.className += " w3-red";
-        }
-        </script>
+    
 
 
 
