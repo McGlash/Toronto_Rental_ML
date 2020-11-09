@@ -41,4 +41,4 @@ Tools: JavaScript, Python, d3.
 Similarly, though average prices increase with increasing number of bathrooms (up to 2.5 bathrooms) the number of bedrooms alone is a weak predictor of rental price (r-square value of 0.36). 
 * Interestingly, how rentals are described in regards to type appears to impact price. Whereas apartment, suites, flats and condos could describe the same rental opportunities, condos are more expensive on average.  
 
-<img src="Images/dash.jpg" alt="dashboard" width="1000"/>
+<img src="Images/dash.JPG" alt="dashboard" width="1000"/>
