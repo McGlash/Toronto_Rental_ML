@@ -177,10 +177,10 @@ option{
 
 #rentalListingImg, #communitylListingImg {
   height: 75vh;
-  width:100vw;
-  padding: 0px;
-  margin-left: 1px;
-  margin-right: 1px;
+  width:100%;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-top: 0px;
   margin-bottom: 0px;
   
@@ -262,7 +262,7 @@ body {
 
 .leaflet-popup-content{
   font-size: 20px;
-  width: 100px;
+  width: 100%;
 }
 
 .leaflet-popup-content-wrapper{

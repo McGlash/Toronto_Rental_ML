@@ -1,173 +1,115 @@
 <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>development</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
 <body>
-
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="../../" class="w3-bar-item w3-button"><b>Team Awesome</b></a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="../../#about" class="w3-bar-item w3-button">About</a>
-      <a href="map.html" class="w3-bar-item w3-button w3-hide-small">Rentals</a>
-      <a href="pricePredict.html" class="w3-bar-item w3-button w3-hide-small">Fair Price</a>
-      <a href="insights.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
-      <a href="team.html" class="w3-bar-item w3-button w3-hide-small">Team</a>
+   <!-- Navbar (sit on top) -->
+   <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="../../" class="w3-bar-item w3-button"><b>Team Awesome</b></a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="../../#about" class="w3-bar-item w3-button">About</a>
+            <a href="map.html" class="w3-bar-item w3-button w3-hide-small">Rentals</a>
+            <a href="pricePredict.html" class="w3-bar-item w3-button w3-hide-small">Fair Price</a>
+            <a href="insights.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
+            <a href="team.html" class="w3-bar-item w3-button w3-hide-small">Team</a>
+        </div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+        
+        <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+            <a href="../../#about" class="w3-bar-item w3-button">About</a>
+            <a href="map.html" class="w3-bar-item w3-button">Rentals</a>
+            <a href="pricePredict.html" class="w3-bar-item w3-button">Fair Price</a>
+            <a href="insights.html" class="w3-bar-item w3-button">Trends</a>
+            <a href="team.html" class="w3-bar-item w3-button">Team</a>
+        </div>
     </div>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+    
+</div>
+
+  <div class="container-fluid" style="margin-top: 50px;">
+    <div class="row no-gutters">
+      <div class="col-lg-2 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-right: 10px; margin-bottom: 20px">Trends over Time</h5>
+        <h6 style = "color:rgb(172, 168, 168); margin: 10px">Select Region</h6>
+        <span style = "color: white; margin: 10px">
+          <select id="selDataset" style="float: Left; margin: 10px" onchange="optionChanged(this.value)"></select>
+        </span>
+       </div>
+     
+      <div class="col-lg-5 border-left">
+        <nav class="navbar">
+          <a class="navbar-brand" style="color: white">Cost to Rent in Toronto</a>
+        </nav>
+
+        <div id="RentalChart" style="width: 100%;"></div>
+
+      </div>
+
+      <div class="col-lg-5 border-left">
+        <nav class="navbar">
+          <a class="navbar-brand" style="color: white">Crime Incidents (2019)</a>
+        </nav>
+
+        <div id="CrimeChart" style="width: 100%;"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row no-gutters">
+      <div class="col-lg-2 border-bottom" style="background-color:rgb(75, 70, 77);">
+        <h2 style="color: rgb(207, 197, 197); margin-top: 20px; margin-left: 10px; margin-right: 10px; margin-bottom: 20px">Drivers of Cost</h5>
+       </div>
+       <div class="col-lg-10">
+        <div class="row no-gutters">
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">Square-Footage</a>
+            </nav>
+            <div id="priceSqftChart" style="width: 100%;"></div>
+          </div>
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">No. of Bedrooms</a>
+            </nav>
+            <div id="bedroomChart" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">Rental Type</a>
+            </nav>
+            <div id="typeChart" style="width: 100%;"></div>
+          </div>
+          <div class="col-lg-6 border-top border-left">
+            <nav class="navbar">
+              <a class="navbar-brand" style="color: white">No. of Bathrooms</a>
+            </nav>
+            <div id="bathroomChart" style="width: 100%;"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>      
+            
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/app.js"></script>
   
-    <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
-      <a href="../../#about" class="w3-bar-item w3-button">About</a>
-      <a href="map.html" class="w3-bar-item w3-button">Rentals</a>
-      <a href="pricePredict.html" class="w3-bar-item w3-button">Fair Price</a>
-      <a href="insights.html" class="w3-bar-item w3-button">Trends</a>
-      <a href="team.html" class="w3-bar-item w3-button">Team</a>
-    </div>
-  </div>
-</div>
-
-
-<!-- Page content -->
-<div class="w3-content w3-padding" style="max-width:1564px">
-  <!-- Insights Section -->
-  <div class="w3-container w3-padding-32" id="insights">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Insights</h3>
-  </div>
-
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-        <img src="https://www.w3schools.com/w3images/house5.jpg" alt="House" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal01').style.display='block'">
-        <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house5.jpg" style="width:100%">
-            <p>Analysis: </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-        <img src="https://www.w3schools.com/w3images/house2.jpg" alt="House" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal02').style.display='block'">
-        <div id="modal02" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house2.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-        <img src="https://www.w3schools.com/w3images/house3.jpg" alt="House" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal03').style.display='block'">
-        <div id="modal03" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house3.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="https://www.w3schools.com/w3images/house4.jpg" alt="House" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal04').style.display='block'">
-        <div id="modal04" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house4.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-        <img src="https://www.w3schools.com/w3images/house2.jpg" alt="House" style="width:99%;cursor:zoom-in"onclick="document.getElementById('modal05').style.display='block'">
-        <div id="modal05" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house2.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-        <img src="https://www.w3schools.com/w3images/house5.jpg" alt="House" style="width:99%;cursor:zoom-in"onclick="document.getElementById('modal06').style.display='block'">
-        <div id="modal06" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house5.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-        <img src="https://www.w3schools.com/w3images/house4.jpg" alt="House" style="width:99%;cursor:zoom-in"onclick="document.getElementById('modal07').style.display='block'">
-        <div id="modal07" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house4.jpg" style="width:100%">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="https://www.w3schools.com/w3images/house3.jpg" alt="House" style="width:99%;cursor:zoom-in"onclick="document.getElementById('modal08').style.display='block'">
-        <div id="modal08" class="w3-modal" onclick="this.style.display='none'">
-          <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-          <div class="w3-modal-content w3-animate-zoom">
-            <img src="https://www.w3schools.com/w3images/house3.jpg" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal09').style.display='block'">
-            <div id="modal09" class="w3-modal" onclick="this.style.display='none'">
-              <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-              <div class="w3-modal-content w3-animate-zoom">
-                <img src="https://www.w3schools.com/w3images/house5.jpg" style="width:100%;cursor:zoom-in"onclick="document.getElementById('modal10').style.display='block'">
-                <div id="modal10" class="w3-modal" onclick="this.style.display='none'">
-                  <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-                  <div class="w3-modal-content w3-animate-zoom">
-                    <img src="https://www.w3schools.com/w3images/house5.jpg" style="width:100%">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
- 
-  
-<!-- Image of location/map -->
-<div class="w3-container">
-  <img src="https://www.w3schools.com/w3images/map.jpg" class="w3-image" style="width:100%">
-</div>
-
-<!-- End page content -->
-</div>
-
-
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
-
 </body>
+
 </html>

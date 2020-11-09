@@ -19,19 +19,19 @@
 
 .section-heading {
   font-size: 3em;
-  font-family: "Lobster", cursive;
+  
   margin: 50px 100px 25px 100px;
   line-height: 200%;
 }
 .section-paragraph{
   font-size: 1.5em;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  
   margin: 0px 100px 100px 100px;
   line-height: 200%;
 }
 .section-card{
   font-size: 1.5em;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  
   margin: 100px 50px 100px 50px;
   line-height: 200%;
   
@@ -68,7 +68,7 @@ header {
       <a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="../static/html/map.html" class="w3-bar-item w3-button w3-hide-small">Rentals</a>
       <a href="../static/html/pricePredict.html" class="w3-bar-item w3-button w3-hide-small">Fair Price</a>
-      <a href="../static/html/insights2.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
+      <a href="../static/html/insights.html" class="w3-bar-item w3-button w3-hide-small">Trends</a>
       <a href="../static/html/team.html" class="w3-bar-item w3-button w3-hide-small">Team</a>
     </div>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
@@ -87,7 +87,7 @@ header {
   <!--<img class="w3-image" src="images/toronto.jpg" alt="Architecture" width="1500" height="800">-->
   <div class="w3-display-middle w3-margin-top w3-center">
     <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min w3-xxxlarge "><b>Toronto Rental Insights</b></span> <!--<span class="w3-hide-small w3-text-light-grey">Architects</span>--></h1>
-    <p class=" w3-text-white">Finding the perfect place in the perfect Neighborhood</p>
+    <p class="w3-padding w3-black w3-opacity-min w3-text-white">Finding the perfect place in the perfect Neighbourhood</p>
   </div>
   
 </header>
@@ -99,22 +99,22 @@ header {
 
   <!-- About Section -->
   <div class="w3-container w3-panel w3-text-deep-orange w3-sand" id="about" >
-    <h3 class="w3-lobster w3-center section-heading " >About</h3>
-    <p class="section-paragraph">This Application aims to provide users with a one stop solution for all of their rental information needs. There are over somenumber of new people moving into Toronto every year. Most of them move for work and are new immigrants. Our application not only provides the latest available rentals but also the safety of the neighborhood and its accessibility to services such as schools and hospitals. 
+    <h3 class=" w3-center section-heading " >About</h3>
+    <p class="section-paragraph">This Application aims to provide users with a one stop solution for all of their rental information needs. There are over 100,000 new people moving into Toronto every year. Most of them move for work and are new immigrants. Our application not only provides the latest available rentals but also the safety of the neighbourhood and its accessibility to services such as schools and hospitals. 
       This information can be critical for anyone who needs to make a quick decisions. We have also incorporated Machine Learning to Analyze the latest rental trends and give you the most up to date fair market rental price.  
 
     </p>
     
   </div>
   <div id="torontoImg"></div>
-  <div class="w3-container w3-pink" id="mission" >
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center section-heading">Mission</h3>
+  <div class="w3-container " id="mission" style="background-color: #ff000080;">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center section-heading w3-text-white">App Features</h3>
     <div class="w3-row-padding section-card">
       <div class="w3-col l4 w3-margin-bottom ">
         <div class="w3-card-4 w3-sand">
           <img src="../static/Images/rental2.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
           <div class="w3-container w3-center">
-            <p>Rental Information updated every day from Crageslist</p>
+            <p>Rental Information</p>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ header {
         <div class="w3-card-4 w3-sand">
           <img src="../static/Images/3659193.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
           <div class="w3-container w3-center">
-            <p>Rental Trends Analysis and up to date fair market rental price</p>
+            <p>Price Trends Analysis/ Prediction</p>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@ header {
         <div class="w3-card-4 w3-sand">
           <img src="../static/Images/community.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
           <div class="w3-container w3-center">
-            <p>Availability of Community Services in the area. Crime rate in the area.</p>
+            <p>Community Services/ Crime Rate Analysis</p>
           </div>
         </div>
       </div>
@@ -141,6 +141,15 @@ header {
     
    
     
+  </div>
+  <div class="w3-container w3-panel w3-light-blue" id="Architecture" >
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center section-heading">Architecture</h3>
+    <div class="w3-row-padding section-card">
+      
+      
+      
+
+    </div>
   </div>
   <div class="w3-container w3-panel w3-light-blue" id="Vision" >
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center section-heading">Vision</h3>
@@ -174,7 +183,38 @@ header {
 
     </div>
   </div>
-  
+  <div class="w3-container w3-panel w3-light-blue" id="futureWork" >
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center section-heading">Future Work</h3>
+    <div class="w3-row-padding section-card">
+      <div class="w3-col l4  w3-margin-bottom">
+        <div class="w3-card-4 w3-sand">
+          <img src="../static/Images/3659193.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
+          <div class="w3-container w3-center">
+            <p>Higher acuracy for prediction of fair market rental price</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l4 w3-margin-bottom ">
+        <div class="w3-card-4 w3-sand">
+          <img src="../static/Images/3659193.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
+          <div class="w3-container w3-center">
+            <p>Recommendation based on previously liked rentals</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col l4 w3-margin-bottom ">
+        <div class="w3-card-4 w3-sand">
+          <img src="../static/Images/3659193.jpg" alt="rental" style="height: 100%; width: 100%; padding: 15px;">
+          <div class="w3-container w3-center">
+            <p>Rental Recommendation based on user's description </p>
+          </div>
+        </div>
+      </div>
+      
+      
+
+    </div>
+  </div>
 </div>
  
 <!-- Image of location/map -->

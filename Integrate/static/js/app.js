@@ -276,7 +276,7 @@ var averagePrice = [];
 function rental(filter){
 
         //read json file into js; //http://127.0.0.1:5000/agg/rentalPriceAggregate
-    d3.json("static/data/rentalPriceAggregateVerify.json").then(data => { 
+    d3.json("../data/rentalPriceAggregateVerify.json").then(data => { 
 
     // create arrays
 
@@ -408,7 +408,7 @@ var furnAvgPriceOV = [];
 
 function drivers(){
   //http://127.0.0.1:5000/rentalTrend
-    d3.json("static/data/rentalTrend.json").then(data => {
+    d3.json("../data/rentalTrend.json").then(data => {
      
       data.forEach(item =>{
         if((item.price <10000) & (item.price >200)){
@@ -424,7 +424,7 @@ function drivers(){
     });
 
     //http://127.0.0.1:5000/agg/clusterPriceAggregate
-    d3.json("static/data/clusterAgg.json").then(data => {
+    d3.json("../data/clusterAgg.json").then(data => {
 
       Object.values(data.Measure).forEach(value => Measure.push(value));
       Object.values(data.cluster).forEach(value => cluster.push(value));
@@ -565,7 +565,7 @@ function crime(filter, year){
   var robbery = []; 
   var robberyDate = []; 
 
-  d3.json("static/data/crimeVerify.json").then(data => {
+  d3.json("../data/crimeVerify.json").then(data => {
         
   // // create arrays
   data.forEach(item=> {
