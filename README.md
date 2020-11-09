@@ -33,3 +33,12 @@ Tools: JavaScript, Python, d3.
 ### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
 * Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Neural Networks
+
+
+## Insights - Driver of Rental Prices
+* Square-footage has the highest importance among the features incorporated in the model predicting fair market price. Though there would appear to be a linear relationship between square-footage and price, square-footage on its own is a weak predictor (r-square value of 0.41). 
+* Though average prices increase with increasing number of bedrooms, the number of bedrooms alone is a weak predictor of rental price (r-square value of 0.29). 
+Similarly, though average prices increase with increasing number of bathrooms (up to 2.5 bathrooms) the number of bedrooms alone is a weak predictor of rental price (r-square value of 0.36). 
+* Interestingly, how rentals are described in regards to type appears to impact price. Whereas apartment, suites, flats and condos could describe the same rental opportunities, condos are more expensive on average.  
+
+<img src="Images/dash.jpg" alt="dashboard" width="1000"/>
