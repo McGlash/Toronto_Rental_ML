@@ -276,7 +276,8 @@ var averagePrice = [];
 function rental(filter){
 
         //read json file into js; //http://127.0.0.1:5000/agg/rentalPriceAggregate
-    d3.json(url+"rentalPriceAggregate").then(data => { 
+    // d3.json("../data/rentalPriceAggregateVerify.json").then(data => { 
+    d3.json(url+"agg/rentalPriceAggregate").then(data => { 
 
     // create arrays
 
@@ -333,83 +334,83 @@ function rental(filter){
   });
 };
 
-//global variables for drivers
-
-  //arrays
-var Measure = [];
-var cluster = [];
-var measureValue = [];
-var avgPrice = [];
-
-  //driver variables
-var sqft = [];
-var price = [];
-
-var bedroomsOV =[];
-var bedAvgPriceOV = [];
-
-// var bedroomsCL1 =[];
-// var bedAvgPriceCL1 = [];
-
-// var bedroomsCL2 =[];
-// var bedAvgPriceCL2 = [];
-
-// var bedroomsCL3 =[];
-// var bedAvgPriceCL3 = [];
-
-var bathroomsOV = [];
-var bathAvgPriceOV = [];
-
-// var bathroomsCL1 = [];
-// var bathAvgPriceCL1 = [];
-
-// var bathroomsCL2 = [];
-// var bathAvgPriceCL2 = [];
-
-// var bathroomsCL3 = [];
-// var bathAvgPriceCL3 = [];
-
-var petsOV = [];
-var petsAvgPriceOV = [];
-
-// var petsCL1 = [];
-// var petsAvgPriceCL1 = [];
-
-// var petsCL2 = [];
-// var petsAvgPriceCL2 = [];
-
-// var petsCL3 = [];
-// var petsAvgPriceCL3 = [];
-
-var typeOV = [];
-var typeAvgPriceOV = [];
-
-// var typeCL1 = [];
-// var typeAvgPriceCL1 = [];
-
-// var typeCL2 = [];
-// var typeAvgPriceCL2 = [];
-
-// var typeCL3 = [];
-// var typeAvgPriceCL3 = [];
-
-var furnOV = [];
-var furnAvgPriceOV = [];
-
-// var furnCL1 = [];
-// var furnAvgPriceCL1 = [];
-
-// var furnCL2 = [];
-// var furnAvgPriceCL2 = [];
-
-// var furnCL3 = [];
-// var furnAvgPriceCL3 = [];
-
 
 function drivers(){
+
+  //global variables for drivers
+
+  //arrays
+  var Measure = [];
+  var cluster = [];
+  var measureValue = [];
+  var avgPrice = [];
+
+    //driver variables
+  var sqft = [];
+  var price = [];
+
+  var bedroomsOV =[];
+  var bedAvgPriceOV = [];
+
+  // var bedroomsCL1 =[];
+  // var bedAvgPriceCL1 = [];
+
+  // var bedroomsCL2 =[];
+  // var bedAvgPriceCL2 = [];
+
+  // var bedroomsCL3 =[];
+  // var bedAvgPriceCL3 = [];
+
+  var bathroomsOV = [];
+  var bathAvgPriceOV = [];
+
+  // var bathroomsCL1 = [];
+  // var bathAvgPriceCL1 = [];
+
+  // var bathroomsCL2 = [];
+  // var bathAvgPriceCL2 = [];
+
+  // var bathroomsCL3 = [];
+  // var bathAvgPriceCL3 = [];
+
+  var petsOV = [];
+  var petsAvgPriceOV = [];
+
+  // var petsCL1 = [];
+  // var petsAvgPriceCL1 = [];
+
+  // var petsCL2 = [];
+  // var petsAvgPriceCL2 = [];
+
+  // var petsCL3 = [];
+  // var petsAvgPriceCL3 = [];
+
+  var typeOV = [];
+  var typeAvgPriceOV = [];
+
+  // var typeCL1 = [];
+  // var typeAvgPriceCL1 = [];
+
+  // var typeCL2 = [];
+  // var typeAvgPriceCL2 = [];
+
+  // var typeCL3 = [];
+  // var typeAvgPriceCL3 = [];
+
+  var furnOV = [];
+  var furnAvgPriceOV = [];
+
+  // var furnCL1 = [];
+  // var furnAvgPriceCL1 = [];
+
+  // var furnCL2 = [];
+  // var furnAvgPriceCL2 = [];
+
+  // var furnCL3 = [];
+  // var furnAvgPriceCL3 = [];
   //http://127.0.0.1:5000/rentalTrend
-    d3.json(url+"rentalTrend").then(data => {
-     
+    // d3.json("../data/rentalTrend.json").then(data => {
+     d3.json(url+"rentalTrend").then(data => {
       data.forEach(item =>{
         if((item.price <10000) & (item.price >200)){
           if(item.sqft <3000 & (item.sqft>200)){
@@ -424,12 +425,20 @@ function drivers(){
     });
 
     //http://127.0.0.1:5000/agg/clusterPriceAggregate
-    d3.json(url+"agg/clusterPriceAggregate").then(data => {
+    // d3.json("../data/clusterAgg.json").then(data => {
+      d3.json(url+"agg/clusterPriceAggregate").then(data => {
 
-      Object.values(data.Measure).forEach(value => Measure.push(value));
-      Object.values(data.cluster).forEach(value => cluster.push(value));
-      Object.values(data.measure_value).forEach(value => measureValue.push(value));
-      Object.values(data.price).forEach(value => avgPrice.push(value));
+      // Object.values(data.Measure).forEach(value => Measure.push(value));
+      // Object.values(data.cluster).forEach(value => cluster.push(value));
+      // Object.values(data.measure_value).forEach(value => measureValue.push(value));
+      // Object.values(data.price).forEach(value => avgPrice.push(value));
+
+      data.forEach(row => {
+        Measure.push(row.Measure);
+        cluster.push(row.cluster);
+        measureValue.push(row.measure_value);
+        avgPrice.push(row.price);
+      });
 
       for (var i = 0; i < Measure.length; i++){
 
@@ -565,6 +574,7 @@ function crime(filter, year){
   var robbery = []; 
   var robberyDate = []; 
 
+  // d3.json("../data/crimeVerify.json").then(data => {
   d3.json(url+"agg/crime").then(data => {
         
   // // create arrays
@@ -609,8 +619,8 @@ function crime(filter, year){
 //rental chart
 function priceTrendChart(x1, x2, x3, y1, y2, y3){
 
-  console.log(x1)
-  console.log(y1)
+  // console.log(x1)
+  // console.log(y1)
 
     //datasets
     var trace1 = {
