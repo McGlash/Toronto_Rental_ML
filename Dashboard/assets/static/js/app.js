@@ -13,14 +13,14 @@ var FSAList = ["Overall",'M1B','M1C','M1E','M1G','M1H','M1J','M1K','M1L','M1M','
 
 //all rental
 
-var FSA = [];
-var publishDate =[];
-var bedroomNumber = [];
-var averagePrice = [];
-
 //create function to initialize rental trending
 
 function rental(filter){
+
+  var FSA = [];
+  var publishDate =[];
+  var bedroomNumber = [];
+  var averagePrice = [];
 
         //read json file into js; //http://127.0.0.1:5000/agg/rentalPriceAggregate
     d3.json("static/data/rentalPriceAggregateVerify.json").then(data => { 
@@ -66,6 +66,7 @@ function rental(filter){
                 twobed_AveragePrice.push(Math.round(averagePrice[i]))
             }
             else if (bedroomNumber[i] == "3 or More"){
+              console.log("count")
                 threeplusbed_PublishDate.push(new Date(publishDate[i]))
                 threeplusbed_AveragePrice.push(Math.round(averagePrice[i]))
             }
@@ -73,6 +74,10 @@ function rental(filter){
         }
         else{}; 
     };
+
+    console.log(threeplusbed_PublishDate)
+
+    console.log(threeplusbed_AveragePrice)
 
     priceTrendChart(onebed_PublishDate, twobed_PublishDate, threeplusbed_PublishDate,
         onebed_AveragePrice, twobed_AveragePrice, threeplusbed_AveragePrice)
@@ -171,12 +176,19 @@ function drivers(){
     });
 
     //http://127.0.0.1:5000/agg/clusterPriceAggregate
-    d3.json("static/data/clusterAgg.json").then(data => {
+    d3.json("static/data/clusterPriceAggregate.json").then(data => {
 
-      Object.values(data.Measure).forEach(value => Measure.push(value));
-      Object.values(data.cluster).forEach(value => cluster.push(value));
-      Object.values(data.measure_value).forEach(value => measureValue.push(value));
-      Object.values(data.price).forEach(value => avgPrice.push(value));
+      // Object.values(data.Measure).forEach(value => Measure.push(value));
+      // Object.values(data.cluster).forEach(value => cluster.push(value));
+      // Object.values(data.measure_value).forEach(value => measureValue.push(value));
+      // Object.values(data.price).forEach(value => avgPrice.push(value));
+
+      data.forEach(row => {
+        Measure.push(row.Measure);
+        cluster.push(row.cluster);
+        measureValue.push(row.measure_value);
+        avgPrice.push(row.price);
+      });
 
       for (var i = 0; i < Measure.length; i++){
 
@@ -345,6 +357,7 @@ function crime(filter, year){
   };
   });
 
+  console.log(BreakandEntertDate)
   crimeTrendChart(autoTheft, assault, BreakandEnter, robbery);
 
 });
@@ -355,9 +368,6 @@ function crime(filter, year){
 
 //rental chart
 function priceTrendChart(x1, x2, x3, y1, y2, y3){
-
-  console.log(x1)
-  console.log(y1)
 
     //datasets
     var trace1 = {
@@ -431,7 +441,7 @@ function priceTrendChart(x1, x2, x3, y1, y2, y3){
         y: 1.2,}
         };
       
-    var config = {responsive: true}
+    var config = {responsive: true};
 
     var data = [trace1, trace2, trace3];
         

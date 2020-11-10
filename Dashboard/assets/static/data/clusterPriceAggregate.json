@@ -1,0 +1,920 @@
+[
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "0.0", 
+    "price": 1197.1183431953
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "1.0", 
+    "price": 1914.633956981
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "1.5", 
+    "price": 2296.0364741641
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "2.0", 
+    "price": 2843.9027465106
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "2.5", 
+    "price": 3619.6875
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "3.0", 
+    "price": 3480.4955357143
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "3.5", 
+    "price": 4904.375
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "4.0", 
+    "price": 4931.0967741935
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "5.0", 
+    "price": 6293.3636363636
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "6.0", 
+    "price": 4825.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": "8.5", 
+    "price": 6500.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "overall", 
+    "measure_value": null, 
+    "price": 1729.3103448276
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "0.0", 
+    "price": 1066.48
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "1.0", 
+    "price": 1885.6598557692
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "1.5", 
+    "price": 2442.5904761905
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "2.0", 
+    "price": 2813.2202111614
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "2.5", 
+    "price": 3029.4642857143
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "3.0", 
+    "price": 3648.075
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "3.5", 
+    "price": 5765.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "4.0", 
+    "price": 4208.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": "5.0", 
+    "price": 4613.5
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "0.0", 
+    "measure_value": null, 
+    "price": 1696.0303030303
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "0.0", 
+    "price": 1433.3333333333
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "1.0", 
+    "price": 2029.5352887259
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "1.5", 
+    "price": 2223.2909090909
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "2.0", 
+    "price": 2761.7480988593
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "2.5", 
+    "price": 5202.1428571429
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": "3.0", 
+    "price": 4450.9375
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "1.0", 
+    "measure_value": null, 
+    "price": 2015.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "0.0", 
+    "price": 1589.5526315789
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "1.0", 
+    "price": 1861.3331226296
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "1.5", 
+    "price": 2237.185840708
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "2.0", 
+    "price": 3056.7276341948
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "2.5", 
+    "price": 3508.1481481481
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "3.0", 
+    "price": 3195.1879194631
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "3.5", 
+    "price": 4388.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "4.0", 
+    "price": 4659.2380952381
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "5.0", 
+    "price": 6666.6666666667
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "6.0", 
+    "price": 6000.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": "8.5", 
+    "price": 6500.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "2.0", 
+    "measure_value": null, 
+    "price": 1687.2708333333
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "1.0", 
+    "price": 1264.5333333333
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "1.5", 
+    "price": 1560.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "2.0", 
+    "price": 2750.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "2.5", 
+    "price": 7850.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "3.0", 
+    "price": 5065.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "4.0", 
+    "price": 6796.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "6.0", 
+    "price": 3650.0
+  }, 
+  {
+    "Measure": "No_Bathrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": null, 
+    "price": 900.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "0.0", 
+    "price": 1572.7894736842
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "1.0", 
+    "price": 1824.1256941873
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "2.0", 
+    "price": 2457.5770114943
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "3.0", 
+    "price": 3026.1531346351
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "4.0", 
+    "price": 3582.7258064516
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "5.0", 
+    "price": 3736.4307692308
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "6.0", 
+    "price": 3899.1666666667
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "7.0", 
+    "price": 3750.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": "8.0", 
+    "price": 6500.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "overall", 
+    "measure_value": null, 
+    "price": 1912.3496240602
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "0.0", 
+    "price": 1518.3350515464
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "1.0", 
+    "price": 1755.7944983819
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "2.0", 
+    "price": 2424.2181818182
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "3.0", 
+    "price": 2952.0131578947
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "4.0", 
+    "price": 3531.0491803279
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "5.0", 
+    "price": 4096.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": "6.0", 
+    "price": 4300.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "0.0", 
+    "measure_value": null, 
+    "price": 1763.1935483871
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": "0.0", 
+    "price": 1648.6024096386
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": "1.0", 
+    "price": 2026.6458112407
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": "2.0", 
+    "price": 2735.1965517241
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": "3.0", 
+    "price": 3831.9891304348
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": "4.0", 
+    "price": 3995.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "1.0", 
+    "measure_value": null, 
+    "price": 2061.5277777778
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "0.0", 
+    "price": 1555.5085714286
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "1.0", 
+    "price": 1672.8542926239
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "2.0", 
+    "price": 2234.4075531078
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "3.0", 
+    "price": 2932.3989547038
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "4.0", 
+    "price": 3426.8050847458
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "5.0", 
+    "price": 3662.4150943396
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "6.0", 
+    "price": 2025.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "7.0", 
+    "price": 3750.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": "8.0", 
+    "price": 6500.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "2.0", 
+    "measure_value": null, 
+    "price": 1908.5979899497
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "0.0", 
+    "price": 1119.8
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "1.0", 
+    "price": 1191.125
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "2.0", 
+    "price": 1575.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "3.0", 
+    "price": 3765.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "4.0", 
+    "price": 7105.8333333333
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "5.0", 
+    "price": 3900.0
+  }, 
+  {
+    "Measure": "No_Bedrooms", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "6.0", 
+    "price": 5015.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "apartment", 
+    "price": 1833.3407149636
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "condo", 
+    "price": 2216.3351184346
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "cottage", 
+    "price": 2149.8
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "duplex", 
+    "price": 2561.0841584158
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "flat", 
+    "price": 2091.0490196078
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "house", 
+    "price": 2364.6332945285
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "land", 
+    "price": 2460.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "loft", 
+    "price": 2636.0271186441
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "suite", 
+    "price": 2057.6826446281
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "overall", 
+    "measure_value": "townhouse", 
+    "price": 2876.5598290598
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "apartment", 
+    "price": 1852.1339001063
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "condo", 
+    "price": 2117.6236351959
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "cottage", 
+    "price": 2250.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "duplex", 
+    "price": 2677.9090909091
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "flat", 
+    "price": 2136.1142857143
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "house", 
+    "price": 2254.8780991736
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "loft", 
+    "price": 2253.6725663717
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "suite", 
+    "price": 1907.2844827586
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "0.0", 
+    "measure_value": "townhouse", 
+    "price": 2990.7594936709
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "condo", 
+    "price": 2263.0806794055
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "duplex", 
+    "price": 2725.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "flat", 
+    "price": 2170.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "house", 
+    "price": 3231.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "loft", 
+    "price": 2640.3684210526
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "suite", 
+    "price": 2050.3636363636
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "1.0", 
+    "measure_value": "townhouse", 
+    "price": 4539.08
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "apartment", 
+    "price": 1826.5129134572
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "cottage", 
+    "price": 1749.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "duplex", 
+    "price": 2514.6111111111
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "flat", 
+    "price": 2055.55
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "house", 
+    "price": 2369.3993371997
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "land", 
+    "price": 2460.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "loft", 
+    "price": 2979.696
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "suite", 
+    "price": 2161.1318051576
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "2.0", 
+    "measure_value": "townhouse", 
+    "price": 2478.4341085271
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "apartment", 
+    "price": 1632.1538461538
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "condo", 
+    "price": 1790.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "duplex", 
+    "price": 2500.0
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "house", 
+    "price": 5075.3846153846
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "suite", 
+    "price": 1532.5
+  }, 
+  {
+    "Measure": "rental_type", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "townhouse", 
+    "price": 3650.0
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "overall", 
+    "measure_value": "NO", 
+    "price": 2183.4182825485
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "overall", 
+    "measure_value": "NOT_MENTIONED", 
+    "price": 2136.4821886212
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "overall", 
+    "measure_value": "YES", 
+    "price": 2191.0362287211
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "0.0", 
+    "measure_value": "NO", 
+    "price": 2065.7183098592
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "0.0", 
+    "measure_value": "NOT_MENTIONED", 
+    "price": 2112.5838247683
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "0.0", 
+    "measure_value": "YES", 
+    "price": 2006.7821011673
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "1.0", 
+    "measure_value": "NO", 
+    "price": 2318.6346153846
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "1.0", 
+    "measure_value": "NOT_MENTIONED", 
+    "price": 2205.2280783582
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "1.0", 
+    "measure_value": "YES", 
+    "price": 2481.2222222222
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "2.0", 
+    "measure_value": "NO", 
+    "price": 2133.4253246753
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "2.0", 
+    "measure_value": "NOT_MENTIONED", 
+    "price": 2107.7190942472
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "2.0", 
+    "measure_value": "YES", 
+    "price": 1981.3276661515
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "NO", 
+    "price": 2416.25
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "NOT_MENTIONED", 
+    "price": 2322.1111111111
+  }, 
+  {
+    "Measure": "furnished", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "YES", 
+    "price": 5193.3333333333
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "overall", 
+    "measure_value": "False", 
+    "price": 2180.4900299752
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "overall", 
+    "measure_value": "True", 
+    "price": 2090.3032810271
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "0.0", 
+    "measure_value": "True", 
+    "price": 2084.5237142857
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "1.0", 
+    "measure_value": "False", 
+    "price": 2288.6498247664
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "2.0", 
+    "measure_value": "False", 
+    "price": 2090.22969453
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "False", 
+    "price": 2597.0384615385
+  }, 
+  {
+    "Measure": "pets", 
+    "cluster": "Not Feasible to predict", 
+    "measure_value": "True", 
+    "price": 6136.0
+  }
+]
