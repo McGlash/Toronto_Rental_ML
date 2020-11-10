@@ -113,7 +113,8 @@ function addRentalLayer(data){
       postal_code: feature.postal_code, 
       post_published_date: feature.post_published_date, 
       description: feature.description,
-      source: feature.source       
+      source: feature.source,
+      pred: feature.pred       
     });
 
     rentalMarkers.push(L.marker([feature.lat, feature.long], {
