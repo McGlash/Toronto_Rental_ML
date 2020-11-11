@@ -1,5 +1,6 @@
 # Toronto_Rental_ML
-## Project Intro/Objective
+## Checkout the Application 
+## Project Intro/Objective [Toronto_Rentals](https://etlinsightapi3.herokuapp.com/static/html/team.html)
 
 This project is a continuation of the [Toronto_Rental_Insight project](https://github.com/bnarath/Toronto_Rental_Insight), which involved scrapping Toronto rental posting data on a daily basis and creating an interactive dashboard to make it available to users to explore. 
 By building on the Toronto_Rental_Insight project, the current project will achieve the following objectives:
@@ -64,14 +65,6 @@ Tools: JavaScript, Python, d3.
 * Feature Ranking(Explainability): XGB gives feature importance as follows.
   <img src="Images/pic3.png" alt="Algorithm Comparison" width="1000"/>
 
-### Problem 2: Clustering rentals to discover interesting patterns 
-* Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
-* Algorithm: K-means Clustering
-* Methodology
-### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
-* Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
-* Algorithm: Neural Networks
-
 ## Application Features
 * Available Rentals - This map shows all the latest rental listings available on Craigslist.
 <img src="Images/availableRental1.png" alt="Available Rentals" width="1000"/>
@@ -101,3 +94,11 @@ Similarly, though average prices increase with increasing number of bathrooms (u
 * Interestingly, how rentals are described in regards to type appears to impact price. Whereas apartment, suites, flats and condos could describe the same rental opportunities, condos are more expensive on average.  
 
 <img src="Images/dash.JPG" alt="dashboard" width="1000"/>
+## Future Work
+
+### Problem 1: Predicting fair rental price based on rental features
+* Create new features
+* Improve accuracy
+### Problem 2: Clustering rentals to discover interesting patterns and create a recommendation system
+### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
+* Key word searching
