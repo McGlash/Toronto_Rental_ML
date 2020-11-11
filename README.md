@@ -37,7 +37,7 @@ Tools: JavaScript, Python, d3.
 
 ## Data Exploration
 * Available Rentals
-<img src="Images/AvailableRental1.png" alt="Available Rentals" width="1000"/>
+<img src="Images/availableRental1.png" alt="Available Rentals" width="1000"/>
 * Available Rentals Filter
 <img src="Images/AvailableRental2.png" alt="Filter" width="1000"/>
 * Available Rental Information
