@@ -35,7 +35,12 @@ Tools: JavaScript, Python, d3.
 * Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Neural Networks
 
-
+## Data Exploration 
+* Available Rentals
+<img src="Integrate/static/Images/arc.png" alt="dashboard" width="1000"/>
+* Available Rentals Filtering
+<img src="Integrate/static/Images/arc.png" alt="dashboard" width="1000"/>
+* 
 ## Insights - Driver of Rental Prices
 * Square-footage has the highest importance among the features incorporated in the model predicting fair market price. Though there would appear to be a linear relationship between square-footage and price, square-footage on its own is a weak predictor (r-square value of 0.41). 
 * Though average prices increase with increasing number of bedrooms, the number of bedrooms alone is a weak predictor of rental price (r-square value of 0.29). 
