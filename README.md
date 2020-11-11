@@ -46,6 +46,7 @@ Tools: JavaScript, Python, d3.
     - Different number of features are tried and validated based on 5-Fold validation
     - Derived 35 as the optimal number of features
     <img src="Images/slide3.png" alt="RFE" width="1000"/>
+    
     ```diff
     Selected Features
     ['sqft', 'bedrooms', 'bathrooms', 'image_False', 'FSA_M1B', 'FSA_M1M',
@@ -56,8 +57,8 @@ Tools: JavaScript, Python, d3.
        'rental_type_condo', 'rental_type_house', 'rental_type_loft',
        'rental_type_townhouse', 'furnished_NOT', 'furnished_YES',
        'pet_friendly_False']
-
     ```
+    
 * Algorithms: Various algorithms are trained with the selected features. Each of the algorithms are fine tuned using gridsearch CV to find the optimal parameters.
   <img src="Images/slide6.png" alt="Algorithm Comparison" width="1000"/>
 
