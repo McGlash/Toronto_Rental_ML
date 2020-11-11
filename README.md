@@ -39,9 +39,9 @@ Tools: JavaScript, Python, d3.
 * Available Rentals
 <img src="Images/availableRental1.png" alt="Available Rentals" width="1000"/>
 * Available Rentals Filter
-<img src="Images/AvailableRental2.png" alt="Filter" width="1000"/>
+<img src="Images/AvailableRental3.png" alt="Filter" width="1000"/>
 * Available Rental Information
-<img src="Images/AvailableRental3.png" alt="Available Rental Information" width="1000"/>
+<img src="Images/AvailableRental2.png" alt="Available Rental Information" width="1000"/>
 
 * Crime Rate
 <img src="Images/crimeMap.png" alt="Crime Rate" width="1000"/>
