@@ -36,14 +36,14 @@ Tools: JavaScript, Python, d3.
 * Algorithm: Neural Networks
 
 ## Data Exploration
-* Available Rentals - This map shows all the latest rental listings available on Crageslist.
+* Available Rentals - This map shows all the latest rental listings available on Craigslist.
 <img src="Images/availableRental1.png" alt="Available Rentals" width="1000"/>
-* Available Rentals Filter - Enables users to filter listings by number of bedrooms, bathrooms and price range when the filter icon is cliked.
+* Available Rentals Filter - Enables users to filter listings by number of bedrooms, bathrooms and price range when the filter icon is clicked.
 <img src="Images/AvailableRental3.png" alt="Filter" width="1000"/>
 * Available Rental Information - Enables users to view rental details in the sidebar when a rental is clicked in the map.
 <img src="Images/AvailableRental2.png" alt="Available Rental Information" width="1000"/>
 
-* Crime Rate - Allows users to view the crime rate near the loaction of the rental listing selected in the previous map. 
+* Crime Rate - Allows users to view the crime rate near the location of the rental listing selected in the previous map. 
 <img src="Images/crimeMap.png" alt="Crime Rate" width="1000"/>
 
 * Community Services - Allows users to view the Community Services available near the loaction of the rental listing selected in the previous map.
@@ -55,6 +55,7 @@ Tools: JavaScript, Python, d3.
 
 * Age Distribution - Allows users to view the average age in each FSA and near the rental listing selected.
 <img src="Images/ageMap.png" alt="Age map" width="1000"/>
+
 
 ## Insights - Driver of Rental Prices
 * Square-footage has the highest importance among the features incorporated in the model predicting fair market price. Though there would appear to be a linear relationship between square-footage and price, square-footage on its own is a weak predictor (r-square value of 0.41). 
