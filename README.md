@@ -35,6 +35,26 @@ Tools: JavaScript, Python, d3.
 * Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
 * Algorithm: Neural Networks
 
+## Data Exploration
+* Available Rentals
+<img src="Images/AvailableRental1" alt="Available Rentals" width="1000"/>
+* Available Rentals Filter
+<img src="Images/AvailableRental2" alt="Filter" width="1000"/>
+* Available Rental Information
+<img src="Images/AvailableRental3" alt="Available Rental Information" width="1000"/>
+
+* Crime Rate
+<img src="Images/crimeMap" alt="Crime Rate" width="1000"/>
+
+* Community Services
+<img src="Images/community1" alt="Community" width="1000"/>
+<img src="Images/community2" alt="Community " width="1000"/>
+
+* Income Distribution
+<img src="Images/incomeMap" alt="Income Map" width="1000"/>
+
+* Age Distribution
+<img src="Images/ageMap" alt="Age map" width="1000"/>
 
 ## Insights - Driver of Rental Prices
 * Square-footage has the highest importance among the features incorporated in the model predicting fair market price. Though there would appear to be a linear relationship between square-footage and price, square-footage on its own is a weak predictor (r-square value of 0.41). 
