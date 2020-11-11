@@ -1,5 +1,5 @@
 # Toronto_Rental_ML
-## Checkout the Application [Toronto_Rentals](https://etlinsightapi3.herokuapp.com/static/html/team.html)
+## Checkout the Application [Toronto Rentals](https://etlinsightapi3.herokuapp.com/static/html/team.html)
 ## Project Intro/Objective 
 
 This project is a continuation of the [Toronto_Rental_Insight project](https://github.com/bnarath/Toronto_Rental_Insight), which involved scrapping Toronto rental posting data on a daily basis and creating an interactive dashboard to make it available to users to explore. 
