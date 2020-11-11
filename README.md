@@ -42,7 +42,7 @@ Tools: JavaScript, Python, d3.
     - XGB is used as the model for RFE
     - Different number of features are tried and validated based on 5-Fold validation
     - Derived 35 as the optimal number of features
-    <img src="Images/slide3.png" alt="RFE" width="1000"/>
+    <img src="Images/pic1.png" alt="RFE" width="1000"/>
     ```diff
     Selected Features
     ['sqft', 'bedrooms', 'bathrooms', 'image_False', 'FSA_M1B', 'FSA_M1M',
@@ -56,12 +56,12 @@ Tools: JavaScript, Python, d3.
 
     ```
 * Algorithms: Various algorithms are trained with the selected features. Each of the algorithms are fine tuned using gridsearch CV to find the optimal parameters.
-  <img src="Images/slide6.png" alt="Algorithm Comparison" width="1000"/>
+  <img src="Images/pic2.png" alt="Algorithm Comparison" width="1000"/>
 
 * Model Selection: XGBoost model is choosen as it is providing higher R-square. This model is integrated to the scheduler and made available in the front end.
 
 * Feature Ranking(Explainability): XGB gives feature importance as follows.
-<img src="Images/slide8.png" alt="Algorithm Comparison" width="1000"/>
+<img src="Images/pic3.png" alt="Algorithm Comparison" width="1000"/>
 
 ### Problem 2: Clustering rentals to discover interesting patterns 
 * Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
