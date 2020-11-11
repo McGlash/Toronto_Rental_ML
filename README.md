@@ -94,6 +94,7 @@ Similarly, though average prices increase with increasing number of bathrooms (u
 * Interestingly, how rentals are described in regards to type appears to impact price. Whereas apartment, suites, flats and condos could describe the same rental opportunities, condos are more expensive on average.  
 
 <img src="Images/dash.JPG" alt="dashboard" width="1000"/>
+
 ## Future Work
 
 ### Problem 1: Predicting fair rental price based on rental features
