@@ -36,24 +36,24 @@ Tools: JavaScript, Python, d3.
 * Algorithm: Neural Networks
 
 ## Data Exploration
-* Available Rentals
+* Available Rentals - This map shows all the latest rental listings available on Crageslist.
 <img src="Images/availableRental1.png" alt="Available Rentals" width="1000"/>
-* Available Rentals Filter
+* Available Rentals Filter - Enables users to filter listings by number of bedrooms, bathrooms and price range when the filter icon is cliked.
 <img src="Images/AvailableRental3.png" alt="Filter" width="1000"/>
-* Available Rental Information
+* Available Rental Information - Enables users to view rental details in the sidebar when a rental is clicked in the map.
 <img src="Images/AvailableRental2.png" alt="Available Rental Information" width="1000"/>
 
-* Crime Rate
+* Crime Rate - Allows users to view the crime rate near the loaction of the rental listing selected in the previous map. 
 <img src="Images/crimeMap.png" alt="Crime Rate" width="1000"/>
 
-* Community Services
+* Community Services - Allows users to view the Community Services available near the loaction of the rental listing selected in the previous map.
 <img src="Images/community1.png" alt="Community" width="1000"/>
 <img src="Images/community2.png" alt="Community " width="1000"/>
 
-* Income Distribution
+* Income Distribution - Allows users to view the average income rate in each FSA and near the rental listing selected.
 <img src="Images/incomeMap.png" alt="Income Map" width="1000"/>
 
-* Age Distribution
+* Age Distribution - Allows users to view the average age in each FSA and near the rental listing selected.
 <img src="Images/ageMap.png" alt="Age map" width="1000"/>
 
 ## Insights - Driver of Rental Prices
