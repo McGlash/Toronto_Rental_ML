@@ -1,4 +1,36 @@
 
+/* Sticky Footer rules (https://getbootstrap.com/examples/sticky-footer/) */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Padding bottom by footer height */
+  padding-bottom: 25px;
+}
+
+.navbar{
+  width:100%;
+  background-color:rgb(75, 70, 77);
+  padding:5px
+}
+
+.navbar-brand{
+  font-family: Arial;
+  font-size: 20px;
+  color: white;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 .legend {
   line-height: 30px;
   color: #555;
@@ -102,8 +134,7 @@ option{
 
 #communityListing
 {
-  height: 1000px;
-  width: 19vw;
+  
   border: double black 5px;
   margin-left: 0px;
   margin-right: 0px;
@@ -146,10 +177,10 @@ option{
 
 #rentalListingImg, #communitylListingImg {
   height: 75vh;
-  width:100vw;
-  padding: 0px;
-  margin-left: 1px;
-  margin-right: 1px;
+  width:100%;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-top: 0px;
   margin-bottom: 0px;
   
@@ -231,7 +262,7 @@ body {
 
 .leaflet-popup-content{
   font-size: 20px;
-  width: 100px;
+  width: 100%;
 }
 
 .leaflet-popup-content-wrapper{
