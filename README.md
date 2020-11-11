@@ -37,24 +37,24 @@ Tools: JavaScript, Python, d3.
 
 ## Data Exploration
 * Available Rentals
-<img src="Images/AvailableRental1" alt="Available Rentals" width="1000"/>
+<img src="Images/AvailableRental1.png" alt="Available Rentals" width="1000"/>
 * Available Rentals Filter
-<img src="Images/AvailableRental2" alt="Filter" width="1000"/>
+<img src="Images/AvailableRental2.png" alt="Filter" width="1000"/>
 * Available Rental Information
-<img src="Images/AvailableRental3" alt="Available Rental Information" width="1000"/>
+<img src="Images/AvailableRental3.png" alt="Available Rental Information" width="1000"/>
 
 * Crime Rate
-<img src="Images/crimeMap" alt="Crime Rate" width="1000"/>
+<img src="Images/crimeMap.png" alt="Crime Rate" width="1000"/>
 
 * Community Services
-<img src="Images/community1" alt="Community" width="1000"/>
-<img src="Images/community2" alt="Community " width="1000"/>
+<img src="Images/community1.png" alt="Community" width="1000"/>
+<img src="Images/community2.png" alt="Community " width="1000"/>
 
 * Income Distribution
-<img src="Images/incomeMap" alt="Income Map" width="1000"/>
+<img src="Images/incomeMap.png" alt="Income Map" width="1000"/>
 
 * Age Distribution
-<img src="Images/ageMap" alt="Age map" width="1000"/>
+<img src="Images/ageMap.png" alt="Age map" width="1000"/>
 
 ## Insights - Driver of Rental Prices
 * Square-footage has the highest importance among the features incorporated in the model predicting fair market price. Though there would appear to be a linear relationship between square-footage and price, square-footage on its own is a weak predictor (r-square value of 0.41). 
