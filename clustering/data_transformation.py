@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import KNNImputer
 from datetime import datetime
+from sklearn.preprocessing import OneHotEncoder
+import io
 url_rentalTrend = "http://127.0.0.1:5000/rentalTrend"
 url_communityAssets = "http://127.0.0.1:5000/communityAssets"
 url_fsaIncome = "http://127.0.0.1:5000/fsaIncomeAge"
@@ -26,7 +28,7 @@ def transform():
     #Data Cleaning and Transformation
 
     #Rental Data
-    df_rental.drop(["postal_code", "source", "price"], axis=1, inplace=True) #remove unwanted columns
+    df_rental.drop(["price"], axis=1, inplace=True) #remove unwanted columns
 
     #Replace all white spaces or nothing at all to NaN
     df_rental.replace(r'^\s*$', np.nan, regex=True, inplace=True)
@@ -69,7 +71,8 @@ def transform():
             col.append(sum)
         rows.append(col)
         col=[]
-    df_community_clean = pd.DataFrame(rows, columns=service_catagory) #check
+    df_community_clean = pd.DataFrame(rows, columns=['fsa', 'Community Services',
+ 'Health Services','Financial Services','nan','Law & Government','Transportation','Food & Housing','Education & Employment'] ) #check
     df_community_clean.drop(["nan"], axis=1, inplace=True)
 
     #Crime Data
@@ -100,7 +103,7 @@ def transform():
             col.append(sum)
         rows.append(col)
         col=[]
-    df_crime_clean = pd.DataFrame(rows, columns=MCI)
+    df_crime_clean = pd.DataFrame(rows, columns=['fsa', 'Assault', 'Auto Theft', 'Break and Enter', 'Robbery', 'Theft Over']) #check
 
     #Combine data frames
     df_income.rename(columns={"FSA": "fsa"}, inplace="True") #rename column to make it same as other dfs
@@ -114,7 +117,6 @@ def transform():
     df_combined.dropna(subset=['fsa', 'Community Services'], inplace=True)
 
     #Type casting
-    df_combined['price'] = df_combined['price'].astype('int')
     df_combined['Community Services'] = df_combined['Community Services'].astype('int')
     df_combined['Health Services'] = df_combined['Health Services'].astype('int')
     df_combined['Law & Government'] = df_combined['Law & Government'].astype('int')
@@ -144,14 +146,14 @@ def transform():
     df_combined.reset_index(drop=True, inplace=True)
 
     #Remove sqft > 3000 and less than 200
-    #Remove price > 10000 and less than 100
+    
 
-    df_combined = df_combined[(df_combined['price']<=10000) & (df_combined['price']>=100)]
+    
     df_combined.drop(df_combined[(df_combined['sqft']<200) | (df_combined['sqft']>3000)].index, axis=0, inplace=True)
 
-    X= df_combined[num_columns + cat_columns+ ['price']]
+    
 
-    from sklearn.preprocessing import OneHotEncoder
+    X= df_combined[num_columns + cat_columns]
     ##OHE
     enc = OneHotEncoder()
     ##OHE Fit
@@ -176,7 +178,7 @@ def transform():
     imputer = KNNImputer(n_neighbors=3)
     imputer.fit(X[['sqft', 'bedrooms','bathrooms']])
     X.loc[:,['sqft', 'bedrooms','bathrooms']] = imputer.transform(X[['sqft', 'bedrooms','bathrooms']])
-    X.to_csv('out.csv', index=False)
+    X.to_csv('out2.csv', index=False)
 transform()
 
 
