@@ -1,5 +1,6 @@
 # Toronto_Rental_ML
-## Project Intro/Objective
+## Checkout the Application [Toronto Rentals](https://etlinsightapi3.herokuapp.com/static/html/team.html)
+## Project Intro/Objective 
 
 This project is a continuation of the [Toronto_Rental_Insight project](https://github.com/bnarath/Toronto_Rental_Insight), which involved scrapping Toronto rental posting data on a daily basis and creating an interactive dashboard to make it available to users to explore. 
 By building on the Toronto_Rental_Insight project, the current project will achieve the following objectives:
@@ -42,7 +43,9 @@ Tools: JavaScript, Python, d3.
     - XGB is used as the model for RFE
     - Different number of features are tried and validated based on 5-Fold validation
     - Derived 35 as the optimal number of features
-    <img src="Images/slide3.png" alt="RFE" width="1000"/>
+    
+    <img src="Images/pic1.png" alt="RFE" width="1000"/>
+    
     ```diff
     Selected Features
     ['sqft', 'bedrooms', 'bathrooms', 'image_False', 'FSA_M1B', 'FSA_M1M',
@@ -53,23 +56,14 @@ Tools: JavaScript, Python, d3.
        'rental_type_condo', 'rental_type_house', 'rental_type_loft',
        'rental_type_townhouse', 'furnished_NOT', 'furnished_YES',
        'pet_friendly_False']
-
     ```
 * Algorithms: Various algorithms are trained with the selected features. Each of the algorithms are fine tuned using gridsearch CV to find the optimal parameters.
-  <img src="Images/slide6.png" alt="Algorithm Comparison" width="1000"/>
+  <img src="Images/pic2.png" alt="Algorithm Comparison" width="1000"/>
 
 * Model Selection: XGBoost model is choosen as it is providing higher R-square. This model is integrated to the scheduler and made available in the front end.
 
 * Feature Ranking(Explainability): XGB gives feature importance as follows.
-<img src="Images/slide8.png" alt="Algorithm Comparison" width="1000"/>
-
-### Problem 2: Clustering rentals to discover interesting patterns 
-* Goal: To be able to cluster rentals based on all the features available and analyze the data to discover correlation between different parameters such as weather or not certain types of crime are related to a lack of availabilty of community services. 
-* Algorithm: K-means Clustering
-* Methodology
-### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
-* Goal: To be able to take a natural input description from the user and find a rental with similar features and rental description. 
-* Algorithm: Neural Networks
+  <img src="Images/pic3.png" alt="Algorithm Comparison" width="1000"/>
 
 ## Application Features
 * Available Rentals - This map shows all the latest rental listings available on Craigslist.
@@ -100,3 +94,12 @@ Similarly, though average prices increase with increasing number of bathrooms (u
 * Interestingly, how rentals are described in regards to type appears to impact price. Whereas apartment, suites, flats and condos could describe the same rental opportunities, condos are more expensive on average.  
 
 <img src="Images/dash.JPG" alt="dashboard" width="1000"/>
+
+## Future Work
+
+### Problem 1: Predicting fair rental price based on rental features
+* Create new features
+* Improve accuracy
+### Problem 2: Clustering rentals to discover interesting patterns and create a recommendation system
+### Problem 3: Using NLP to recommend rentals based on user's description of their dream living space  
+* Key word searching
