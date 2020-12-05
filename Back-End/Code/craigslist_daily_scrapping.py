@@ -53,6 +53,10 @@ def differencer(DF):
     #Truncate and update the CurrentRental collection
     db.CurrentRental.delete_many({})
     db.CurrentRental.insert_many(retrieved_postings)
+    #########Updating the RecommendHistoric DB
+    retrieved_from_RecommendHistoric = list(db.RecommendHistoric.find({'id': {'$in': list(all_postings_ids)}}))
+    db.RecommendCurrent.delete_many({})
+    db.RecommendCurrent.insert_many(retrieved_from_RecommendHistoric)
     client.close()
     print("Finished differencer")
     return list(map(lambda x: x[2:], to_be_scraped_ids))
@@ -327,10 +331,7 @@ def feasibilityCheck(row):
             return False
     return True
 
-def preprocess(DF):
-    #preprocess for the prediction
-    feasibility = DF.apply(lambda x: feasibilityCheck(x), axis=1)
-    DF = DF[feasibility]
+def cleaning(DF):
     #Replace all white spaces or nothing at all to NaN
     DF.replace(r'^\s*$', np.nan, regex=True, inplace=True)
     #Replace None with NaN
@@ -346,6 +347,13 @@ def preprocess(DF):
     DF['posted_week_of_month'] = DF['post_published_date'].map(lambda x: x.day//7 +1)
     ##Convert image url to image or not? (New feature)
     DF['image'] = DF['image'].notna()
+    return DF
+
+def preprocess(DF):
+    #preprocess for the prediction
+    feasibility = DF.apply(lambda x: feasibilityCheck(x), axis=1)
+    DF = DF[feasibility]
+    DF = cleaning(DF)
     #Basic transformation
     DF.reset_index(drop=True, inplace=True)
     #OHE
@@ -390,6 +398,93 @@ def predictPrice(DF):
     DF['pred'] = DF['id'].map(lambda x: prediction_mapping[x]['pred'] if x in prediction_mapping else 'Not Feasible to predict')
     return DF
 
+def transformRecommendation(DF):
+    print("Transformation for Recommendation problem started")
+    # This function contains all the necessary transformation required for Recommendation
+    client = MongoClient(db_connection_string)
+    Crime_CA_Income_Age_FSA = pd.DataFrame(list(client.ETLInsight["CrimeCAIncomeAgeFSA"].find({}, {'_id':0})))
+
+    try:
+        enc = pickle.load(open('Code/Rec_OHE.pickle', 'rb'))
+        scaler = pickle.load(open('ode/Rec_scaler.pickle', 'rb'))
+        scaler_col = pickle.load(open('ode/Rec_scaler_columns.pickle', 'rb'))
+        imputer = pickle.load(open('ode/Rec_imputer.pickle', 'rb'))
+    except:
+        enc = pickle.load(open('Rec_OHE.pickle', 'rb'))
+        scaler = pickle.load(open('Rec_scaler.pickle', 'rb'))
+        scaler_col = pickle.load(open('Rec_scaler_columns.pickle', 'rb'))
+        imputer = pickle.load(open('Rec_imputer.pickle', 'rb'))
+
+    def recommenderFeasibilityCheck(DF):
+        #Extra feasibility check for recommender
+        ##Retrieve OHE labels
+        ohe_dict = {f'x{index}':col for index,col in enumerate(cat_columns)}
+        ohe_labels = [ohe_dict[feature.split('_')[0]]+'_'+feature.split('_')[1] for feature in enc.get_feature_names()]
+        eligible_FSAs=[item.split('_')[1] for item in ohe_labels if item.split('_')[0]=='FSA']
+        eligible_rt = [item.split('_')[2] for item in ohe_labels if item.split('_')[0]=='rental']
+        non_eligible_missing_nas = DF.loc[DF.apply(lambda x: np.count_nonzero(x[set(DF.columns).difference(set(['sqft', 'bedrooms', 'bathrooms']))].isna())>0, axis=1)]['id'].to_list()
+        return list(set(DF[DF.apply(lambda x : (x['FSA'] not in eligible_FSAs) or (x['rental_type'] not in eligible_rt), axis=1)]['id'].to_list() + non_eligible_missing_nas))
+
+
+    #This function does necessary transformation for the recommendation
+    ##Feasibility 
+    DF = DF[DF.pred!='Not Feasible to predict']
+    #Replace all white spaces or nothing at all to NaN
+    DF.replace(r'^\s*$', np.nan, regex=True, inplace=True)
+    #Replace None with NaN
+    DF = DF.fillna(value=np.nan)
+    #Missing value handling
+    DF['furnished'] = DF['furnished'].fillna(value="NOT_MENTIONED")
+    DF['furnished'] = DF['furnished'].replace(to_replace=True, value='YES')
+    DF['furnished'] = DF['furnished'].replace(to_replace=False, value='NO')
+    #New features 
+    DF['post_published_date'] = DF['post_published_date'].map(lambda x: datetime.strptime(x, '%Y-%m-%d'))
+    DF['posted_week_of_month'] = DF['post_published_date'].map(lambda x: x.day//7 +1)
+    ##Convert image url to image or not? (New feature)
+    DF['image'] = DF['image'].notna()
+    Crime_CA_Income_Age_FSA.set_index('FSA', inplace=True)
+    DF = DF.join(Crime_CA_Income_Age_FSA, on='FSA', how='left')
+    num_columns = ['sqft', 'bedrooms', 'bathrooms', 'posted_week_of_month', 'Community Services',
+       'Education & Employment', 'Financial Services', 'Food & Housing',
+       'Health Services', 'Law & Government', 'Transportation', 'Assault', 'Auto Theft',
+              'Break and Enter','Robbery', 'Theft Over', 'Avg_Age', 'avg_income']
+    cat_columns = ['image', 'FSA', 'rental_type', 'furnished', 'pet_friendly']
+    DF=DF[['id']+num_columns+cat_columns]
+    
+    ##Recommender feasibility
+    not_eligible = recommenderFeasibilityCheck(DF)
+    DF['feasibility'] = True
+    DF.loc[DF.id.map(lambda x: x in not_eligible), 'feasibility']=False
+    
+    ##OHE Transform
+    ohe_output = enc.transform(DF[cat_columns]).toarray()
+    ##Retrieve OHE labels
+    ohe_dict = {f'x{index}':col for index,col in enumerate(cat_columns)}
+    ohe_labels = [ohe_dict[feature.split('_')[0]]+'_'+feature.split('_')[1] for feature in enc.get_feature_names()]
+    DF.reset_index(drop=True, inplace=True)
+    DF = pd.concat([DF, pd.DataFrame(ohe_output, columns=ohe_labels, dtype='int')], axis=1)
+    DF.drop(cat_columns, axis=1, inplace=True)
+    
+    ##Scaling
+    scaled_output = scaler.transform(DF[scaler_col])
+    DF.reset_index(drop=True, inplace=True)
+    DF = pd.concat([DF[['id', 'feasibility']], pd.DataFrame(scaled_output, columns=scaler_col)], axis=1)
+    
+    ##Imputation
+    DF.loc[:,['sqft', 'bedrooms','bathrooms']] = imputer.transform(DF[['sqft', 'bedrooms','bathrooms']])
+    print("Transformation for Recommendation problem finished")
+    return DF
+
+def prepRecommend(DF):
+    # This is the main function to update the recommendation DB
+    client = MongoClient(db_connection_string)
+    DF = transformRecommendation(DF)
+    client.ETLInsight.RecommendCurrent.insert_many(DF.T.to_dict().values())
+    client.ETLInsight.RecommendHistoric.insert_many(DF.T.to_dict().values())
+    client.close()
+    print("Finished updating the recommendation DBs")
+
+
 def updateDB():
     # This is the main function scheduler calls to undate the database
 
@@ -423,6 +518,11 @@ def updateDB():
         client.ETLInsight.CurrentRental.insert_many(DF.T.to_dict().values())
         client.close()
         print("Finished updateDB")
+
+        # Recommendation prep
+        prepRecommend(DF)
+
+
 
 ##Checking update
 if __name__ == "__main__":
