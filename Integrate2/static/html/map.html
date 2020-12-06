@@ -160,13 +160,13 @@
             <div class="w3-display-container w3-content w3-wide page-content map w3-row-padding" style="max-width: 100%; margin-top: 190px; ">
                 <div class="w3-container w3-border" >
                     <div class="border-0">
-                        <div id="availableRentals">
+                        <div id="availableRentals" class="w3-center" >
                             <h2>Available Rentals</h2>
                             <p>These are all the rentals available in the Greater Toronto Area</p>
                         </div>
                         
                         <!--Sidebar-->
-                        <div id="sidebar" class="sidebar collapsed" style="margin: 75px 0px 5px 45px; height: 500px; ">
+                        <div id="sidebar" class="sidebar collapsed" style="margin: 75px 0px 5px 45px; height: 600px; ">
                             <!-- Nav tabs -->
                             <div class="sidebar-tabs">
                                 <ul role="tablist">
@@ -252,7 +252,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="map"  style="margin: 0px 50px 25px 50px; height: 500px; width: 90%;"></div>
+                        <div id="map"  style="margin: 0px 30px 0px 70px; height: 600px; width: 90%;" class="w3-container w3-border"></div>
+                        <div id="recommendationContent" class="w3-card-4" style="margin: 0px 30px 25px 70px; height: 250px; width: 90%;">
+
+                            <header class="w3-container w3-blue w3-center">
+                              <h4>Best Deals</h4>
+                            </header>
+                            
+                            <div class="w3-container w3-center">
+                              <p>Apply filter options and select a rental from the map to get more personalized recommendations</p>
+                            </div>
+                            <div class="w3-container " id="Features">
+                                
+                                <div class="w3-row-padding section-card">
+                                  <div class="w3-col l4 w3-margin-bottom ">
+                                    <div class="w3-card-4 w3-sand w3-center">
+                                      <img id="recommendationOneImg" src="../img/coming-soon-2461832_1280.jpeg" alt="rental" style="height: 50%; width: 50%; padding: 15px;">
+                                      <div class="w3-container w3-center" id="recommendationOneInfo">
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="w3-col l4 w3-margin-bottom ">
+                                    <div class="w3-card-4 w3-sand w3-center">
+                                      <img id="recommendationTwoImg" src="../img/coming-soon-2461832_1280.jpeg" alt="rental" style="height: 50%; width: 50%; padding: 15px;">
+                                      <div class="w3-container w3-center" id="recommendationTwoInfo">
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="w3-col l4 w3-margin-bottom ">
+                                    <div class="w3-card-4 w3-sand w3-center">
+                                      <img id="recommendationThreeImg" src="../img/coming-soon-2461832_1280.jpeg" alt="rental" style="height: 50%; width: 50%; padding: 15px;">
+                                      <div class="w3-container w3-center" id="recommendationThreeInfo">
+                                    
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                               
+                                
+                              
+                            
+                            
+                            
+                            </div>
+                        </div>
+                            
                     </div>            
                 </div>
             

@@ -134,6 +134,7 @@ function addRentalLayer(data){
       if(heatmapMarker){
         curr_zoom = crimeMap.getZoom();
         crimeMap.removeLayer(heatmapMarker);
+        
       }
       heatmapMarker = L.marker(e.target.getLatLng(), {
         icon: L.ExtraMarkers.icon({
@@ -203,6 +204,10 @@ function addRentalLayer(data){
       }).bindPopup(e.target.options.icon.options.title);
       choroplethAgeMapMarker.addTo(choroplethageMap);
       choroplethageMap.setView(e.target.getLatLng(), curr_zoom_age);
+
+      //adding code to update recommendations
+      displayRecommendation(e, getFilterParm());
+
 
     });
   });

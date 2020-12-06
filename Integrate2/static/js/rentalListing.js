@@ -78,3 +78,83 @@ function displayCommunityListing(element){
     d3.selectAll("#communityInfo").append("p").text(`Service Eligibility: ${element.target.options.eligibility}`).classed('card-text', true);
     d3.selectAll("#communityInfo").append("p").text(` `).classed('card-text', true);
 }
+function displayRecommendation(element, filterparams){
+
+    
+    //use element id and filterparams to call API and get the 3 recommendations to display
+
+    //testing filterparams and element.id
+    console.log("Filter params:");
+    // filterparams.forEach(data => {
+    //     console.log(data);
+    // });
+    console.log(typeof(filterparams));
+    console.log("Element Id:");
+    // console.log(element.target.options.icon.options.url);
+    // var url=String(element.target.options.icon.options.url);
+    var id=url.split("/");
+    id=id[id.length-1].split(".")[0];
+    id="c_"+id;
+    console.log(id);
+
+    
+
+    
+    //for now testing with displaying the listing clicked
+    //clear previous Info
+    d3.selectAll("#recommendationOneInfo").html("");
+    d3.selectAll("#recommendationTwoInfo").html("");
+    d3.selectAll("#recommendationThreeInfo").html("");
+    //clear previous Imgs
+    d3.selectAll("#recommendationOneImg").html("");
+    d3.selectAll("#recommendationTwoImg").html("");
+    d3.selectAll("#recommendationThreeImg").html("");
+
+    //add imgs to One
+    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
+        d3.select("#recommendationOneImg").attr("src", element.target.options.icon.options.image);
+    }else{
+        d3.select("#recommendationOneImg").attr("src", coming_soon);
+    }
+
+    //add imgs to Two
+    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
+        d3.select("#recommendationTwoImg").attr("src", element.target.options.icon.options.image);
+    }else{
+        d3.select("#recommendationTwoImg").attr("src", coming_soon);
+    }
+
+    //add imgs to Three
+    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
+        d3.select("#recommendationThreeImg").attr("src", element.target.options.icon.options.image);
+    }else{
+        d3.select("#recommendationThreeImg").attr("src", coming_soon);
+    }
+
+    //add info to first recommendation
+    d3.selectAll("#recommendationOneInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
+    d3.selectAll("#recommendationOneInfo").append("p").text(" ").classed('card-text', true);
+    d3.selectAll("#recommendationOneInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
+
+    //add info to second recommendation
+    d3.selectAll("#recommendationTwoInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
+    d3.selectAll("#recommendationTwoInfo").append("p").text(" ").classed('card-text', true);
+    d3.selectAll("#recommendationTwoInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
+
+    //add info to Third recommendation
+    d3.selectAll("#recommendationThreeInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
+    d3.selectAll("#recommendationThreeInfo").append("p").text(" ").classed('card-text', true);
+    d3.selectAll("#recommendationThreeInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
+
+
+
+
+
+
+
+}
+
+function displayDefaultRecommendation(){
+    //show default best deals
+
+}

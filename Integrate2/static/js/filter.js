@@ -1,3 +1,10 @@
+
+var PriceMin="0";
+var PriceMax="-1";
+var FSA="";
+var BedroomsMin="0";
+var BedroomsMax="-1";
+
 function createDropDown(data){
 
     //define parameters
@@ -105,5 +112,26 @@ function createDropDown(data){
         d3.json((baseUrl+filteredURL), function(rental){
             addRentalLayer(rental);
         });
+
+        //Update global filter features for later use
+        PriceMin = selectedPriceMin;
+        PriceMax = selectedPriceMax;
+        FSA = selectedFSA;
+        BedroomsMin = selectedBedroomsMin;
+        BedroomsMax = selectedBedroomsMax;
+
     }); 
+}
+
+function getFilterParm(){
+
+    var filterParams =[];
+    filterParams.push(PriceMin);
+    filterParams.push(PriceMax);
+    filterParams.push(FSA);
+    filterParams.push(BedroomsMin);
+    filterParams.push(BedroomsMax);
+    return(filterParams);
+
+
 }
