@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from urls_list import  db_connection_string
 import pandas as pd
 import re
+import numpy as np
 
 
 #Configure Flask App
@@ -100,6 +101,49 @@ def getCrimeData(collection, attr):
             pass
         return jsonify([]),  404
     return jsonify(response)
+
+def getNearestNeighboursData(args):
+    
+    query = dict()
+    try:
+        id = args.get("id", None)
+        client = MongoClient(db_connection_string)
+        enough_info = type(list(client.ETLInsight.CurrentRental.find({'id':id}, {'_id':0,'pred':1}))[0]['pred'])!=str
+        if not enough_info:
+            return jsonify([]),  404
+
+        price = args.get("price", None)
+        bedrooms = args.get("bedrooms", None)
+        retrieved_FSA = list(client.ETLInsight.CurrentRental.find({'id':id}, {'_id':0,'FSA':1}))[0]['FSA']
+        # FSA = args.get("FSA", None)
+        FSA = args.get("FSA", retrieved_FSA)
+        #Construct query
+        # query['id'] = id
+        if price:
+            price = [int(val) for val in re.sub('[\[\]]', '', price).split(',')]
+            query = createQuery(query, price, "price")
+        if bedrooms:
+            bedrooms = [int(val) for val in  re.sub('[\[\]]', '', bedrooms).split(',')]
+            query = createQuery(query, bedrooms, "bedrooms")
+        if FSA:
+            query["FSA"] = FSA
+        print(query)
+        response = list(client.ETLInsight.CurrentRental.find(query, {'_id':0}))
+        filtered_postings = list(set(pd.DataFrame(response)['id']).difference({id}))
+        retrieved_vectors = pd.DataFrame(list(client.ETLInsight.RecommendCurrent.find({'feasibility': True, 'id': {'$in': filtered_postings}}, {'_id':0})))
+        required_columns = retrieved_vectors.columns[2:]
+        id_vector = pd.DataFrame(list(client.ETLInsight.RecommendCurrent.find({'id':id}, {'_id':0})))[required_columns].iloc[0].to_list()
+        retrieved_vectors['distance_from_the_posting'] = retrieved_vectors.apply(lambda x: np.linalg.norm(x[required_columns]-id_vector), axis=1)
+        closest_neighbour_ids = retrieved_vectors[['id', 'distance_from_the_posting']].sort_values(by='distance_from_the_posting')['id'][:3].to_list()
+        closest_neighbours = list(client.ETLInsight.CurrentRental.find({'id': {'$in': closest_neighbour_ids}}, {'_id':0}))
+        client.close()
+        return jsonify(closest_neighbours)        
+    except:
+        try:
+            client.close()
+        except:
+            pass
+        return jsonify([]),  404
 
 def RentalData(collection, args):
     query = dict()
@@ -256,5 +300,11 @@ def getAggregate(type):
     # http://127.0.0.1:5000/agg/communityAssets
     # http://127.0.0.1:5000/agg/crime    
 
+@app.route('/recommend')
+def getNearestNeighbours():
+    args = request.args.to_dict()
+    return  getNearestNeighboursData(args)
+    # http://127.0.0.1:5000/recommend?id=c_7241928903&price=[0,-1]&bedrooms=[0,-1]&FSA=M6J    
+    
 if __name__ == "__main__":
     app.run(debug=True)
