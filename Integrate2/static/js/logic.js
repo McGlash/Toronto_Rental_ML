@@ -103,6 +103,7 @@ function addRentalLayer(data){
       shape: 'circle',
       iconColor: "white",
       icon: 'fa-number', 
+      id: feature.id,
       image: feature.image,        
       furnished: feature.furnished, 
       pet_friendly: feature.pet_friendly, 

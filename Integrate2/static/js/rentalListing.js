@@ -84,68 +84,83 @@ function displayRecommendation(element, filterparams){
     //use element id and filterparams to call API and get the 3 recommendations to display
 
     //testing filterparams and element.id
-    console.log("Filter params:");
-    // filterparams.forEach(data => {
-    //     console.log(data);
-    // });
-    console.log(typeof(filterparams));
-    console.log("Element Id:");
-    // console.log(element.target.options.icon.options.url);
-    // var url=String(element.target.options.icon.options.url);
-    var id=url.split("/");
-    id=id[id.length-1].split(".")[0];
-    id="c_"+id;
+    console.log("FSA:");
+    console.log(filterparams[2]);
+   
+   
+    id= element.target.options.icon.options.id;
     console.log(id);
+//http://127.0.0.1:5000/recommend?id=c_7241928903&price=[0,-1]&bedrooms=[0,-1]&FSA=M6J
+    // var filteredUrl;
+    if(filterparams[2]==""){
+        
+        recommendURL= `recommend?id=${id}&price=[${filterparams[0]},${filterparams[1]}]&bedrooms=[${filterparams[3]},${filterparams[4]}]&FSA=${String(element.target.options.icon.options.postal_code).split(" ")[0]}`;
+   
+    }
+    else{
+        recommendURL= `recommend?id=${id}&price=[${filterparams[0]},${filterparams[1]}]&bedrooms=[${filterparams[3]},${filterparams[4]}]&FSA=${filterparams[2]}`;
+        //filteredURL= `availableRental?price=[${selectedPriceMin},${selectedPriceMax}]&bedrooms=[${selectedBedroomsMin},${selectedBedroomsMax}]&FSA=${selectedFSA}`;
+    }
+    console.log(recommendURL);
+    //get data from constructed url
+    d3.json((baseUrl+recommendURL), function(data){
+       
+        console.log(data[0]);
+        console.log(data[1]);
+        console.log(data[2]);
+        //clear previous Info
+        d3.selectAll("#recommendationOneInfo").html("");
+        d3.selectAll("#recommendationTwoInfo").html("");
+        d3.selectAll("#recommendationThreeInfo").html("");
+        //clear previous Imgs
+        d3.selectAll("#recommendationOneImg").html("");
+        d3.selectAll("#recommendationTwoImg").html("");
+        d3.selectAll("#recommendationThreeImg").html("");
+
+        //add imgs to One
+        if(element.target.options.icon.options.image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
+            d3.select("#recommendationOneImg").attr("src", data[0].image);
+        }else{
+            d3.select("#recommendationOneImg").attr("src", coming_soon);
+        }
+
+        //add imgs to Two
+        if(data[1].image != null && ((typeof data[1].image) == "string") && (data[0].image.length > 10)){
+            d3.select("#recommendationTwoImg").attr("src", data[1].image);
+        }else{
+            d3.select("#recommendationTwoImg").attr("src", coming_soon);
+        }
+
+        //add imgs to Three
+        if(data[2].image != null && ((typeof data[2].image) == "string") && (data[2].image.length > 10)){
+            d3.select("#recommendationThreeImg").attr("src", data[2].image);
+        }else{
+            d3.select("#recommendationThreeImg").attr("src", coming_soon);
+        }
+
+        //add info to first recommendation
+        d3.selectAll("#recommendationOneInfo").append("h3").text(data[0].title).classed('card-title', true);
+        d3.selectAll("#recommendationOneInfo").append("p").text(" ").classed('card-text', true);
+        d3.selectAll("#recommendationOneInfo").append("p").text(`Price: $ ${data[0].price}`).classed('card-text', true);
+
+        //add info to second recommendation
+        d3.selectAll("#recommendationTwoInfo").append("h3").text(data[1].title).classed('card-title', true);
+        d3.selectAll("#recommendationTwoInfo").append("p").text(" ").classed('card-text', true);
+        d3.selectAll("#recommendationTwoInfo").append("p").text(`Price: $ ${data[1].price}`).classed('card-text', true);
+
+        //add info to Third recommendation
+        d3.selectAll("#recommendationThreeInfo").append("h3").text(data[2].title).classed('card-title', true);
+        d3.selectAll("#recommendationThreeInfo").append("p").text(" ").classed('card-text', true);
+        d3.selectAll("#recommendationThreeInfo").append("p").text(`Price: $ ${data[2].price}`).classed('card-text', true);
+
+    });
+
 
     
 
     
-    //for now testing with displaying the listing clicked
-    //clear previous Info
-    d3.selectAll("#recommendationOneInfo").html("");
-    d3.selectAll("#recommendationTwoInfo").html("");
-    d3.selectAll("#recommendationThreeInfo").html("");
-    //clear previous Imgs
-    d3.selectAll("#recommendationOneImg").html("");
-    d3.selectAll("#recommendationTwoImg").html("");
-    d3.selectAll("#recommendationThreeImg").html("");
 
-    //add imgs to One
-    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
-        d3.select("#recommendationOneImg").attr("src", element.target.options.icon.options.image);
-    }else{
-        d3.select("#recommendationOneImg").attr("src", coming_soon);
-    }
-
-    //add imgs to Two
-    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
-        d3.select("#recommendationTwoImg").attr("src", element.target.options.icon.options.image);
-    }else{
-        d3.select("#recommendationTwoImg").attr("src", coming_soon);
-    }
-
-    //add imgs to Three
-    if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
-        d3.select("#recommendationThreeImg").attr("src", element.target.options.icon.options.image);
-    }else{
-        d3.select("#recommendationThreeImg").attr("src", coming_soon);
-    }
-
-    //add info to first recommendation
-    d3.selectAll("#recommendationOneInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
-    d3.selectAll("#recommendationOneInfo").append("p").text(" ").classed('card-text', true);
-    d3.selectAll("#recommendationOneInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
-
-    //add info to second recommendation
-    d3.selectAll("#recommendationTwoInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
-    d3.selectAll("#recommendationTwoInfo").append("p").text(" ").classed('card-text', true);
-    d3.selectAll("#recommendationTwoInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
-
-    //add info to Third recommendation
-    d3.selectAll("#recommendationThreeInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
-    d3.selectAll("#recommendationThreeInfo").append("p").text(" ").classed('card-text', true);
-    d3.selectAll("#recommendationThreeInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
-
+    
 
 
 

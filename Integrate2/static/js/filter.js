@@ -44,12 +44,12 @@ function createDropDown(data){
     });
 
     dataM = data.filter(d =>d.FSA.substring(0,1)=="M");
-    FSA =  dataM.map(d => d.FSA).reverse();
-    FSA = FSA.filter((item, i, ar) => ar.indexOf(item) === i).sort();
+    uniqueFSA =  dataM.map(d => d.FSA).reverse();
+    uniqueFSA = uniqueFSA.filter((item, i, ar) => ar.indexOf(item) === i).sort();
     var dropDownFSA= d3.select("#fsa_filter")
     dropDownFSA.append("option").text("All FSA");
     //give the dropdow id values
-    FSA.forEach(element => {
+    uniqueFSA.forEach(element => {
             dropDownFSA.append("option").text(element);
     });
 
@@ -98,10 +98,12 @@ function createDropDown(data){
         // var filteredUrl;
         if(selectedFSA==""){
             filteredURL= `availableRental?price=[${selectedPriceMin},${selectedPriceMax}]&bedrooms=[${selectedBedroomsMin},${selectedBedroomsMax}]`;
+            
        
         }
         else{
             filteredURL= `availableRental?price=[${selectedPriceMin},${selectedPriceMax}]&bedrooms=[${selectedBedroomsMin},${selectedBedroomsMax}]&FSA=${selectedFSA}`;
+            
         }
         //console.log(filteredURL);
         //get data from constructed url
@@ -119,6 +121,8 @@ function createDropDown(data){
         FSA = selectedFSA;
         BedroomsMin = selectedBedroomsMin;
         BedroomsMax = selectedBedroomsMax;
+        console.log("FSA while assigend");
+        console.log(FSA);
 
     }); 
 }
