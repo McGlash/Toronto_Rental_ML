@@ -54,7 +54,7 @@ function displayRentalListing(element){
     d3.selectAll("#rentalInfo").append("p").text(`Description: ${element.target.options.icon.options.description}`).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(` `).classed('card-text', true);
 
-    console.log(element.target.options.icon.options.id)
+    //update!!
     displayRecommendation(element, getFilterParm(PriceMin, PriceMax, BedroomsMin, BedroomsMax, FilteredFSA));
 }
 function displayCommunityListing(element){
