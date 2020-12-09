@@ -121,8 +121,7 @@ function createDropDown(data){
         FSA = selectedFSA;
         BedroomsMin = selectedBedroomsMin;
         BedroomsMax = selectedBedroomsMax;
-        console.log("FSA while assigend");
-        console.log(FSA);
+        
 
     }); 
 }
