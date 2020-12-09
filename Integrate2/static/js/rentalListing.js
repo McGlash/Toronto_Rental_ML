@@ -2,7 +2,7 @@ function displayRentalListing(element){
     if(element.target.options.icon.options.image != null && ((typeof element.target.options.icon.options.image) == "string") && (element.target.options.icon.options.image.length > 10)){
         d3.select("#rentalListingImg").attr("src", element.target.options.icon.options.image);
     }else{
-        d3.select("#rentalListingImg").attr("src", sample_house);
+        d3.select("#rentalListingImg").attr("src", "https://www.w3schools.com/w3images/house1.jpg");
     }
     //clear previous
     var furnished = "No";
@@ -37,11 +37,13 @@ function displayRentalListing(element){
     }else{
         statement = `<span style="color:black">The given information in the rental post is not enough to estimate the price</span>`;
     }
+    //console.log(element.target.options.icon.options);
 
     d3.selectAll("#rentalInfo").html("");
     d3.selectAll("#rentalInfo").append("h3").text(element.target.options.icon.options.title).classed('card-title', true);
     d3.selectAll("#rentalInfo").append("p").text(" ").classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Price: $ ${element.target.options.icon.options.price}`).classed('card-text', true);
+    d3.selectAll("#rentalInfo").append("p").text(`Bedrooms:  ${element.target.options.icon.options.number}`).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").html(statement).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Furnished: ${furnished}`).classed('card-text', true);
     d3.selectAll("#rentalInfo").append("p").text(`Pet Friendly: ${petFriendly}`).classed('card-text', true);
@@ -102,8 +104,9 @@ function displayRecommendation(element, filterparams){
     }
     
     //get data from constructed url
-    d3.json((baseUrl+recommendURL), function(data){
-       console.log(baseUrl+recommendURL);
+   
+        d3.json((baseUrl+recommendURL), function(data){
+       
         
         //clear previous Info
         // d3.selectAll("#recommendationOneInfo").html("");
@@ -173,31 +176,33 @@ function displayRecommendation(element, filterparams){
 
         d3.selectAll("#recommendationTitle").html("");
         d3.selectAll("#recommendationTitle").append("h3").text('Also Checkout: ');
-        console.log(data);
+        
+        //console.log(data);
         try{
         if(data.length == 3){
 
             
 
             //add imgs to One
-            if(element.target.options.icon.options.image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
-                d3.select("#ThreerecommendationOneImg").attr("src", data[0].image).style("width", "90%").style("height", "270px");
+            if(data[0].image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
+                d3.select("#ThreerecommendationOneImg").append("img").attr("src", data[0].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#ThreerecommendationOneImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#ThreerecommendationOneImg").append("img").attr("src", "https://www.w3schools.com/w3images/house2.jpg").style("width", "90%").style("height", "270px");
             }
 
             //add imgs to Two
-            if(data[1].image != null && ((typeof data[1].image) == "string") && (data[0].image.length > 10)){
-                d3.select("#ThreerecommendationTwoImg").attr("src", data[1].image).style("width", "90%").style("height", "270px");
+            if( (data[1].image != null && ((typeof data[1].image) == "string") ) && (parseInt(data[1].image.length) > 10)){
+                //console.log(data[1].image);
+                d3.select("#ThreerecommendationTwoImg").append("img").attr("src", data[1].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#ThreerecommendationTwoImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#ThreerecommendationTwoImg").append("img").attr("src", "https://www.w3schools.com/w3images/house3.jpg").style("width", "90%").style("height", "270px");
             }
-
+            //console.log(data[2].image.length);
             //add imgs to Three
-            if(data[2].image != null && ((typeof data[2].image) == "string") && (data[2].image.length > 10)){
-                d3.select("#ThreerecommendationThreeImg").attr("src", data[2].image).style("width", "90%").style("height", "270px");
+            if( data[2].image != null && ((typeof data[2].image) == "string") && (parseInt(data[2].image.length) > 10)){
+                d3.select("#ThreerecommendationThreeImg").append("img").attr("src", data[2].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#ThreerecommendationThreeImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#ThreerecommendationThreeImg").append("img").attr("src", "https://www.w3schools.com/w3images/house4.jpg").style("width", "90%").style("height", "270px");
             }
 
             //add info to first recommendation
@@ -224,17 +229,17 @@ function displayRecommendation(element, filterparams){
         else if (data.length == 2){
 
             //add imgs to One
-            if(element.target.options.icon.options.image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
-                d3.select("#TworecommendationOneImg").attr("src", data[0].image).style("width", "90%").style("height", "270px");
+            if(data[0].image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
+                d3.select("#TworecommendationOneImg").append("img").attr("src", data[0].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#TworecommendationOneImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#TworecommendationOneImg").append("img").attr("src", "https://www.w3schools.com/w3images/house5.jpg").style("width", "90%").style("height", "270px");
             }
 
             //add imgs to Two
             if(data[1].image != null && ((typeof data[1].image) == "string") && (data[0].image.length > 10)){
-                d3.select("#TworecommendationTwoImg").attr("src", data[1].image).style("width", "90%").style("height", "270px");
+                d3.select("#TworecommendationTwoImg").append("img").attr("src", data[1].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#TworecommendationTwoImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#TworecommendationTwoImg").append("img").attr("src", "https://www.w3schools.com/w3images/house6.jpg").style("width", "90%").style("height", "270px");
             }
 
             
@@ -261,10 +266,10 @@ function displayRecommendation(element, filterparams){
 
         else if(data.length == 1){
             //add imgs to One
-            if(element.target.options.icon.options.image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
-                d3.select("#OnerecommendationOneImg").attr("src", data[0].image).style("width", "90%").style("height", "270px");
+            if(data[0].image != null && ((typeof data[0].image) == "string") && (data[0].image.length > 10)){
+                d3.select("#OnerecommendationOneImg").append("img").attr("src", data[0].image).style("width", "90%").style("height", "270px");
             }else{
-                d3.select("#OnerecommendationOneImg").attr("src", sample_house).style("width", "90%").style("height", "270px");
+                d3.select("#OnerecommendationOneImg").append("img").attr("src", "https://www.w3schools.com/w3images/house1.jpg").style("width", "90%").style("height", "270px");
             }
 
             
@@ -331,8 +336,10 @@ function displayRecommendation(element, filterparams){
         d3.selectAll("#recommendationTitle").append("h3").text('Sorry ! We dont have enough information to make a Recommendation for your choice');
     }
 
-    });
+    
 
+    });
+    
 
     
 
